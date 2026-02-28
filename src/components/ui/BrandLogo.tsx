@@ -1,12 +1,21 @@
 "use client";
 
+import { useState } from "react";
+
+const logoOverrides: Record<string, string> = {
+    "Amalorpavam Group of Institutions": "https://amalorpavam.org/wp-content/uploads/2019/08/Amalorpavam-Logo-1.png",
+    "Amalorpavam Lourds Academy": "https://amalorpavamacademy.com/wp-content/uploads/2021/06/cropped-ALA-Logo-192x192.png",
+    "Amalorpavam Higher Secondary School": "https://amalorpavam.org/wp-content/uploads/2019/08/Amalorpavam-Logo-1.png",
+    "Starborn Young Scientist Academy": "https://static.wixstatic.com/media/ef199e_7a53696f0e474542a229a43a0589d97a~mv2.png",
+    "IUPAC": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/International_Union_of_Pure_and_Applied_Chemistry_logo.svg/501px-International_Union_of_Pure_and_Applied_Chemistry_logo.svg.png",
+    "Royal Society, London": "https://royalsociety.org/~/media/Royal_Society_Content/about-us/branding/the-royal-society-logo-600.jpg",
+};
+
 const domainMap: Record<string, string> = {
-    "Royal Society, London": "royalsociety.org",
     "Uni of Selinius, Delaware, USA": "selinusuniversity.it",
     "University of Manchester, UK": "manchester.ac.uk",
     "Loyola College, Chennai": "loyolacollege.edu",
     "Nehru College Puducherry": "ncesi.in",
-    "IUPAC": "iupac.org",
     "American Chemical Society": "acs.org",
     "Microsoft": "microsoft.com",
     "Indian Institute of Technology Bombay": "iitb.ac.in",
@@ -28,45 +37,50 @@ const domainMap: Record<string, string> = {
     "IJIRST": "ijirst.org",
     "IJRDO": "ijrdo.org",
     "IJCIRAS": "ijciras.com",
-    "Amalorpavam Group of Institutions": "amalorpavamschool.org",
-    "Amalorpavam Lourds Academy": "amalorpavamacademy.com",
-    "Amalorpavam Higher Secondary School": "amalorpavamschool.org",
-    "Starborn Young Scientist Academy": "starbornacademy.com"
 };
 
 export const BrandLogo = ({ name, size = 48 }: { name: string; size?: number }) => {
+    const override = logoOverrides[name];
     const domain = domainMap[name];
 
-    // Multi-source strategy
-    const sources = domain ? [
-        `https://unavatar.io/${domain}`,
-        `https://logo.clearbit.com/${domain}`,
-        `https://www.google.com/s2/favicons?domain=${domain}&sz=128`
-    ] : [];
+    const sources = [
+        ...(override ? [override] : []),
+        ...(domain ? [
+            `https://unavatar.io/${domain}`,
+            `https://logo.clearbit.com/${domain}`,
+            `https://www.google.com/s2/favicons?domain=${domain}&sz=128`
+        ] : [])
+    ];
 
     return (
         <div
             className="flex-shrink-0 flex items-center justify-center rounded-md bg-zinc-900 border border-white/10 overflow-hidden group-hover:border-white/30 transition-colors duration-500"
             style={{ width: size, height: size }}
         >
-            {domain ? (
+            {sources.length > 0 ? (
                 <LogoImage sources={sources} name={name} />
             ) : (
-                <span className="font-display font-medium text-lg text-zinc-500">{name.charAt(0)}</span>
+                <FallbackMonogram name={name} />
             )}
         </div>
     );
 };
 
+const FallbackMonogram = ({ name }: { name: string }) => (
+    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-zinc-800 to-black text-white/40">
+        <span className="font-display font-black text-xl tracking-tighter uppercase italic">
+            {name.substring(0, 2)}
+        </span>
+    </div>
+);
+
 const LogoImage = ({ sources, name }: { sources: string[], name: string }) => {
-    const [sourceIndex, setSourceIndex] = (typeof window !== 'undefined')
-        ? require('react').useState(0)
-        : [0, () => { }];
+    const [sourceIndex, setSourceIndex] = useState(0);
 
     const currentSource = sources[sourceIndex];
 
     if (sourceIndex >= sources.length) {
-        return <span className="font-display font-medium text-lg text-zinc-500">{name.charAt(0)}</span>;
+        return <FallbackMonogram name={name} />;
     }
 
     return (
