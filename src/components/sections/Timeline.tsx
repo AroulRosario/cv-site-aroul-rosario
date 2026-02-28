@@ -37,10 +37,10 @@ export function Timeline() {
     const pathLength = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
 
     return (
-        <section ref={containerRef} id="timeline" className="py-48 bg-black relative overflow-hidden blueprint-grid border-b border-white/10">
+        <section ref={containerRef} id="timeline" className="py-24 md:py-48 bg-black relative overflow-hidden blueprint-grid border-b border-white/10">
 
-            {/* Background Identifier */}
-            <div className="absolute bottom-10 right-10 text-white/[0.02] font-display font-bold text-[30vw] leading-none pointer-events-none select-none">
+            {/* V4.1 Stabilized Background Number */}
+            <div className="bg-number bottom-0 right-0 translate-x-1/4 translate-y-1/4">
                 03
             </div>
 
@@ -65,9 +65,9 @@ export function Timeline() {
                     {/* Central Structural Line */}
                     <div className="absolute left-0 md:left-[20%] top-0 bottom-0 w-px bg-white/10" />
 
-                    <div className="space-y-48">
+                    <div className="space-y-24 md:space-y-48">
                         {timelineData.map((item, i) => (
-                            <div key={i} className="grid grid-cols-1 md:grid-cols-12 gap-8 relative items-start">
+                            <div key={i} className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 relative items-start">
 
                                 {/* Technical Index */}
                                 <div className="md:col-span-2 flex items-start justify-start md:justify-end pr-8">
@@ -75,16 +75,16 @@ export function Timeline() {
                                 </div>
 
                                 {/* Content */}
-                                <div className="md:col-span-10 pl-12 md:pl-24 relative border-l border-white/0">
+                                <div className="md:col-span-10 pl-6 md:pl-24 relative border-l border-white/0">
                                     {/* Point Indicator */}
                                     <div className="absolute left-[-5px] md:left-[-5px] top-[14px] w-[10px] h-[10px] bg-black border border-white z-20" />
 
                                     <FadeIn>
                                         <div className="flex flex-col max-w-2xl">
-                                            <h4 className="text-2xl md:text-5xl font-display font-medium text-white mb-6 tracking-tight">
+                                            <h4 className="text-2xl md:text-5xl font-display font-medium text-white mb-4 md:mb-6 tracking-tight">
                                                 {item.title}
                                             </h4>
-                                            <p className="text-zinc-500 text-lg md:text-xl leading-relaxed font-light">
+                                            <p className="text-zinc-500 text-base md:text-xl leading-relaxed font-light">
                                                 {item.desc}
                                             </p>
                                         </div>

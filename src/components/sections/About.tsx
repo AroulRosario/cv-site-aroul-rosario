@@ -7,10 +7,10 @@ export function About() {
     const statementParts = cvData.personalInfo.tagline.split('. ');
 
     return (
-        <section id="about" className="py-48 relative bg-white text-black blueprint-grid-light selection-light overflow-hidden">
+        <section id="about" className="py-24 md:py-48 relative bg-white text-black blueprint-grid-light selection-light overflow-hidden">
 
-            {/* Background Section Number */}
-            <div className="absolute top-10 left-10 text-black/[0.03] font-display font-bold text-[30vw] leading-none pointer-events-none select-none">
+            {/* V4.1 Stabilized Background Number */}
+            <div className="bg-number top-0 left-0 -translate-x-1/4 -translate-y-1/4 text-black/[0.03]">
                 02
             </div>
 
@@ -36,7 +36,7 @@ export function About() {
 
                     <div className="md:col-span-8 flex flex-col justify-center">
                         <SlideUp>
-                            <div className="space-y-12 text-3xl md:text-5xl lg:text-6xl font-display font-medium leading-[1.05] tracking-tight text-black mb-24">
+                            <div className="space-y-8 text-2xl md:text-5xl lg:text-6xl font-display font-medium leading-[1.1] tracking-tight text-black mb-16 md:mb-24">
                                 <p>
                                     {statementParts[0] ? statementParts[0] + "." : ""}
                                 </p>

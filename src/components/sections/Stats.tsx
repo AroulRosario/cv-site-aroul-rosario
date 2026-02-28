@@ -30,11 +30,11 @@ const Counter = ({ value, label, suffix = "" }: { value: number; label: string; 
     }, [isInView, value]);
 
     return (
-        <div ref={ref} className="flex flex-col p-10 border-r border-white/10 last:border-r-0 group">
-            <div className="text-xs font-mono uppercase tracking-[0.4em] text-zinc-600 mb-8 group-hover:text-zinc-400 transition-colors">
+        <div ref={ref} className="flex flex-col p-6 md:p-10 border-r border-b md:border-b-0 border-white/10 last:border-r-0 group">
+            <div className="text-[10px] md:text-xs font-mono uppercase tracking-[0.2em] md:tracking-[0.4em] text-zinc-600 mb-4 md:mb-8 group-hover:text-zinc-400 transition-colors">
                 {label}
             </div>
-            <div className="text-6xl md:text-8xl font-display font-medium text-white tracking-tighter">
+            <div className="text-4xl md:text-8xl font-display font-medium text-white tracking-tighter">
                 {count.toString().padStart(2, '0')}{suffix}
             </div>
         </div>
@@ -45,7 +45,7 @@ export function Stats() {
     return (
         <section className="bg-black border-y border-white/10 relative overflow-hidden">
             <div className="max-w-screen-2xl mx-auto px-6 md:px-0">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+                <div className="grid grid-cols-2 lg:grid-cols-4">
                     <Counter value={10} label="Yrs // Exp" suffix="+" />
                     <Counter value={15} label="Cert // Spec" />
                     <Counter value={6} label="Pub // Res" />

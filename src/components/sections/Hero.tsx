@@ -7,10 +7,10 @@ import { RevealText, FadeIn, LineDraw } from "@/components/ui/motion-helpers";
 
 export function Hero() {
     return (
-        <section className="relative min-h-[110vh] flex flex-col justify-center px-6 md:px-12 pt-32 pb-24 w-full bg-black overflow-hidden blueprint-grid">
+        <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-24 pb-20 w-full bg-black overflow-hidden blueprint-grid">
 
-            {/* Massive Background Number */}
-            <div className="absolute top-[-5%] right-[-5%] text-white/[0.03] font-display font-bold text-[40vw] leading-none select-none pointer-events-none">
+            {/* V4.1 Stabilized Background Number */}
+            <div className="bg-number top-0 right-0 translate-x-1/4 -translate-y-1/4">
                 01
             </div>
 
