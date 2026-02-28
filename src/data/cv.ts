@@ -12,25 +12,37 @@ export const cvData = {
             title: "Vice President",
             org: "Amalorpavam Group of Institutions",
             period: "2024 - Present",
-            description: "Leading digital school transformation and institutional growth for a premier educational group."
+            description: "Leading digital school transformation and institutional growth for a premier educational group with over 10,000 students."
         },
         {
             title: "Assistant Headmaster",
             org: "Amalorpavam Lourds Academy",
             period: "2022 - 2024",
-            description: "Managed academic operations and implemented neuro-cognitive learning frameworks."
+            description: "Managed academic operations and implemented neuro-cognitive learning frameworks for enhanced student performance."
         },
         {
             title: "Lecturer",
             org: "Amalorpavam Lourds Academy",
             period: "2019 - 2024",
-            description: "Specialized in Chemistry and advanced JEE/NEET preparation."
+            description: "Specialized in Chemistry and advanced JEE/NEET preparation for top-tier medical and engineering aspirants."
         },
         {
             title: "Lecturer (PGT)",
             org: "Amalorpavam Higher Secondary School",
             period: "2017 - 2018",
-            description: "Post Graduate Teacher for Chemistry."
+            description: "Post Graduate Teacher for Chemistry, creating foundations for future scientific talent."
+        }
+    ],
+    initiatives: [
+        {
+            title: "Starborn Young Scientist Academy",
+            role: "Co-Founder",
+            description: "An elite ecosystem designed to nurture high-potential young minds through immersive research experiences and hands-on scientific projects."
+        },
+        {
+            title: "Digital School Transformation",
+            role: "Project Lead",
+            description: "Orchestrating the complete migration of institutional pedagogy to a hybrid, AI-augmented model, certified by IIM Ahmedabad digital strategy frameworks."
         }
     ],
     fellowshipsAndSocieties: [
@@ -51,8 +63,8 @@ export const cvData = {
     ],
     skills: {
         scientific: ["Organic Chemistry", "Coordination Chemistry", "Molecular Modeling", "Quantum Mechanics", "Neuro-cognitive STEM Pedagogy"],
-        technical: ["EdTech Infrastructure", "AI-Augmented Assessment", "VR Molecular Simulations", "Digital School Transformation", "Full-stack EdTech Development"],
-        leadership: ["Institutional Governance", "Curriculum Design", "Digital Strategy", "Educational Counseling", "Public Speaking"]
+        technical: ["Azure Cognitive Services", "Full-stack EdTech Development", "VR Molecular Simulations", "AI-Augmented Assessment", "Infrastructure Scalability"],
+        leadership: ["Digital Strategy (IIM-A)", "Institutional Governance", "Curriculum Innovation", "Public Speaking", "Strategic Counseling"]
     },
     designAndTechCertifications: [
         { title: "Computer Vision App With Azure Cognitive Services", org: "Microsoft" },
@@ -75,8 +87,8 @@ export const cvData = {
     ],
     books: [
         { title: "NCERT 2.0", category: "Academic Textbook" },
-        { title: "OG Chemistry Series", category: "Competitive Exam Prep" },
-        { title: "Comic Formula Book", category: "Innovative Pedagogy" }
+        { title: "OG Chemistry Series", category: "Competitive Prep" },
+        { title: "Comic Formula Book", category: "Visual Pedagogy" }
     ],
     thesisPublications: [
         {
@@ -95,7 +107,7 @@ export const cvData = {
     researchArticles: [
         {
             org: "IJIRST",
-            title: "Ontological Commitments in Algorithmic Scaffolding: A Socio-Technological Framework for Calibrating Formative Assessment in AI-Driven Scientific Inquiry"
+            title: "Ontological Commitments in Algoric scaffolding: A Socio-Technological Framework for Calibrating Formative Assessment in AI-Driven Scientific Inquiry"
         },
         {
             org: "IJRDO",

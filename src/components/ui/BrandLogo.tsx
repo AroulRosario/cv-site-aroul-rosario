@@ -28,39 +28,54 @@ const domainMap: Record<string, string> = {
     "IJIRST": "ijirst.org",
     "IJRDO": "ijrdo.org",
     "IJCIRAS": "ijciras.com",
-    "Amalorpavam Group of Institutions": "amalorpavam.org",
-    "Amalorpavam Lourds Academy": "ala.org.in",
-    "Amalorpavam Higher Secondary School": "amalorpavam.org"
+    "Amalorpavam Group of Institutions": "amalorpavamschool.org",
+    "Amalorpavam Lourds Academy": "amalorpavamacademy.com",
+    "Amalorpavam Higher Secondary School": "amalorpavamschool.org",
+    "Starborn Young Scientist Academy": "starbornacademy.com"
 };
 
 export const BrandLogo = ({ name, size = 48 }: { name: string; size?: number }) => {
     const domain = domainMap[name];
 
-    // unavatar.io is great for high-res brand logos
-    // providing a domain directly is most reliable
-    const unavatarUrl = domain ? `https://unavatar.io/${domain}` : null;
-    const fallbackUrl = `https://www.google.com/s2/favicons?domain=${domain || 'edu.int'}&sz=128`;
+    // Multi-source strategy
+    const sources = domain ? [
+        `https://unavatar.io/${domain}`,
+        `https://logo.clearbit.com/${domain}`,
+        `https://www.google.com/s2/favicons?domain=${domain}&sz=128`
+    ] : [];
 
     return (
         <div
             className="flex-shrink-0 flex items-center justify-center rounded-md bg-zinc-900 border border-white/10 overflow-hidden group-hover:border-white/30 transition-colors duration-500"
             style={{ width: size, height: size }}
         >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-                src={unavatarUrl || fallbackUrl}
-                alt={`${name} logo`}
-                className="w-full h-full object-contain p-2 filter grayscale opacity-60 mix-blend-screen brightness-150 contrast-125 group-hover:grayscale-0 group-hover:opacity-100 group-hover:mix-blend-normal group-hover:brightness-100 transition-all duration-500"
-                onError={(e) => {
-                    // Fallback to google if unavatar fails
-                    if (unavatarUrl && e.currentTarget.src !== fallbackUrl) {
-                        e.currentTarget.src = fallbackUrl;
-                    } else {
-                        e.currentTarget.style.display = 'none';
-                        e.currentTarget.parentElement!.innerHTML = `<span class="font-display font-medium text-lg text-zinc-500">${name.charAt(0)}</span>`;
-                    }
-                }}
-            />
+            {domain ? (
+                <LogoImage sources={sources} name={name} />
+            ) : (
+                <span className="font-display font-medium text-lg text-zinc-500">{name.charAt(0)}</span>
+            )}
         </div>
+    );
+};
+
+const LogoImage = ({ sources, name }: { sources: string[], name: string }) => {
+    const [sourceIndex, setSourceIndex] = (typeof window !== 'undefined')
+        ? require('react').useState(0)
+        : [0, () => { }];
+
+    const currentSource = sources[sourceIndex];
+
+    if (sourceIndex >= sources.length) {
+        return <span className="font-display font-medium text-lg text-zinc-500">{name.charAt(0)}</span>;
+    }
+
+    return (
+        /* eslint-disable-next-line @next/next/no-img-element */
+        <img
+            src={currentSource}
+            alt={`${name} logo`}
+            className="w-full h-full object-contain p-2 filter grayscale opacity-60 mix-blend-screen brightness-150 contrast-125 group-hover:grayscale-0 group-hover:opacity-100 group-hover:mix-blend-normal group-hover:brightness-100 transition-all duration-500"
+            onError={() => setSourceIndex(sourceIndex + 1)}
+        />
     );
 };
