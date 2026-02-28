@@ -1,41 +1,41 @@
 "use client";
 
 import { cvData } from "@/data/cv";
-import { SlideUp, StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
-import { BookOpen, FileText } from "lucide-react";
+import { FadeIn, RevealText, StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
 
 export function Publications() {
     return (
-        <section id="publications" className="py-24 relative">
-            <div className="max-w-5xl mx-auto px-6 md:px-12">
+        <section id="publications" className="py-32 relative bg-zinc-950">
+            <div className="max-w-7xl mx-auto px-6 md:px-12">
 
                 {/* Thesis Publications */}
-                <div className="mb-20">
-                    <SlideUp>
-                        <div className="flex items-center gap-4 mb-12">
-                            <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center border border-blue-500/30">
-                                <BookOpen className="w-6 h-6 text-blue-400" />
-                            </div>
-                            <h2 className="text-4xl font-display font-bold text-white">Thesis Publications <span className="text-slate-500 font-light text-2xl ml-2">Top 3</span></h2>
+                <div className="mb-32">
+                    <FadeIn>
+                        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 border-b border-white/10 pb-8">
+                            <h2 className="text-4xl md:text-5xl font-display font-medium text-white tracking-tight flex items-center gap-4">
+                                Thesis<br />Publications
+                                <span className="inline-flex items-center justify-center px-3 py-1 rounded-full border border-zinc-700 bg-zinc-900 text-xs text-zinc-400 font-mono translate-y-2">
+                                    Top 3
+                                </span>
+                            </h2>
+                            <p className="text-xs font-mono tracking-widest uppercase text-zinc-600">
+                                07 // Thesis
+                            </p>
                         </div>
-                    </SlideUp>
+                    </FadeIn>
 
-                    <StaggerContainer className="space-y-6">
+                    <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8 text-zinc-500 hover:text-white transition-colors">
                         {cvData.thesisPublications.map((pub, index) => (
                             <StaggerItem key={index}>
-                                <div className="glass p-6 md:p-8 rounded-2xl border border-white/10 hover:border-blue-500/30 transition-all duration-300">
-                                    <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
-                                        <div className="md:w-1/4 flex-shrink-0">
-                                            <span className="inline-block px-3 py-1 bg-blue-500/10 text-blue-300 text-xs font-bold tracking-wider uppercase rounded-full border border-blue-500/20">
-                                                {pub.org}
-                                            </span>
-                                        </div>
-                                        <div className="md:w-3/4">
-                                            <h3 className="text-lg md:text-xl font-medium text-slate-200 leading-relaxed italic">
-                                                &quot;{pub.title}&quot;
-                                            </h3>
-                                        </div>
+                                <div className="group flex flex-col justify-between h-full p-8 border border-white/5 bg-black hover:bg-white/5 hover:border-white/20 transition-all duration-500 text-zinc-500">
+                                    <div className="mb-8">
+                                        <span className="text-xs font-mono uppercase tracking-widest text-zinc-600 group-hover:text-zinc-400 transition-colors">
+                                            {pub.org}
+                                        </span>
                                     </div>
+                                    <h3 className="text-lg font-medium text-zinc-300 group-hover:text-white transition-colors leading-relaxed">
+                                        &quot;{pub.title}&quot;
+                                    </h3>
                                 </div>
                             </StaggerItem>
                         ))}
@@ -44,31 +44,32 @@ export function Publications() {
 
                 {/* Research Articles */}
                 <div>
-                    <SlideUp>
-                        <div className="flex items-center gap-4 mb-12">
-                            <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center border border-purple-500/30">
-                                <FileText className="w-6 h-6 text-purple-400" />
-                            </div>
-                            <h2 className="text-4xl font-display font-bold text-white">Published Research Articles <span className="text-slate-500 font-light text-2xl ml-2">Top 3</span></h2>
+                    <FadeIn>
+                        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 border-b border-white/10 pb-8">
+                            <h2 className="text-4xl md:text-5xl font-display font-medium text-white tracking-tight flex items-center gap-4">
+                                Research<br />Articles
+                                <span className="inline-flex items-center justify-center px-3 py-1 rounded-full border border-zinc-700 bg-zinc-900 text-xs text-zinc-400 font-mono translate-y-2">
+                                    Top 3
+                                </span>
+                            </h2>
+                            <p className="text-xs font-mono tracking-widest uppercase text-zinc-600">
+                                08 // Research
+                            </p>
                         </div>
-                    </SlideUp>
+                    </FadeIn>
 
-                    <StaggerContainer className="space-y-6">
+                    <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {cvData.researchArticles.map((article, index) => (
                             <StaggerItem key={index}>
-                                <div className="glass p-6 md:p-8 rounded-2xl border border-white/10 hover:border-purple-500/30 transition-all duration-300">
-                                    <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
-                                        <div className="md:w-1/4 flex-shrink-0">
-                                            <span className="inline-block px-3 py-1 bg-purple-500/10 text-purple-300 text-xs font-bold tracking-wider uppercase rounded-full border border-purple-500/20">
-                                                {article.org}
-                                            </span>
-                                        </div>
-                                        <div className="md:w-3/4">
-                                            <h3 className="text-lg md:text-xl font-medium text-slate-200 leading-relaxed italic">
-                                                &quot;{article.title}&quot;
-                                            </h3>
-                                        </div>
+                                <div className="group flex flex-col justify-between h-full p-8 border border-white/5 bg-black hover:bg-white/5 hover:border-white/20 transition-all duration-500">
+                                    <div className="mb-8">
+                                        <span className="text-xs font-mono uppercase tracking-widest text-zinc-600 group-hover:text-zinc-400 transition-colors">
+                                            {article.org}
+                                        </span>
                                     </div>
+                                    <h3 className="text-lg font-medium text-zinc-300 group-hover:text-white transition-colors leading-relaxed">
+                                        &quot;{article.title}&quot;
+                                    </h3>
                                 </div>
                             </StaggerItem>
                         ))}

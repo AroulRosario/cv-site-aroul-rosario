@@ -1,47 +1,56 @@
 "use client";
 
 import { cvData } from "@/data/cv";
-import { SlideUp, StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
-import { GraduationCap, Award } from "lucide-react";
+import { SlideUp, StaggerContainer, StaggerItem, FadeIn } from "@/components/ui/motion-helpers";
+
+// A sleek Monogram component to replace image logos
+const Monogram = ({ name }: { name: string }) => {
+    const initial = name.replace(/University of |Uni of |College |Institut |Universit. /gi, "").charAt(0).toUpperCase();
+    return (
+        <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center border border-white/10 rounded-sm bg-zinc-900 group-hover:bg-white group-hover:text-black transition-colors duration-500">
+            <span className="font-display font-medium text-lg">{initial}</span>
+        </div>
+    );
+};
 
 export function Education() {
     return (
-        <section id="academics" className="py-24 bg-slate-900/50 relative border-t border-white/5">
-            <div className="max-w-5xl mx-auto px-6 md:px-12">
-                <SlideUp>
-                    <div className="flex items-center gap-4 mb-16">
-                        <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center border border-blue-500/30">
-                            <GraduationCap className="w-6 h-6 text-blue-400" />
-                        </div>
-                        <h2 className="text-4xl font-display font-bold text-white">Academics & Fellowships</h2>
-                    </div>
-                </SlideUp>
+        <section id="academics" className="py-32 bg-black relative">
+            <div className="max-w-5xl mx-auto px-6 md:px-12 border-l border-white/10 pl-6 md:pl-12">
 
-                <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <FadeIn>
+                    <h2 className="text-xs font-mono tracking-widest uppercase text-zinc-600 mb-16 relative">
+                        <span className="absolute -left-[31px] md:-left-[55px] top-1/2 -translate-y-1/2 w-4 h-px bg-zinc-600" />
+                        03 // Academics & Fellowships
+                    </h2>
+                </FadeIn>
+
+                <StaggerContainer className="flex flex-col gap-8">
                     {cvData.fellowshipsAndSocieties.map((item, index) => (
                         <StaggerItem key={index}>
-                            <div className="group h-full glass rounded-2xl p-6 border border-white/5 hover:border-blue-500/30 hover:bg-white/5 transition-all duration-300">
-                                <div className="flex flex-col h-full justify-between gap-4">
+                            <div className="group flex flex-col md:flex-row md:items-center justify-between gap-6 py-8 border-b border-white/5 hover:border-white/20 transition-colors">
+
+                                <div className="flex items-center gap-6">
+                                    <Monogram name={item.org} />
                                     <div>
-                                        <div className="flex items-start justify-between mb-4">
-                                            {item.acronym ? (
-                                                <span className="text-xs font-bold tracking-widest text-blue-400 uppercase bg-blue-400/10 px-3 py-1 rounded-full border border-blue-400/20">
-                                                    {item.acronym}
-                                                </span>
-                                            ) : (
-                                                <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center">
-                                                    <Award className="w-4 h-4 text-slate-400" />
-                                                </div>
-                                            )}
-                                        </div>
-                                        <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                                        <h3 className="text-2xl font-display font-medium text-white mb-2">{item.title}</h3>
+                                        <p className="text-zinc-500 tracking-wide text-sm uppercase font-mono">{item.org}</p>
                                     </div>
-                                    <p className="text-slate-400 font-medium">{item.org}</p>
                                 </div>
+
+                                {item.acronym && (
+                                    <div className="md:text-right">
+                                        <span className="inline-block px-4 py-1.5 border border-white/10 rounded-full text-xs font-mono text-zinc-400 group-hover:border-zinc-400 transition-colors">
+                                            {item.acronym}
+                                        </span>
+                                    </div>
+                                )}
+
                             </div>
                         </StaggerItem>
                     ))}
                 </StaggerContainer>
+
             </div>
         </section>
     );

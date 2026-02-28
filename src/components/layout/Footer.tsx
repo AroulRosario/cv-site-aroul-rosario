@@ -1,42 +1,41 @@
 "use client";
 
 import { cvData } from "@/data/cv";
-import { FadeIn } from "@/components/ui/motion-helpers";
+import { FadeIn, RevealText } from "@/components/ui/motion-helpers";
 
 export function Footer() {
     return (
-        <footer className="py-24 bg-slate-950 relative border-t border-white/5 overflow-hidden">
-            {/* Decorative gradient blur */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-blue-900/10 rounded-full blur-[100px] pointer-events-none" />
+        <footer className="py-32 bg-black relative border-t border-white/10 flex flex-col items-center justify-center text-center">
+            <div className="max-w-4xl mx-auto px-6 md:px-12 w-full">
+                <div className="space-y-12 mb-24">
+                    <RevealText>
+                        <p
+                            className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white leading-[1.1] tracking-tight"
+                            dangerouslySetInnerHTML={{
+                                __html: cvData.footerQuotes[0]
+                                    .replace("crack IIT or NEET.", "<span class='text-zinc-500'>crack IIT or NEET.</span>"),
+                            }}
+                        />
+                    </RevealText>
+                    <RevealText delay={0.2}>
+                        <p
+                            className="text-2xl md:text-3xl font-light text-zinc-400 leading-snug max-w-2xl mx-auto"
+                            dangerouslySetInnerHTML={{
+                                __html: cvData.footerQuotes[1]
+                                    .replace("It's built to simplify, not mystify.", "<span class='text-white font-medium'>It's built to simplify, not mystify.</span>"),
+                            }}
+                        />
+                    </RevealText>
+                </div>
 
-            <div className="max-w-4xl mx-auto px-6 md:px-12 text-center relative z-10">
-                <FadeIn>
-                    <div className="space-y-8 mb-16">
-                        {cvData.footerQuotes.map((quote, index) => (
-                            <p
-                                key={index}
-                                className={`text-2xl md:text-4xl font-display font-medium ${index === 0 ? "heading-gradient" : "text-slate-300"
-                                    } leading-relaxed mx-auto max-w-3xl`}
-                                dangerouslySetInnerHTML={{
-                                    __html: quote
-                                        .replace("crack IIT or NEET.", "<strong class='text-white'>crack IIT or NEET.</strong>")
-                                        .replace("It's built to simplify, not mystify.", "<strong class='text-white'>It's built to simplify, not mystify.</strong>"),
-                                }}
-                            />
-                        ))}
-                    </div>
-
-                    <div className="h-px w-32 bg-gradient-to-r from-transparent via-slate-600 to-transparent mx-auto mb-16" />
-
-                    <div className="flex flex-col items-center justify-center space-y-4">
-                        <p className="text-slate-500 font-medium">
-                            © {new Date().getFullYear()} {cvData.personalInfo.name}. All rights reserved.
-                        </p>
+                <FadeIn delay={0.4}>
+                    <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/10 text-xs font-mono uppercase tracking-widest text-zinc-500">
+                        <p>© {new Date().getFullYear()} {cvData.personalInfo.name}</p>
                         <a
                             href={`https://${cvData.personalInfo.website}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-blue-400 hover:text-blue-300 transition-colors"
+                            className="hover:text-white transition-colors mt-4 md:mt-0"
                         >
                             {cvData.personalInfo.website}
                         </a>

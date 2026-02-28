@@ -1,34 +1,41 @@
 "use client";
 
 import { cvData } from "@/data/cv";
-import { SlideUp, StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
-import { ShieldCheck, MonitorPlay } from "lucide-react";
+import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
+
+const Monogram = ({ name }: { name: string }) => {
+    const initial = name.replace(/Indian Institute of |University of |Université de |Institute |Johns |Physics /gi, "").charAt(0).toUpperCase();
+    return (
+        <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center border border-white/10 rounded-sm bg-zinc-900/50 group-hover:bg-white group-hover:text-black transition-colors duration-500 text-zinc-400">
+            <span className="font-display font-medium text-sm">{initial}</span>
+        </div>
+    );
+};
 
 export function Certifications() {
     return (
-        <section id="certifications" className="py-24 bg-slate-900/30 relative">
+        <section id="certifications" className="py-32 bg-zinc-950 relative border-y border-white/5">
             <div className="max-w-7xl mx-auto px-6 md:px-12">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
 
                     {/* Tech Certifications */}
                     <div>
-                        <SlideUp>
-                            <div className="flex items-center gap-4 mb-10">
-                                <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center border border-green-500/30">
-                                    <MonitorPlay className="w-5 h-5 text-green-400" />
-                                </div>
-                                <h2 className="text-3xl font-display font-bold text-white">Design & Tech</h2>
-                            </div>
-                        </SlideUp>
+                        <FadeIn>
+                            <h2 className="text-xs font-mono tracking-widest uppercase text-zinc-600 mb-12">
+                                04 // Tech Certifications
+                            </h2>
+                        </FadeIn>
 
-                        <StaggerContainer className="flex flex-col gap-4">
+                        <StaggerContainer className="flex flex-col gap-6">
                             {cvData.designAndTechCertifications.map((cert, index) => (
                                 <StaggerItem key={index}>
-                                    <div className="group glass p-5 rounded-xl border border-white/5 hover:bg-white/5 transition-colors flex items-center gap-4">
-                                        <div className="w-2 h-2 rounded-full bg-green-400 opacity-50 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                                    <div className="group flex items-start gap-6 p-6 border border-white/5 bg-black/20 hover:bg-black/40 hover:border-white/20 transition-all duration-500 rounded-lg">
+                                        <div className="w-14 h-14 flex-shrink-0 flex items-center justify-center text-zinc-500 group-hover:text-white transition-colors duration-500">
+                                            <Monogram name={cert.org} />
+                                        </div>
                                         <div>
-                                            <h3 className="font-medium text-white text-lg">{cert.title}</h3>
-                                            <p className="text-sm text-slate-400 mt-1">{cert.org}</p>
+                                            <h3 className="font-display font-medium text-white text-lg mb-1 leading-snug">{cert.title}</h3>
+                                            <p className="text-xs font-mono text-zinc-500 uppercase">{cert.org}</p>
                                         </div>
                                     </div>
                                 </StaggerItem>
@@ -38,23 +45,22 @@ export function Certifications() {
 
                     {/* Academic Certifications */}
                     <div>
-                        <SlideUp>
-                            <div className="flex items-center gap-4 mb-10">
-                                <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center border border-purple-500/30">
-                                    <ShieldCheck className="w-5 h-5 text-purple-400" />
-                                </div>
-                                <h2 className="text-3xl font-display font-bold text-white">Academic</h2>
-                            </div>
-                        </SlideUp>
+                        <FadeIn>
+                            <h2 className="text-xs font-mono tracking-widest uppercase text-zinc-600 mb-12">
+                                05 // Academic Certifications
+                            </h2>
+                        </FadeIn>
 
-                        <StaggerContainer className="flex flex-col gap-4">
+                        <StaggerContainer className="flex flex-col border-l border-white/10 pl-6 md:pl-8">
                             {cvData.academicCertifications.map((cert, index) => (
                                 <StaggerItem key={index}>
-                                    <div className="group glass p-5 rounded-xl border border-white/5 hover:bg-white/5 transition-colors flex items-center gap-4">
-                                        <div className="w-2 h-2 rounded-full bg-purple-400 opacity-50 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                                    <div className="group flex items-start gap-5 py-6 border-b border-white/5 hover:border-white/20 transition-all duration-500 relative">
+                                        <div className="absolute left-[-25px] md:left-[-33px] top-1/2 -translate-y-1/2 w-1.5 h-0 bg-white group-hover:h-8 transition-all duration-500" />
+
+                                        <Monogram name={cert.org} />
                                         <div>
-                                            <h3 className="font-medium text-white text-lg">{cert.title}</h3>
-                                            <p className="text-sm text-slate-400 mt-1">{cert.org}</p>
+                                            <h3 className="font-display font-medium text-zinc-200 text-base mb-1 group-hover:text-white transition-colors">{cert.title}</h3>
+                                            <p className="text-xs font-mono text-zinc-600 uppercase transition-colors group-hover:text-zinc-400">{cert.org}</p>
                                         </div>
                                     </div>
                                 </StaggerItem>

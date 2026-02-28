@@ -1,34 +1,38 @@
 "use client";
 
 import { cvData } from "@/data/cv";
-import { SlideUp, StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
-import { Lightbulb } from "lucide-react";
+import { FadeIn, RevealText, StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
 
 export function Patents() {
     return (
-        <section id="patents" className="py-24 bg-slate-900/50 relative border-t border-white/5">
-            <div className="max-w-4xl mx-auto px-6 md:px-12 text-center">
-                <SlideUp>
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 mb-8 mx-auto">
-                        <Lightbulb className="w-8 h-8 text-yellow-400" />
-                    </div>
-                    <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
-                        Provisional Patents Filed
-                    </h2>
-                    <p className="text-slate-400 mb-12">Intellectual Property India</p>
-                </SlideUp>
+        <section id="patents" className="py-32 bg-black relative border-y border-white/5">
+            <div className="max-w-5xl mx-auto px-6 md:px-12 text-center">
 
-                <StaggerContainer className="grid gap-6">
+                <FadeIn>
+                    <h2 className="text-xs font-mono tracking-widest uppercase text-zinc-600 mb-6">
+                        09 // Intellectual Property
+                    </h2>
+                    <h3 className="text-4xl md:text-6xl font-display font-bold text-white mb-6 tracking-tight">
+                        Provisional Patents
+                    </h3>
+                    <p className="text-sm font-mono tracking-widest text-zinc-500 uppercase mb-20">
+                        India
+                    </p>
+                </FadeIn>
+
+                <StaggerContainer className="flex flex-col gap-12 max-w-3xl mx-auto text-left">
                     {cvData.patents.map((patent, index) => (
                         <StaggerItem key={index}>
-                            <div className="glass p-8 rounded-2xl border border-white/10 hover:border-yellow-500/30 transition-colors">
-                                <h3 className="text-xl md:text-2xl font-medium text-slate-200 leading-relaxed">
+                            <div className="relative pl-8 md:pl-12 border-l border-white/20 group hover:border-white transition-colors">
+                                <div className="absolute left-[-5px] top-2 w-2 h-2 rounded-full bg-zinc-800 group-hover:bg-white transition-colors" />
+                                <h4 className="text-xl md:text-3xl font-light text-zinc-300 group-hover:text-white transition-colors leading-relaxed">
                                     {patent}
-                                </h3>
+                                </h4>
                             </div>
                         </StaggerItem>
                     ))}
                 </StaggerContainer>
+
             </div>
         </section>
     );

@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
 
 export function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -30,35 +29,36 @@ export function Navbar() {
             <motion.nav
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "glass py-4 shadow-lg" : "bg-transparent py-6"
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${isScrolled ? "bg-black/80 backdrop-blur-xl border-white/10 py-4" : "bg-transparent border-transparent py-8"
                     }`}
             >
                 <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-                    <a href="#" className="text-xl font-display font-bold text-white tracking-widest">
-                        A<span className="text-blue-400">R</span>
+                    <a href="#" className="text-xl font-display font-bold text-white tracking-widest uppercase">
+                        Aroul<span className="text-zinc-500">R.</span>
                     </a>
 
                     {/* Desktop Nav */}
-                    <div className="hidden md:flex space-x-8">
+                    <div className="hidden lg:flex items-center space-x-10">
                         {navLinks.map((link) => (
                             <a
                                 key={link.name}
                                 href={link.href}
-                                className="text-sm font-medium text-slate-300 hover:text-white transition-colors relative group"
+                                className="text-xs font-mono tracking-widest uppercase text-zinc-400 hover:text-white transition-colors relative group"
                             >
                                 {link.name}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
                             </a>
                         ))}
                     </div>
 
                     {/* Mobile Menu Toggle */}
                     <button
-                        className="md:hidden text-white focus:outline-none"
+                        className="lg:hidden w-8 h-8 flex flex-col items-end justify-center space-y-1.5 focus:outline-none z-50 relative"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     >
-                        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                        <span className={`block h-[1px] bg-white transition-all duration-300 ${isMobileMenuOpen ? "w-8 rotate-45 translate-y-[7px]" : "w-8"}`} />
+                        <span className={`block h-[1px] bg-white transition-all duration-300 ${isMobileMenuOpen ? "w-0 opacity-0" : "w-6"}`} />
+                        <span className={`block h-[1px] bg-white transition-all duration-300 ${isMobileMenuOpen ? "w-8 -rotate-45 -translate-y-[7px]" : "w-4"}`} />
                     </button>
                 </div>
             </motion.nav>
@@ -67,21 +67,25 @@ export function Navbar() {
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="fixed inset-0 z-40 bg-slate-950/95 backdrop-blur-md pt-24 px-6 md:hidden"
+                        initial={{ opacity: 0, clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)" }}
+                        animate={{ opacity: 1, clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}
+                        exit={{ opacity: 0, clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)" }}
+                        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                        className="fixed inset-0 z-40 bg-zinc-950 pt-32 px-6 lg:hidden flex flex-col"
                     >
-                        <div className="flex flex-col space-y-6">
-                            {navLinks.map((link) => (
-                                <a
+                        <div className="flex flex-col space-y-8">
+                            {navLinks.map((link, i) => (
+                                <motion.a
+                                    initial={{ y: 20, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    transition={{ delay: i * 0.05 + 0.2 }}
                                     key={link.name}
                                     href={link.href}
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className="text-2xl font-display font-medium text-white hover:text-blue-400 transition-colors"
+                                    className="text-4xl font-display font-medium text-white hover:text-zinc-400 transition-colors"
                                 >
                                     {link.name}
-                                </a>
+                                </motion.a>
                             ))}
                         </div>
                     </motion.div>

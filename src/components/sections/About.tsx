@@ -1,46 +1,63 @@
 "use client";
 
 import { cvData } from "@/data/cv";
-import { SlideUp } from "@/components/ui/motion-helpers";
+import { SlideUp, FadeIn } from "@/components/ui/motion-helpers";
 
 export function About() {
+    const statementParts = cvData.personalInfo.tagline.split('. ');
+
     return (
-        <section id="about" className="py-24 relative overflow-hidden">
-            <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10">
-                <SlideUp>
-                    <div className="glass rounded-3xl p-8 md:p-16 border border-white/10 shadow-2xl backdrop-blur-3xl relative overflow-hidden">
-                        {/* Decorative blob inside the card */}
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2" />
+        <section id="about" className="py-32 relative bg-zinc-950 border-y border-white/5">
+            <div className="max-w-5xl mx-auto px-6 md:px-12">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 text-zinc-400">
 
-                        <h2 className="text-3xl md:text-5xl font-display font-bold mb-8 text-white relative z-10">
-                            About The Author
-                        </h2>
-
-                        <div className="space-y-6 text-xl md:text-2xl font-light text-slate-300 leading-relaxed max-w-3xl relative z-10">
-                            <p>
-                                {cvData.personalInfo.tagline.split('.')[0]}.
-                            </p>
-                            <p className="font-medium text-white text-2xl md:text-3xl">
-                                {cvData.personalInfo.tagline.split('.')[1]}.
-                            </p>
-                        </div>
-
-                        <div className="mt-12 flex flex-wrap gap-4 relative z-10">
-                            <div className="px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-slate-200 text-sm font-medium">
-                                {cvData.personalInfo.name}
-                            </div>
-                            <div className="px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-slate-200 text-sm font-medium">
-                                {cvData.personalInfo.phone}
-                            </div>
-                            <div className="px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-slate-200 text-sm font-medium">
-                                {cvData.personalInfo.email}
-                            </div>
-                            <div className="px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-slate-200 text-sm font-medium">
-                                {cvData.personalInfo.website}
-                            </div>
-                        </div>
+                    <div className="md:col-span-4">
+                        <FadeIn>
+                            <h2 className="text-xs font-mono tracking-widest uppercase text-zinc-600 mb-8">
+                                02 // Background
+                            </h2>
+                        </FadeIn>
                     </div>
-                </SlideUp>
+
+                    <div className="md:col-span-8">
+                        <SlideUp>
+                            <div className="space-y-8 text-2xl md:text-4xl font-light leading-snug tracking-tight text-white mb-16">
+                                <p>
+                                    {statementParts[0] ? statementParts[0] + "." : ""}
+                                </p>
+                                <p className="text-zinc-500">
+                                    {statementParts[1] ? statementParts[1].replace(".", "") + "." : ""}
+                                </p>
+                            </div>
+                        </SlideUp>
+
+                        <FadeIn delay={0.2}>
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-t border-white/10">
+                                <div className="flex flex-col space-y-2">
+                                    <span className="text-xs font-mono text-zinc-600 uppercase">Status</span>
+                                    <span className="text-sm font-medium text-white">Active</span>
+                                </div>
+                                <div className="flex flex-col space-y-2">
+                                    <span className="text-xs font-mono text-zinc-600 uppercase">Discipline</span>
+                                    <span className="text-sm font-medium text-white">Chemistry / EdTech</span>
+                                </div>
+                                <div className="flex flex-col space-y-2">
+                                    <span className="text-xs font-mono text-zinc-600 uppercase">Contact</span>
+                                    <span className="text-sm font-medium text-white truncate hover:text-zinc-400 transition-colors">
+                                        <a href={`mailto:${cvData.personalInfo.email}`}>Email</a>
+                                    </span>
+                                </div>
+                                <div className="flex flex-col space-y-2">
+                                    <span className="text-xs font-mono text-zinc-600 uppercase">Network</span>
+                                    <span className="text-sm font-medium text-white hover:text-zinc-400 transition-colors">
+                                        <a href={`https://${cvData.personalInfo.website}`} target="_blank" rel="noopener noreferrer">Website</a>
+                                    </span>
+                                </div>
+                            </div>
+                        </FadeIn>
+                    </div>
+
+                </div>
             </div>
         </section>
     );
