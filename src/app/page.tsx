@@ -1,11 +1,12 @@
+"use client";
+
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
-import { Stats } from "@/components/sections/Stats";
-import { Timeline } from "@/components/sections/Timeline";
-import { Expertise } from "@/components/sections/Expertise";
 import { About } from "@/components/sections/About";
+import { Experience } from "@/components/sections/Experience";
 import { Education } from "@/components/sections/Education";
+import { Skills } from "@/components/sections/Skills";
 import { Awards } from "@/components/sections/Awards";
 import { Certifications } from "@/components/sections/Certifications";
 import { Publications } from "@/components/sections/Publications";
@@ -14,16 +15,14 @@ import { ScrollProgress } from "@/components/ui/ScrollProgress";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black selection:bg-white selection:text-black">
-      <div className="grain" />
+    <main className="min-h-screen bg-black selection:bg-white/30 text-white selection:text-white">
       <ScrollProgress />
       <Navbar />
       <Hero />
-      <Stats />
-      <Timeline />
-      <Expertise />
       <About />
+      <Experience />
       <Education />
+      <Skills />
       <Awards />
       <Certifications />
       <Publications />
@@ -32,4 +31,3 @@ export default function Home() {
     </main>
   );
 }
-

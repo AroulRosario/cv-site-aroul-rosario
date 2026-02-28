@@ -5,7 +5,34 @@ export const cvData = {
         email: "aroul.rosario2@gmail.com",
         website: "www.ogchemistry.in",
         tagline: "A Third Generation Educationalist Currently Working A Next Gen Education Platform. A Chemist Who Loves Computers",
+        bio: "Dr. S. Aroul Rosario is a distinguished Indian educationalist, research chemist, and ed-tech innovator. As the Vice President of the Amalorpavam Group of Institutions and co-founder of the Starborn Young Scientist Academy, he bridges classical scientific research with cutting-edge digital pedagogy.",
     },
+    experience: [
+        {
+            title: "Vice President",
+            org: "Amalorpavam Group of Institutions",
+            period: "2024 - Present",
+            description: "Leading digital school transformation and institutional growth for a premier educational group."
+        },
+        {
+            title: "Assistant Headmaster",
+            org: "Amalorpavam Lourds Academy",
+            period: "2022 - 2024",
+            description: "Managed academic operations and implemented neuro-cognitive learning frameworks."
+        },
+        {
+            title: "Lecturer",
+            org: "Amalorpavam Lourds Academy",
+            period: "2019 - 2024",
+            description: "Specialized in Chemistry and advanced JEE/NEET preparation."
+        },
+        {
+            title: "Lecturer (PGT)",
+            org: "Amalorpavam Higher Secondary School",
+            period: "2017 - 2018",
+            description: "Post Graduate Teacher for Chemistry."
+        }
+    ],
     fellowshipsAndSocieties: [
         { title: "Fellowship", org: "Royal Society, London", acronym: "FRSA" },
         { title: "Ph.D", org: "Uni of Selinius, Delaware, USA", acronym: "" },
@@ -20,7 +47,13 @@ export const cvData = {
         { title: "Sundaram Iyer Prize for Chemistry" },
         { title: "Cumulative Excellence Honour - Loyola College" },
         { title: "Best AIESEC Teacher at Univeristy of Zhejiang, China" },
+        { title: "World Record Holder: Highest Number of Educational Simulations Created" },
     ],
+    skills: {
+        scientific: ["Organic Chemistry", "Coordination Chemistry", "Molecular Modeling", "Quantum Mechanics", "Neuro-cognitive STEM Pedagogy"],
+        technical: ["EdTech Infrastructure", "AI-Augmented Assessment", "VR Molecular Simulations", "Digital School Transformation", "Full-stack EdTech Development"],
+        leadership: ["Institutional Governance", "Curriculum Design", "Digital Strategy", "Educational Counseling", "Public Speaking"]
+    },
     designAndTechCertifications: [
         { title: "Computer Vision App With Azure Cognitive Services", org: "Microsoft" },
         { title: "Design Thinking and Innovation", org: "Indian Institute of Technology Bombay" },
@@ -39,6 +72,11 @@ export const cvData = {
         { title: "JEE Faculty Training 2.0 Khazana", org: "Physics Wallah" },
         { title: "Leading with a Digital Strategy", org: "Indian Institute of Management Ahmedabad" },
         { title: "Excellence in Online Teaching", org: "Johns Hopkins University" },
+    ],
+    books: [
+        { title: "NCERT 2.0", category: "Academic Textbook" },
+        { title: "OG Chemistry Series", category: "Competitive Exam Prep" },
+        { title: "Comic Formula Book", category: "Innovative Pedagogy" }
     ],
     thesisPublications: [
         {
@@ -70,7 +108,8 @@ export const cvData = {
     ],
     patents: [
         "Adaptive Chemistry Simulation Engine for Curriculum-Aligned Learning",
-        "Dynamic Concept Mapping Engine for Chemistry Curriculum Integration"
+        "Dynamic Concept Mapping Engine for Chemistry Curriculum Integration",
+        "Smart Formula Retrieval Hub for Complex Scientific Data"
     ],
     footerQuotes: [
         "Chemistry isn't a barrier—it's a bridge. With the right tools, anyone can crack IIT or NEET.",

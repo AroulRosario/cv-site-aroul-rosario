@@ -1,103 +1,92 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { cvData } from "@/data/cv";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function Navbar() {
-    const [scrolled, setScrolled] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 50);
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 50);
+        };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     const navLinks = [
-        { name: "01 // Home", href: "#hero" },
-        { name: "02 // Persona", href: "#about" },
-        { name: "03 // Timeline", href: "#timeline" },
-        { name: "04 // Mastery", href: "#expertise" },
-        { name: "05 // Research", href: "#publications" },
+        { name: "About", href: "#about" },
+        { name: "Experience", href: "#experience" },
+        { name: "Academics", href: "#academics" },
+        { name: "Skills", href: "#skills" },
+        { name: "Certifications", href: "#certifications" },
+        { name: "Publications", href: "#publications" },
     ];
 
     return (
         <>
-            <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ${scrolled ? "bg-black/90 border-b border-white/10" : "bg-transparent"}`}>
-                <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
-
-                    <a href="#" className="relative group">
-                        <span className="text-sm font-mono tracking-[0.4em] uppercase text-white font-bold group-hover:text-zinc-400 transition-colors">
-                            DR. AROULR.
-                        </span>
-                        <div className="absolute -bottom-1 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-500" />
+            <motion.nav
+                initial={{ y: -100 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${isScrolled ? "bg-black/80 backdrop-blur-xl border-white/10 py-4" : "bg-transparent border-transparent py-8"
+                    }`}
+            >
+                <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+                    <a href="#" className="text-xl font-display font-bold text-white tracking-widest uppercase">
+                        Aroul<span className="text-zinc-500">R.</span>
                     </a>
 
                     {/* Desktop Nav */}
-                    <div className="hidden lg:flex items-center space-x-12">
+                    <div className="hidden lg:flex items-center space-x-10">
                         {navLinks.map((link) => (
                             <a
                                 key={link.name}
                                 href={link.href}
-                                className="text-[10px] font-mono uppercase tracking-[0.3em] text-zinc-500 hover:text-white transition-colors"
+                                className="text-xs font-mono tracking-widest uppercase text-zinc-400 hover:text-white transition-colors relative group"
                             >
                                 {link.name}
                             </a>
                         ))}
                     </div>
 
+                    {/* Mobile Menu Toggle */}
                     <button
-                        onClick={() => setIsOpen(true)}
-                        className="lg:hidden w-10 h-10 flex items-center justify-center border border-white/10 hover:border-white/40 transition-colors bg-white/5"
+                        className="lg:hidden w-8 h-8 flex flex-col items-end justify-center space-y-1.5 focus:outline-none z-50 relative"
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     >
-                        <Menu className="w-5 h-5 text-white" />
+                        <span className={`block h-[1px] bg-white transition-all duration-300 ${isMobileMenuOpen ? "w-8 rotate-45 translate-y-[7px]" : "w-8"}`} />
+                        <span className={`block h-[1px] bg-white transition-all duration-300 ${isMobileMenuOpen ? "w-0 opacity-0" : "w-6"}`} />
+                        <span className={`block h-[1px] bg-white transition-all duration-300 ${isMobileMenuOpen ? "w-8 -rotate-45 -translate-y-[7px]" : "w-4"}`} />
                     </button>
                 </div>
-            </nav>
+            </motion.nav>
 
-            {/* Mobile Menu Overlay */}
+            {/* Mobile Nav Overlay */}
             <AnimatePresence>
-                {isOpen && (
+                {isMobileMenuOpen && (
                     <motion.div
-                        initial={{ x: "100%" }}
-                        animate={{ x: 0 }}
-                        exit={{ x: "100%" }}
+                        initial={{ opacity: 0, clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)" }}
+                        animate={{ opacity: 1, clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}
+                        exit={{ opacity: 0, clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)" }}
                         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                        className="fixed inset-0 z-[200] bg-black p-6 md:p-12 flex flex-col"
+                        className="fixed inset-0 z-40 bg-zinc-950 pt-32 px-6 lg:hidden flex flex-col"
                     >
-                        <div className="flex justify-between items-center mb-24">
-                            <span className="text-xs font-mono tracking-widest text-zinc-500">NAVIGATION SYSTEM</span>
-                            <button
-                                onClick={() => setIsOpen(false)}
-                                className="w-12 h-12 flex items-center justify-center border border-white/10 rounded-full hover:bg-white hover:text-black transition-all"
-                            >
-                                <X className="w-6 h-6" />
-                            </button>
-                        </div>
-
                         <div className="flex flex-col space-y-8">
                             {navLinks.map((link, i) => (
                                 <motion.a
+                                    initial={{ y: 20, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    transition={{ delay: i * 0.05 + 0.2 }}
                                     key={link.name}
                                     href={link.href}
-                                    onClick={() => setIsOpen(false)}
-                                    initial={{ opacity: 0, x: 20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: 0.1 * i }}
-                                    className="text-4xl md:text-6xl font-display font-medium text-white hover:text-zinc-500 transition-colors flex items-center justify-between group py-4 border-b border-white/5"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="text-4xl font-display font-medium text-white hover:text-zinc-400 transition-colors"
                                 >
-                                    <span>{link.name}</span>
-                                    <ArrowRight className="w-8 h-8 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                    {link.name}
                                 </motion.a>
                             ))}
-                        </div>
-
-                        <div className="mt-auto pt-12 border-t border-white/10">
-                            <p className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">
-                                © 2024 Dr. Aroul Rosario // V4 Redesign
-                            </p>
                         </div>
                     </motion.div>
                 )}
