@@ -1,91 +1,76 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import { FadeIn, RevealText } from "@/components/ui/motion-helpers";
+import { motion } from "framer-motion";
+import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
 
 const timelineData = [
     {
-        year: "ACAD-01",
+        tag: "RESIDENCY",
         title: "Foundational Chemistry",
-        desc: "Initial residency and early experimental immersion in pure sciences."
+        desc: "Early experimental immersion and laboratory management in pure sciences.",
+        year: "ACAD-01"
     },
     {
-        year: "ACAD-02",
-        title: "Molecular Synthesis",
-        desc: "Advanced research at University of Manchester, specializing in synthetic pathways."
+        tag: "SYNTHESIS",
+        title: "Molecular Research",
+        desc: "Advanced research at University of Manchester, specializing in synthetic pathways.",
+        year: "ACAD-02"
     },
     {
-        year: "ACAD-03",
+        tag: "FRAMEWORKS",
         title: "Global Standardization",
-        desc: "UNESCO & EU Fellowship phases focusing on cross-border scientific frameworks."
+        desc: "UNESCO & EU Fellowship phases focusing on cross-border scientific frameworks.",
+        year: "ACAD-03"
     },
     {
-        year: "ACAD-04",
-        title: "Digital Pedagogies",
-        desc: "Current tenure focusing on EdTech integration and computational chemistry."
+        tag: "DIGITAL",
+        title: "Pedagogical Evolution",
+        desc: "Current tenure focusing on EdTech integration and computational chemistry.",
+        year: "ACAD-04"
     }
 ];
 
 export function Timeline() {
-    const containerRef = useRef<HTMLDivElement>(null);
-
     return (
-        <section ref={containerRef} id="timeline" className="py-24 md:py-48 bg-black relative overflow-hidden blueprint-grid border-b border-white/10">
+        <section id="timeline" className="py-24 md:py-32 bg-[#050505] relative overflow-hidden">
 
-            {/* V4.2 Stabilized Background Number - Lower Opacity & Offset */}
-            <div className="bg-number bottom-0 right-0 translate-x-1/4 translate-y-1/4 text-white/[0.01]">
-                03
-            </div>
-
-            <div className="content-container">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-24 md:mb-32">
-                    <div className="md:col-span-8">
-                        <h2 className="text-[10px] font-mono tracking-[0.4em] uppercase text-zinc-600 mb-6">
-                            Chronicle // Timeline
-                        </h2>
-                        <h3 className="text-huge font-display font-bold text-white uppercase">
-                            Journey.
-                        </h3>
-                    </div>
-                    <div className="md:col-span-4 self-end">
-                        <p className="text-[11px] font-mono text-zinc-500 uppercase leading-relaxed max-w-[240px]">
-                            A sequential log of academic evolution and institutional appointments.
-                        </p>
-                    </div>
+            <div className="quantum-container">
+                <div className="flex flex-col mb-20">
+                    <h2 className="text-emerald-500 mb-6 font-mono text-xs">02 // CHRONICLE</h2>
+                    <h3 className="text-4xl md:text-6xl font-display font-bold text-white mb-8 tracking-tighter">
+                        Academic <span className="text-emerald-500">Trajectory.</span>
+                    </h3>
                 </div>
 
                 <div className="relative">
-                    {/* Structural Line */}
-                    <div className="absolute left-1 md:left-[15%] top-0 bottom-0 w-px bg-white/10" />
+                    {/* Central Line */}
+                    <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-emerald-500/50 via-white/10 to-transparent" />
 
-                    <div className="space-y-24 md:space-y-40">
+                    <div className="space-y-12 md:space-y-0">
                         {timelineData.map((item, i) => (
-                            <div key={i} className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 relative items-start">
+                            <div key={i} className={`relative flex items-center justify-between md:mb-24 group ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
 
-                                {/* Technical Index */}
-                                <div className="md:col-span-2 hidden md:flex items-start justify-end pr-8">
-                                    <span className="text-[10px] font-mono text-white/30 tracking-widest mt-1">{item.year}</span>
-                                </div>
+                                {/* Visual Connector - Dot */}
+                                <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-emerald-500 border-4 border-[#050505] rounded-full -translate-x-1/2 z-20 shadow-[0_0_10px_rgba(16,185,129,0.5)] group-hover:scale-150 group-hover:shadow-[0_0_20px_rgba(16,185,129,1)] transition-all duration-500" />
 
-                                {/* Content */}
-                                <div className="md:col-span-10 pl-8 md:pl-16 relative">
-                                    {/* Point Indicator */}
-                                    <div className="absolute left-[-2px] md:left-[-5px] top-[10px] w-2 h-2 md:w-2.5 md:h-2.5 bg-black border border-white z-20" />
-
-                                    <FadeIn>
-                                        <div className="flex flex-col max-w-2xl">
-                                            <span className="md:hidden text-[9px] font-mono text-zinc-600 uppercase tracking-[0.3em] mb-2">{item.year}</span>
-                                            <h4 className="text-xl md:text-4xl font-display font-medium text-white mb-3 md:mb-5 tracking-tight">
-                                                {item.title}
-                                            </h4>
-                                            <p className="text-zinc-500 text-sm md:text-lg leading-relaxed font-light">
-                                                {item.desc}
-                                            </p>
+                                {/* Content Card */}
+                                <div className="ml-12 md:ml-0 md:w-[45%]">
+                                    <StaggerItem>
+                                        <div className="glass-card p-1">
+                                            <div className="p-8 bg-black/40 rounded-[14px]">
+                                                <div className="flex items-center justify-between mb-4">
+                                                    <span className="text-emerald-500 text-[9px] font-mono tracking-widest uppercase">{item.tag}</span>
+                                                    <span className="text-zinc-600 text-[10px] font-mono">{item.year}</span>
+                                                </div>
+                                                <h4 className="text-xl md:text-2xl font-display font-bold text-white mb-4">{item.title}</h4>
+                                                <p className="text-zinc-400 text-sm md:text-base leading-relaxed font-light">{item.desc}</p>
+                                            </div>
                                         </div>
-                                    </FadeIn>
+                                    </StaggerItem>
                                 </div>
 
+                                {/* Spacer for MD screens */}
+                                <div className="hidden md:block w-0" />
                             </div>
                         ))}
                     </div>

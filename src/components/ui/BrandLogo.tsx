@@ -62,7 +62,7 @@ export const BrandLogo = ({ name, size = 48 }: { name: string; size?: number }) 
                 <img
                     src={logoUrl}
                     alt={`${name} logo`}
-                    className="w-[70%] h-[70%] object-contain filter grayscale opacity-40 brightness-125 group-hover:grayscale-0 group-hover:opacity-100 group-hover:brightness-100 transition-all duration-700 z-10"
+                    className="w-[75%] h-[75%] object-contain group-hover:scale-110 transition-transform duration-700 z-10"
                     onError={(e) => {
                         if (e.currentTarget.src !== fallbackUrl) {
                             e.currentTarget.src = fallbackUrl;
