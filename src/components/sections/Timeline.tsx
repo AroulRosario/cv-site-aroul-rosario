@@ -6,24 +6,24 @@ import { FadeIn, RevealText } from "@/components/ui/motion-helpers";
 
 const timelineData = [
     {
-        year: "Academic Foundations",
-        title: "Loyola & Nehru College",
-        desc: "Early immersion in pure chemistry and experimental sciences."
+        year: "ACAD-01",
+        title: "Foundational Chemistry",
+        desc: "Initial residency and early experimental immersion in pure sciences."
     },
     {
-        year: "Advanced Research",
-        title: "University of Manchester",
-        desc: "Specializing in molecular synthesis and organic structures."
+        year: "ACAD-02",
+        title: "Molecular Synthesis",
+        desc: "Advanced research at University of Manchester, specializing in synthetic pathways."
     },
     {
-        year: "Global Collaboration",
-        title: "EU & UNESCO Fellows",
-        desc: "Bridging international scientific communities and standardizing research."
+        year: "ACAD-03",
+        title: "Global Standardization",
+        desc: "UNESCO & EU Fellowship phases focusing on cross-border scientific frameworks."
     },
     {
-        year: "Digital Transition",
-        title: "EdTech & Innovation",
-        desc: "Merging classical pedagogy with modern computational tools."
+        year: "ACAD-04",
+        title: "Digital Pedagogies",
+        desc: "Current tenure focusing on EdTech integration and computational chemistry."
     }
 ];
 
@@ -37,46 +37,60 @@ export function Timeline() {
     const pathLength = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
 
     return (
-        <section ref={containerRef} className="py-32 bg-black relative overflow-hidden">
-            <div className="max-w-5xl mx-auto px-6 md:px-12">
-                <div className="mb-24">
-                    <h2 className="text-xs font-mono tracking-widest uppercase text-zinc-600 mb-4 text-center">Journey // Evolution</h2>
-                    <h3 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight text-center">Path of the Academician.</h3>
+        <section ref={containerRef} id="timeline" className="py-48 bg-black relative overflow-hidden blueprint-grid border-b border-white/10">
+
+            {/* Background Identifier */}
+            <div className="absolute bottom-10 right-10 text-white/[0.02] font-display font-bold text-[30vw] leading-none pointer-events-none select-none">
+                03
+            </div>
+
+            <div className="max-w-7xl mx-auto px-6 md:px-12">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-32 items-end">
+                    <div className="md:col-span-8">
+                        <h2 className="text-xs font-mono tracking-[0.4em] uppercase text-zinc-600 mb-8">
+                            Chronicle // Timeline
+                        </h2>
+                        <h3 className="text-huge font-display font-bold text-white uppercase -ml-1">
+                            Journey.
+                        </h3>
+                    </div>
+                    <div className="md:col-span-4 pb-2">
+                        <p className="text-sm font-mono text-zinc-500 uppercase leading-relaxed max-w-xs">
+                            A sequential log of academic evolution and institutional appointments.
+                        </p>
+                    </div>
                 </div>
 
                 <div className="relative">
-                    {/* Animated SVG line */}
-                    <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-px bg-zinc-900 -translate-x-1/2 hidden md:block" />
-                    <motion.div
-                        style={{ scaleY: pathLength }}
-                        className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-px bg-white -translate-x-1/2 origin-top hidden md:block z-10"
-                    />
+                    {/* Central Structural Line */}
+                    <div className="absolute left-0 md:left-[20%] top-0 bottom-0 w-px bg-white/10" />
 
-                    <div className="space-y-32">
+                    <div className="space-y-48">
                         {timelineData.map((item, i) => (
-                            <div key={i} className={`flex flex-col md:flex-row items-center gap-12 ${i % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
-                                <div className="flex-1 w-full text-center md:text-left">
-                                    <FadeIn delay={0.2}>
-                                        <div className={`flex flex-col ${i % 2 === 0 ? "md:items-end md:text-right" : "md:items-start"}`}>
-                                            <span className="text-sm font-mono text-zinc-600 uppercase tracking-widest mb-4">{item.year}</span>
-                                            <h4 className="text-2xl md:text-4xl font-display font-medium text-white mb-4 tracking-tight">{item.title}</h4>
-                                            <p className="text-zinc-500 max-w-sm leading-relaxed">{item.desc}</p>
+                            <div key={i} className="grid grid-cols-1 md:grid-cols-12 gap-8 relative items-start">
+
+                                {/* Technical Index */}
+                                <div className="md:col-span-2 flex items-start justify-start md:justify-end pr-8">
+                                    <span className="text-[10px] font-mono text-white/40 tracking-widest mt-2">{item.year}</span>
+                                </div>
+
+                                {/* Content */}
+                                <div className="md:col-span-10 pl-12 md:pl-24 relative border-l border-white/0">
+                                    {/* Point Indicator */}
+                                    <div className="absolute left-[-5px] md:left-[-5px] top-[14px] w-[10px] h-[10px] bg-black border border-white z-20" />
+
+                                    <FadeIn>
+                                        <div className="flex flex-col max-w-2xl">
+                                            <h4 className="text-2xl md:text-5xl font-display font-medium text-white mb-6 tracking-tight">
+                                                {item.title}
+                                            </h4>
+                                            <p className="text-zinc-500 text-lg md:text-xl leading-relaxed font-light">
+                                                {item.desc}
+                                            </p>
                                         </div>
                                     </FadeIn>
                                 </div>
 
-                                <div className="relative z-20 flex-shrink-0">
-                                    <motion.div
-                                        initial={{ scale: 0, opacity: 0 }}
-                                        whileInView={{ scale: 1, opacity: 1 }}
-                                        viewport={{ once: true }}
-                                        className="w-10 h-10 rounded-full bg-black border border-white flex items-center justify-center"
-                                    >
-                                        <div className="w-2 h-2 rounded-full bg-white" />
-                                    </motion.div>
-                                </div>
-
-                                <div className="flex-1 hidden md:block" />
                             </div>
                         ))}
                     </div>

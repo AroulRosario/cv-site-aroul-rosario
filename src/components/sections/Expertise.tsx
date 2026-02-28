@@ -1,65 +1,75 @@
 "use client";
 
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
-import { Beaker, Palette, Cpu, Globe, GraduationCap, Zap } from "lucide-react";
+import { Beaker, Palette, Cpu, Globe, GraduationCap, ArrowUpRight } from "lucide-react";
 
 const skills = [
     {
         title: "Organic Chemistry",
-        desc: "Synthesis, reaction mechanisms, and molecular architecture.",
-        icon: <Beaker className="w-6 h-6" />,
-        color: "bg-zinc-900",
-        size: "col-span-1 md:col-span-2"
+        desc: "Synthesis, reaction mechanisms, and molecular architecture in pharmaceutical and academic contexts.",
+        icon: <Beaker className="w-5 h-5" />,
+        size: "md:col-span-2"
     },
     {
         title: "EdTech Innovation",
-        desc: "Bridging pedagogy with modern digital tools.",
-        icon: <Cpu className="w-6 h-6" />,
-        color: "bg-zinc-900",
-        size: "col-span-1"
+        desc: "Transforming classical pedagogy through AI and digital environments.",
+        icon: <Cpu className="w-5 h-5" />,
+        size: "md:col-span-1"
     },
     {
-        title: "Branding",
-        desc: "Visual identity and high-end aesthetic design.",
-        icon: <Palette className="w-6 h-6" />,
-        color: "bg-zinc-900",
-        size: "col-span-1"
+        title: "Architectural Identity",
+        desc: "High-end visual communication and premium brand strategy for professional ecosystems.",
+        icon: <Palette className="w-5 h-5" />,
+        size: "md:col-span-1"
     },
     {
-        title: "Global Research",
-        desc: "Collaborating across borders with elite institutions.",
-        icon: <Globe className="w-6 h-6" />,
-        color: "bg-zinc-900",
-        size: "col-span-1"
-    },
-    {
-        title: "Academic Mentorship",
-        desc: "Guiding the next generation of scientists and thinkers.",
-        icon: <GraduationCap className="w-6 h-6" />,
-        color: "bg-zinc-900",
-        size: "col-span-1 md:col-span-2"
+        title: "Global Mentorship",
+        desc: "Guiding research scholars across UNESCO and European institutional frameworks.",
+        icon: <GraduationCap className="w-5 h-5" />,
+        size: "md:col-span-2"
     }
 ];
 
 export function Expertise() {
     return (
-        <section id="expertise" className="py-32 bg-zinc-950 relative">
+        <section id="expertise" className="py-48 bg-white text-black blueprint-grid-light selection-light relative border-b border-black/10">
             <div className="max-w-7xl mx-auto px-6 md:px-12">
-                <FadeIn className="mb-20">
-                    <h2 className="text-xs font-mono tracking-widest uppercase text-zinc-600 mb-4">Skillset // Mastery</h2>
-                    <h3 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight">Multidisciplinary<br />Expertise.</h3>
-                </FadeIn>
 
-                <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-32 gap-12">
+                    <div>
+                        <h2 className="text-xs font-mono tracking-[0.4em] uppercase text-zinc-500 mb-8">
+                            Skillset // Domain
+                        </h2>
+                        <h3 className="text-huge font-display font-bold uppercase text-black -ml-1">
+                            Mastery.
+                        </h3>
+                    </div>
+                    <div className="max-w-xs">
+                        <p className="text-xs font-mono text-zinc-400 uppercase tracking-widest leading-loose">
+                            Multidisciplinary intersections across science, design, and digital education.
+                        </p>
+                    </div>
+                </div>
+
+                <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-black/10">
                     {skills.map((skill, i) => (
-                        <StaggerItem key={i} className={skill.size}>
-                            <div className={`h-full p-8 rounded-3xl border border-white/5 bg-black hover:border-white/20 transition-all duration-700 group relative overflow-hidden`}>
-                                <div className="absolute top-0 right-0 p-8 text-zinc-800 group-hover:text-white/20 transition-colors duration-700">
-                                    {skill.icon}
+                        <StaggerItem key={i} className={`${skill.size} border-r border-b border-black/10 group bg-white hover:bg-zinc-50 transition-colors duration-500`}>
+                            <div className="p-10 md:p-16 flex flex-col justify-between h-full min-h-[350px] relative">
+                                <div className="flex justify-between items-start">
+                                    <div className="text-zinc-300 group-hover:text-black transition-colors duration-500">
+                                        {skill.icon}
+                                    </div>
+                                    <span className="text-[10px] font-mono text-zinc-300 group-hover:text-black transition-colors">0{i + 1}</span>
                                 </div>
-                                <div className="relative z-10 flex flex-col justify-end h-full min-h-[160px]">
-                                    <h4 className="text-2xl font-display font-medium text-white mb-3 tracking-tight">{skill.title}</h4>
-                                    <p className="text-zinc-500 group-hover:text-zinc-400 transition-colors leading-relaxed text-sm max-w-xs">{skill.desc}</p>
+
+                                <div>
+                                    <h4 className="text-3xl font-display font-medium text-black mb-6 tracking-tight flex items-center gap-3">
+                                        {skill.title}
+                                        <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-2 group-hover:translate-x-0" />
+                                    </h4>
+                                    <p className="text-zinc-500 leading-relaxed text-lg max-w-sm">
+                                        {skill.desc}
+                                    </p>
                                 </div>
                             </div>
                         </StaggerItem>

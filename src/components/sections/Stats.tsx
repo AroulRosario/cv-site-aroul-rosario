@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
+import { FadeIn, StaggerContainer, StaggerItem, LineDraw } from "@/components/ui/motion-helpers";
 
 const Counter = ({ value, label, suffix = "" }: { value: number; label: string; suffix?: string }) => {
     const [count, setCount] = useState(0);
@@ -13,7 +13,7 @@ const Counter = ({ value, label, suffix = "" }: { value: number; label: string; 
         if (isInView) {
             let start = 0;
             const end = value;
-            const duration = 2000;
+            const duration = 1500;
             const increment = end / (duration / 16);
 
             const timer = setInterval(() => {
@@ -30,12 +30,12 @@ const Counter = ({ value, label, suffix = "" }: { value: number; label: string; 
     }, [isInView, value]);
 
     return (
-        <div ref={ref} className="flex flex-col items-center justify-center p-8 border border-white/5 bg-zinc-950/50 rounded-2xl group hover:border-white/20 transition-all duration-700">
-            <div className="text-5xl md:text-7xl font-display font-bold text-white mb-2 tracking-tighter">
-                {count}{suffix}
-            </div>
-            <div className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-500 group-hover:text-zinc-300 transition-colors">
+        <div ref={ref} className="flex flex-col p-10 border-r border-white/10 last:border-r-0 group">
+            <div className="text-xs font-mono uppercase tracking-[0.4em] text-zinc-600 mb-8 group-hover:text-zinc-400 transition-colors">
                 {label}
+            </div>
+            <div className="text-6xl md:text-8xl font-display font-medium text-white tracking-tighter">
+                {count.toString().padStart(2, '0')}{suffix}
             </div>
         </div>
     );
@@ -43,27 +43,22 @@ const Counter = ({ value, label, suffix = "" }: { value: number; label: string; 
 
 export function Stats() {
     return (
-        <section className="py-32 bg-black border-y border-white/5">
-            <div className="max-w-7xl mx-auto px-6 md:px-12">
-                <FadeIn className="mb-20 text-center">
-                    <h2 className="text-xs font-mono tracking-widest uppercase text-zinc-600 mb-4">Metric // Impact</h2>
-                    <h3 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight">Academic Footprint.</h3>
-                </FadeIn>
+        <section className="bg-black border-y border-white/10 relative overflow-hidden">
+            <div className="max-w-screen-2xl mx-auto px-6 md:px-0">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+                    <Counter value={10} label="Yrs // Exp" suffix="+" />
+                    <Counter value={15} label="Cert // Spec" />
+                    <Counter value={6} label="Pub // Res" />
+                    <Counter value={2} label="Pat // Ind" />
+                </div>
+            </div>
 
-                <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                    <StaggerItem>
-                        <Counter value={10} label="Years Experience" suffix="+" />
-                    </StaggerItem>
-                    <StaggerItem>
-                        <Counter value={15} label="Certifications" />
-                    </StaggerItem>
-                    <StaggerItem>
-                        <Counter value={6} label="Publications" />
-                    </StaggerItem>
-                    <StaggerItem>
-                        <Counter value={2} label="Indian Patents" />
-                    </StaggerItem>
-                </StaggerContainer>
+            {/* Precision Markings */}
+            <div className="absolute top-4 left-4 text-[8px] font-mono text-zinc-800 uppercase tracking-widest select-none">
+                Metric Specification Block-04
+            </div>
+            <div className="absolute bottom-4 right-4 text-[8px] font-mono text-zinc-800 uppercase tracking-widest select-none">
+                V.4.0.1 Redesign
             </div>
         </section>
     );

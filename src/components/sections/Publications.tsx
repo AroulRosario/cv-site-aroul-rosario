@@ -1,88 +1,83 @@
 "use client";
 
 import { cvData } from "@/data/cv";
-import { FadeIn, RevealText, StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
+import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 
 export function Publications() {
     return (
-        <section id="publications" className="py-32 relative bg-zinc-950">
+        <section id="publications" className="py-48 bg-white text-black blueprint-grid-light selection-light relative border-b border-black/10">
+
+            {/* Background Index */}
+            <div className="absolute top-10 left-10 text-black/[0.02] font-display font-bold text-[25vw] leading-none pointer-events-none select-none">
+                07
+            </div>
+
             <div className="max-w-7xl mx-auto px-6 md:px-12">
-
-                {/* Thesis Publications */}
                 <div className="mb-32">
-                    <FadeIn>
-                        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 border-b border-white/10 pb-8">
-                            <h2 className="text-4xl md:text-5xl font-display font-medium text-white tracking-tight flex items-center gap-4">
-                                Thesis<br />Publications
-                                <span className="inline-flex items-center justify-center px-3 py-1 rounded-full border border-zinc-700 bg-zinc-900 text-xs text-zinc-400 font-mono translate-y-2">
-                                    Top 3
-                                </span>
-                            </h2>
-                            <p className="text-xs font-mono tracking-widest uppercase text-zinc-600">
-                                07 // Thesis
-                            </p>
-                        </div>
-                    </FadeIn>
-
-                    <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8 text-zinc-500 hover:text-white transition-colors">
-                        {cvData.thesisPublications.map((pub, index) => (
-                            <StaggerItem key={index}>
-                                <div className="group flex flex-col justify-between h-full p-8 border border-white/5 bg-black hover:bg-white/5 hover:border-white/20 transition-all duration-500 text-zinc-500 relative">
-                                    <div className="absolute top-8 right-8 mix-blend-screen opacity-20 group-hover:opacity-80 transition-opacity duration-500">
-                                        <BrandLogo name={pub.org} size={40} />
-                                    </div>
-                                    <div className="mb-12">
-                                        <span className="text-xs font-mono uppercase tracking-widest text-zinc-600 group-hover:text-zinc-400 transition-colors">
-                                            {pub.org}
-                                        </span>
-                                    </div>
-                                    <h3 className="text-lg font-medium text-zinc-300 group-hover:text-white transition-colors leading-relaxed">
-                                        &quot;{pub.title}&quot;
-                                    </h3>
-                                </div>
-                            </StaggerItem>
-                        ))}
-                    </StaggerContainer>
+                    <h2 className="text-xs font-mono tracking-[0.4em] uppercase text-zinc-500 mb-8">
+                        Published // Research
+                    </h2>
+                    <h3 className="text-huge font-display font-bold uppercase text-black -ml-1">
+                        Library.
+                    </h3>
                 </div>
 
-                {/* Research Articles */}
-                <div>
-                    <FadeIn>
-                        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 border-b border-white/10 pb-8">
-                            <h2 className="text-4xl md:text-5xl font-display font-medium text-white tracking-tight flex items-center gap-4">
-                                Research<br />Articles
-                                <span className="inline-flex items-center justify-center px-3 py-1 rounded-full border border-zinc-700 bg-zinc-900 text-xs text-zinc-400 font-mono translate-y-2">
-                                    Top 3
-                                </span>
-                            </h2>
-                            <p className="text-xs font-mono tracking-widest uppercase text-zinc-600">
-                                08 // Research
-                            </p>
+                <div className="space-y-48">
+                    {/* Thesis Publications */}
+                    <div>
+                        <div className="flex items-center gap-4 mb-16">
+                            <div className="w-12 h-px bg-black" />
+                            <h4 className="text-xs font-mono tracking-widest uppercase text-zinc-400">07.A // Thesis Collections</h4>
                         </div>
-                    </FadeIn>
 
-                    <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {cvData.researchArticles.map((article, index) => (
-                            <StaggerItem key={index}>
-                                <div className="group flex flex-col justify-between h-full p-8 border border-white/5 bg-black hover:bg-white/5 hover:border-white/20 transition-all duration-500 relative">
-                                    <div className="absolute top-8 right-8 mix-blend-screen opacity-20 group-hover:opacity-80 transition-opacity duration-500">
-                                        <BrandLogo name={article.org} size={40} />
+                        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                            {cvData.thesisPublications.map((pub, index) => (
+                                <StaggerItem key={index}>
+                                    <div className="group border border-black/10 p-12 hover:bg-zinc-50 transition-all duration-500 flex flex-col justify-between h-full min-h-[350px]">
+                                        <div className="flex justify-between items-start">
+                                            <BrandLogo name={pub.org} size={56} />
+                                            <span className="text-[10px] font-mono text-zinc-300">THESIS-V0{index + 1}</span>
+                                        </div>
+                                        <div>
+                                            <h5 className="text-2xl md:text-3xl font-display font-medium text-black mb-6 tracking-tight leading-snug">
+                                                &quot;{pub.title}&quot;
+                                            </h5>
+                                            <p className="text-xs font-mono text-zinc-400 uppercase tracking-widest">{pub.org}</p>
+                                        </div>
                                     </div>
-                                    <div className="mb-12">
-                                        <span className="text-xs font-mono uppercase tracking-widest text-zinc-600 group-hover:text-zinc-400 transition-colors">
-                                            {article.org}
-                                        </span>
+                                </StaggerItem>
+                            ))}
+                        </StaggerContainer>
+                    </div>
+
+                    {/* Research Articles */}
+                    <div>
+                        <div className="flex items-center gap-4 mb-16">
+                            <div className="w-12 h-px bg-black" />
+                            <h4 className="text-xs font-mono tracking-widest uppercase text-zinc-400">07.B // Peer-Reviewed Articles</h4>
+                        </div>
+
+                        <StaggerContainer className="grid grid-cols-1 gap-12">
+                            {cvData.researchArticles.map((article, index) => (
+                                <StaggerItem key={index}>
+                                    <div className="group flex flex-col md:flex-row md:items-center justify-between gap-12 p-12 border-b border-black/5 hover:bg-zinc-50 transition-all duration-500 first:border-t">
+                                        <div className="flex items-center gap-12">
+                                            <BrandLogo name={article.org} size={48} />
+                                            <h5 className="text-xl md:text-2xl font-display font-medium text-black tracking-tight max-w-2xl leading-relaxed">
+                                                &quot;{article.title}&quot;
+                                            </h5>
+                                        </div>
+                                        <div className="flex flex-col md:items-end">
+                                            <span className="text-xs font-mono text-black uppercase tracking-widest font-bold mb-2">Verified Journal</span>
+                                            <p className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest">{article.org}</p>
+                                        </div>
                                     </div>
-                                    <h3 className="text-lg font-medium text-zinc-300 group-hover:text-white transition-colors leading-relaxed">
-                                        &quot;{article.title}&quot;
-                                    </h3>
-                                </div>
-                            </StaggerItem>
-                        ))}
-                    </StaggerContainer>
+                                </StaggerItem>
+                            ))}
+                        </StaggerContainer>
+                    </div>
                 </div>
-
             </div>
         </section>
     );
