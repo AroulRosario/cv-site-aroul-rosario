@@ -2,6 +2,7 @@
 
 import { cvData } from "@/data/cv";
 import { FadeIn, RevealText, StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
+import { BrandLogo } from "@/components/ui/BrandLogo";
 
 export function Publications() {
     return (
@@ -27,8 +28,11 @@ export function Publications() {
                     <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8 text-zinc-500 hover:text-white transition-colors">
                         {cvData.thesisPublications.map((pub, index) => (
                             <StaggerItem key={index}>
-                                <div className="group flex flex-col justify-between h-full p-8 border border-white/5 bg-black hover:bg-white/5 hover:border-white/20 transition-all duration-500 text-zinc-500">
-                                    <div className="mb-8">
+                                <div className="group flex flex-col justify-between h-full p-8 border border-white/5 bg-black hover:bg-white/5 hover:border-white/20 transition-all duration-500 text-zinc-500 relative">
+                                    <div className="absolute top-8 right-8 mix-blend-screen opacity-20 group-hover:opacity-80 transition-opacity duration-500">
+                                        <BrandLogo name={pub.org} size={40} />
+                                    </div>
+                                    <div className="mb-12">
                                         <span className="text-xs font-mono uppercase tracking-widest text-zinc-600 group-hover:text-zinc-400 transition-colors">
                                             {pub.org}
                                         </span>
@@ -61,8 +65,11 @@ export function Publications() {
                     <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {cvData.researchArticles.map((article, index) => (
                             <StaggerItem key={index}>
-                                <div className="group flex flex-col justify-between h-full p-8 border border-white/5 bg-black hover:bg-white/5 hover:border-white/20 transition-all duration-500">
-                                    <div className="mb-8">
+                                <div className="group flex flex-col justify-between h-full p-8 border border-white/5 bg-black hover:bg-white/5 hover:border-white/20 transition-all duration-500 relative">
+                                    <div className="absolute top-8 right-8 mix-blend-screen opacity-20 group-hover:opacity-80 transition-opacity duration-500">
+                                        <BrandLogo name={article.org} size={40} />
+                                    </div>
+                                    <div className="mb-12">
                                         <span className="text-xs font-mono uppercase tracking-widest text-zinc-600 group-hover:text-zinc-400 transition-colors">
                                             {article.org}
                                         </span>

@@ -2,15 +2,7 @@
 
 import { cvData } from "@/data/cv";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
-
-const Monogram = ({ name }: { name: string }) => {
-    const initial = name.replace(/Indian Institute of |University of |Université de |Institute |Johns |Physics /gi, "").charAt(0).toUpperCase();
-    return (
-        <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center border border-white/10 rounded-sm bg-zinc-900/50 group-hover:bg-white group-hover:text-black transition-colors duration-500 text-zinc-400">
-            <span className="font-display font-medium text-sm">{initial}</span>
-        </div>
-    );
-};
+import { BrandLogo } from "@/components/ui/BrandLogo";
 
 export function Certifications() {
     return (
@@ -30,9 +22,7 @@ export function Certifications() {
                             {cvData.designAndTechCertifications.map((cert, index) => (
                                 <StaggerItem key={index}>
                                     <div className="group flex items-start gap-6 p-6 border border-white/5 bg-black/20 hover:bg-black/40 hover:border-white/20 transition-all duration-500 rounded-lg">
-                                        <div className="w-14 h-14 flex-shrink-0 flex items-center justify-center text-zinc-500 group-hover:text-white transition-colors duration-500">
-                                            <Monogram name={cert.org} />
-                                        </div>
+                                        <BrandLogo name={cert.org} size={56} />
                                         <div>
                                             <h3 className="font-display font-medium text-white text-lg mb-1 leading-snug">{cert.title}</h3>
                                             <p className="text-xs font-mono text-zinc-500 uppercase">{cert.org}</p>
@@ -57,7 +47,7 @@ export function Certifications() {
                                     <div className="group flex items-start gap-5 py-6 border-b border-white/5 hover:border-white/20 transition-all duration-500 relative">
                                         <div className="absolute left-[-25px] md:left-[-33px] top-1/2 -translate-y-1/2 w-1.5 h-0 bg-white group-hover:h-8 transition-all duration-500" />
 
-                                        <Monogram name={cert.org} />
+                                        <BrandLogo name={cert.org} size={48} />
                                         <div>
                                             <h3 className="font-display font-medium text-zinc-200 text-base mb-1 group-hover:text-white transition-colors">{cert.title}</h3>
                                             <p className="text-xs font-mono text-zinc-600 uppercase transition-colors group-hover:text-zinc-400">{cert.org}</p>

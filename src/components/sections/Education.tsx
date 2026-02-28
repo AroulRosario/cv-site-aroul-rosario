@@ -2,16 +2,7 @@
 
 import { cvData } from "@/data/cv";
 import { SlideUp, StaggerContainer, StaggerItem, FadeIn } from "@/components/ui/motion-helpers";
-
-// A sleek Monogram component to replace image logos
-const Monogram = ({ name }: { name: string }) => {
-    const initial = name.replace(/University of |Uni of |College |Institut |Universit. /gi, "").charAt(0).toUpperCase();
-    return (
-        <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center border border-white/10 rounded-sm bg-zinc-900 group-hover:bg-white group-hover:text-black transition-colors duration-500">
-            <span className="font-display font-medium text-lg">{initial}</span>
-        </div>
-    );
-};
+import { BrandLogo } from "@/components/ui/BrandLogo";
 
 export function Education() {
     return (
@@ -31,7 +22,7 @@ export function Education() {
                             <div className="group flex flex-col md:flex-row md:items-center justify-between gap-6 py-8 border-b border-white/5 hover:border-white/20 transition-colors">
 
                                 <div className="flex items-center gap-6">
-                                    <Monogram name={item.org} />
+                                    <BrandLogo name={item.org} />
                                     <div>
                                         <h3 className="text-2xl font-display font-medium text-white mb-2">{item.title}</h3>
                                         <p className="text-zinc-500 tracking-wide text-sm uppercase font-mono">{item.org}</p>
