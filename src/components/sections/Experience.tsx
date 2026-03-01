@@ -1,65 +1,68 @@
 "use client";
 
+import { useState } from "react";
 import { cvData } from "@/data/cv";
-import { StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
+import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
 import { BrandLogo } from "@/components/ui/BrandLogo";
+import { DeepDive } from "@/components/ui/DeepDive";
+import { Plus } from "lucide-react";
 
 export function Experience() {
+    const [activeDive, setActiveDive] = useState<number | null>(null);
+
     return (
-        <div className="max-w-7xl mx-auto py-8">
-            <StaggerContainer className="space-y-6">
-                {cvData.experience.map((item, index) => (
-                    <StaggerItem key={index}>
-                        <div className="group relative border border-white/5 rounded-2xl hover:bg-white/[0.02] transition-all overflow-hidden p-8 md:p-12">
-                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                                {/* Left side: Basic info */}
-                                <div className="lg:col-span-4 space-y-6">
-                                    <div className="text-sm font-mono text-zinc-500 tracking-wider">
-                                        {item.period}
-                                    </div>
+        <section id="experience" className="py-32 bg-zinc-950/30 relative">
+            <div className="max-w-7xl mx-auto px-6 md:px-12">
+                <FadeIn>
+                    <p className="text-xs font-mono tracking-widest uppercase text-zinc-600 mb-4">04 // Career Path</p>
+                    <h2 className="text-5xl md:text-7xl font-display font-bold text-white tracking-tighter mb-20">
+                        Trajectory.
+                    </h2>
+                </FadeIn>
 
-                                    <div className="flex items-center gap-6">
-                                        <BrandLogo name={item.org} size={56} />
-                                        <div>
-                                            <h3 className="text-2xl font-display font-bold text-white group-hover:text-zinc-200 transition-colors">
-                                                {item.title}
-                                            </h3>
-                                            <p className="text-zinc-500 text-sm font-medium tracking-wide">
-                                                {item.org}
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <p className="text-zinc-400 font-light leading-relaxed">
-                                        {item.description}
-                                    </p>
+                <StaggerContainer className="space-y-4">
+                    {cvData.experience.map((item, index) => (
+                        <StaggerItem key={index}>
+                            <div
+                                onClick={() => setActiveDive(index)}
+                                className="group relative grid grid-cols-1 md:grid-cols-[200px_1fr_100px] items-center gap-8 p-8 border border-white/5 rounded-2xl hover:bg-white/[0.02] transition-all cursor-pointer overflow-hidden"
+                            >
+                                <div className="text-sm font-mono text-zinc-500 tracking-wider">
+                                    {item.period}
                                 </div>
 
-                                {/* Right side: Detailed academic narrative */}
-                                <div className="lg:col-span-8 bg-zinc-900/40 p-10 rounded-2xl border border-white/5">
-                                    <h4 className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest mb-6 border-b border-white/5 pb-4">
-                                        Executive Mandate // Impact Analysis
-                                    </h4>
-                                    <p className="text-zinc-300 text-lg md:text-xl font-light leading-relaxed italic">
-                                        "{item.academicDetail}"
-                                    </p>
-
-                                    <div className="mt-8 flex gap-8">
-                                        <div className="flex flex-col">
-                                            <span className="text-[10px] font-mono text-zinc-600 uppercase">Outcome</span>
-                                            <span className="text-white text-sm">Validated</span>
-                                        </div>
-                                        <div className="flex flex-col">
-                                            <span className="text-[10px] font-mono text-zinc-600 uppercase">Status</span>
-                                            <span className="text-white text-sm">Permanent</span>
-                                        </div>
+                                <div className="flex items-center gap-6">
+                                    <BrandLogo name={item.org} size={48} />
+                                    <div>
+                                        <h3 className="text-2xl font-display font-bold text-white group-hover:text-zinc-200 transition-colors">
+                                            {item.title}
+                                        </h3>
+                                        <p className="text-zinc-500 text-sm font-medium tracking-wide">
+                                            {item.org}
+                                        </p>
                                     </div>
                                 </div>
+
+                                <div className="flex justify-end opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <div className="p-3 bg-zinc-900 rounded-full border border-white/10 group-hover:scale-110 transition-transform">
+                                        <Plus className="w-5 h-5 text-zinc-400" />
+                                    </div>
+                                </div>
+
+                                <DeepDive
+                                    isOpen={activeDive === index}
+                                    onClose={() => {
+                                        setActiveDive(null);
+                                    }}
+                                    title={item.title}
+                                    content={item.deepDive || item.description}
+                                    org={item.org}
+                                />
                             </div>
-                        </div>
-                    </StaggerItem>
-                ))}
-            </StaggerContainer>
-        </div>
+                        </StaggerItem>
+                    ))}
+                </StaggerContainer>
+            </div>
+        </section>
     );
 }

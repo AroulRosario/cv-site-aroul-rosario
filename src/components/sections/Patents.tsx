@@ -1,31 +1,39 @@
 "use client";
 
 import { cvData } from "@/data/cv";
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
+import { FadeIn, RevealText, StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
 
 export function Patents() {
     return (
-        <div className="max-w-7xl mx-auto pb-12">
-            <FadeIn>
-                <div className="p-12 border border-white/5 bg-zinc-950/50 rounded-3xl">
-                    <h3 className="text-3xl font-display font-bold text-white mb-12 flex items-center gap-4 uppercase tracking-tighter">
-                        Intellectual Property.
+        <section id="patents" className="py-32 bg-black relative border-y border-white/5">
+            <div className="max-w-5xl mx-auto px-6 md:px-12 text-center">
+
+                <FadeIn>
+                    <h2 className="text-xs font-mono tracking-widest uppercase text-zinc-600 mb-6">
+                        09 // Intellectual Property
+                    </h2>
+                    <h3 className="text-4xl md:text-6xl font-display font-bold text-white mb-6 tracking-tight">
+                        Provisional Patents
                     </h3>
-                    <div className="space-y-8">
-                        {cvData.patents.map((patent, i) => (
-                            <div key={i} className="group flex flex-col md:flex-row md:items-center justify-between gap-6 py-8 border-b border-white/5 last:border-0">
-                                <div className="max-w-2xl">
-                                    <h4 className="text-xl font-medium text-white group-hover:text-zinc-300 transition-colors mb-2 italic">"{patent.title}"</h4>
-                                    <p className="text-zinc-500 text-sm font-light leading-relaxed">{patent.detail}</p>
-                                </div>
-                                <div className="px-4 py-2 bg-zinc-900 border border-white/10 rounded-full text-[10px] font-mono text-zinc-500 uppercase tracking-widest group-hover:border-white/30 group-hover:text-white transition-all whitespace-nowrap">
-                                    Patent Registered
-                                </div>
+                    <p className="text-sm font-mono tracking-widest text-zinc-500 uppercase mb-20">
+                        India
+                    </p>
+                </FadeIn>
+
+                <StaggerContainer className="flex flex-col gap-12 max-w-3xl mx-auto text-left">
+                    {cvData.patents.map((patent, index) => (
+                        <StaggerItem key={index}>
+                            <div className="relative pl-8 md:pl-12 border-l border-white/20 group hover:border-white transition-colors">
+                                <div className="absolute left-[-5px] top-2 w-2 h-2 rounded-full bg-zinc-800 group-hover:bg-white transition-colors" />
+                                <h4 className="text-xl md:text-3xl font-light text-zinc-300 group-hover:text-white transition-colors leading-relaxed">
+                                    {patent}
+                                </h4>
                             </div>
-                        ))}
-                    </div>
-                </div>
-            </FadeIn>
-        </div>
+                        </StaggerItem>
+                    ))}
+                </StaggerContainer>
+
+            </div>
+        </section>
     );
 }

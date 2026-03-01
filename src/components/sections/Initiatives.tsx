@@ -1,49 +1,77 @@
 "use client";
 
+import { useState } from "react";
 import { cvData } from "@/data/cv";
-import { StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
+import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
 import { BrandLogo } from "@/components/ui/BrandLogo";
+import { DeepDive } from "@/components/ui/DeepDive";
+import { ArrowUpRight } from "lucide-react";
 
 export function Initiatives() {
+    const [activeDive, setActiveDive] = useState<number | null>(null);
+
     return (
-        <div className="max-w-7xl mx-auto py-8">
-            <StaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                {cvData.initiatives.map((item, index) => (
-                    <StaggerItem key={index}>
-                        <div className="group relative p-10 border border-white/5 bg-zinc-950/50 hover:bg-zinc-900/50 hover:border-white/20 transition-all duration-700 rounded-2xl overflow-hidden">
-                            <div className="flex flex-col gap-8">
-                                <div className="flex items-center gap-6">
+        <section id="initiatives" className="py-32 bg-black relative overflow-hidden">
+            {/* Abstract Background Element */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-zinc-900/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 opacity-30" />
+
+            <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+
+                <div className="mb-20">
+                    <FadeIn>
+                        <p className="text-xs font-mono tracking-widest uppercase text-zinc-600 mb-4">
+                            03 // Key Initiatives
+                        </p>
+                        <h2 className="text-5xl md:text-7xl font-display font-bold text-white tracking-tighter mb-6">
+                            Strategic Impact.
+                        </h2>
+                    </FadeIn>
+                </div>
+
+                <StaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    {cvData.initiatives.map((item, index) => (
+                        <StaggerItem key={index}>
+                            <div
+                                onClick={() => setActiveDive(index)}
+                                className="group relative p-10 border border-white/5 bg-zinc-950/50 hover:bg-zinc-900/50 hover:border-white/20 transition-all duration-700 rounded-2xl overflow-hidden cursor-pointer"
+                            >
+                                <div className="flex items-start gap-8">
                                     <div className="p-4 bg-zinc-900 rounded-xl border border-white/5 group-hover:border-white/20 transition-colors">
                                         <BrandLogo name={item.title} size={64} />
                                     </div>
-                                    <div>
-                                        <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">
-                                            {item.role}
-                                        </span>
-                                        <h3 className="text-3xl font-display font-bold text-white group-hover:text-zinc-200 transition-colors">
+                                    <div className="flex-1">
+                                        <div className="flex items-center justify-between mb-2">
+                                            <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest">
+                                                {item.role}
+                                            </span>
+                                            <ArrowUpRight className="w-4 h-4 text-zinc-700 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                                        </div>
+                                        <h3 className="text-3xl font-display font-bold text-white mb-4 group-hover:text-zinc-200 transition-colors">
                                             {item.title}
                                         </h3>
-                                    </div>
-                                </div>
-
-                                <div className="space-y-6">
-                                    <p className="text-zinc-400 font-light leading-relaxed text-lg">
-                                        {item.description}
-                                    </p>
-
-                                    {/* Very lengthy academic detail */}
-                                    <div className="p-6 bg-white/[0.02] border border-white/5 rounded-xl">
-                                        <h4 className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest mb-4">Tactical Breakdown // Research & Deployment</h4>
-                                        <p className="text-zinc-300 text-sm leading-relaxed font-light">
-                                            {item.academicDetail}
+                                        <p className="text-zinc-400 font-light leading-relaxed text-lg line-clamp-2">
+                                            {item.description}
                                         </p>
                                     </div>
                                 </div>
+
+                                {/* Decorative index */}
+                                <span className="absolute bottom-6 right-10 text-8xl font-display font-black text-white/[0.02] group-hover:text-white/[0.05] transition-colors pointer-events-none">
+                                    0{index + 1}
+                                </span>
+
+                                <DeepDive
+                                    isOpen={activeDive === index}
+                                    onClose={() => setActiveDive(null)}
+                                    title={item.title}
+                                    content={item.deepDive || item.description}
+                                    org={item.role}
+                                />
                             </div>
-                        </div>
-                    </StaggerItem>
-                ))}
-            </StaggerContainer>
-        </div>
+                        </StaggerItem>
+                    ))}
+                </StaggerContainer>
+            </div>
+        </section>
     );
 }

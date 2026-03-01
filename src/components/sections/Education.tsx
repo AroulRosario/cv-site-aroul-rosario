@@ -1,54 +1,48 @@
 "use client";
 
 import { cvData } from "@/data/cv";
-import { StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
+import { SlideUp, StaggerContainer, StaggerItem, FadeIn } from "@/components/ui/motion-helpers";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 
 export function Education() {
     return (
-        <div className="max-w-7xl mx-auto py-8">
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {cvData.fellowshipsAndSocieties.map((item, index) => (
-                    <StaggerItem key={index}>
-                        <div className="group relative p-10 border border-white/5 bg-zinc-950/50 hover:bg-zinc-900/50 hover:border-white/20 transition-all duration-700 rounded-2xl overflow-hidden min-h-[320px] flex flex-col justify-between">
-                            <div>
-                                <div className="flex items-center gap-6 mb-8">
-                                    <BrandLogo name={item.org} size={48} />
+        <section id="academics" className="py-32 bg-black relative">
+            <div className="max-w-5xl mx-auto px-6 md:px-12 border-l border-white/10 pl-6 md:pl-12">
+
+                <FadeIn>
+                    <h2 className="text-xs font-mono tracking-widest uppercase text-zinc-600 mb-16 relative">
+                        <span className="absolute -left-[31px] md:-left-[55px] top-1/2 -translate-y-1/2 w-4 h-px bg-zinc-600" />
+                        03 // Academics & Fellowships
+                    </h2>
+                </FadeIn>
+
+                <StaggerContainer className="flex flex-col gap-8">
+                    {cvData.fellowshipsAndSocieties.map((item, index) => (
+                        <StaggerItem key={index}>
+                            <div className="group flex flex-col md:flex-row md:items-center justify-between gap-6 py-8 border-b border-white/5 hover:border-white/20 transition-colors">
+
+                                <div className="flex items-center gap-6">
+                                    <BrandLogo name={item.org} />
                                     <div>
-                                        <h3 className="text-2xl font-display font-bold text-white group-hover:text-zinc-200 transition-colors tracking-tight">
-                                            {item.title}
-                                        </h3>
-                                        <p className="text-zinc-600 text-[10px] font-mono uppercase tracking-[0.3em]">
-                                            {item.org}
-                                        </p>
+                                        <h3 className="text-2xl font-display font-medium text-white mb-2">{item.title}</h3>
+                                        <p className="text-zinc-500 tracking-wide text-sm uppercase font-mono">{item.org}</p>
                                     </div>
                                 </div>
-                                <p className="text-zinc-400 font-light leading-relaxed text-base">
-                                    {item.detail}
-                                </p>
-                            </div>
 
-                            <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
-                                <span className="text-[10px] font-mono text-zinc-700 uppercase">Verification // Official</span>
-                                <div className="w-2 h-2 rounded-full bg-white/10 group-hover:bg-white/40 transition-colors" />
-                            </div>
-                        </div>
-                    </StaggerItem>
-                ))}
-            </StaggerContainer>
+                                {item.acronym && (
+                                    <div className="md:text-right">
+                                        <span className="inline-block px-4 py-1.5 border border-white/10 rounded-full text-xs font-mono text-zinc-400 group-hover:border-zinc-400 transition-colors">
+                                            {item.acronym}
+                                        </span>
+                                    </div>
+                                )}
 
-            {/* Awards Sub-section included here for Monolithic feel */}
-            <div className="mt-24 pt-24 border-t border-white/10">
-                <h4 className="text-xs font-mono text-zinc-600 uppercase tracking-[0.5em] mb-12">Honors & Decorations.</h4>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    {cvData.awards.map((award, i) => (
-                        <div key={i} className="p-8 border border-white/5 bg-zinc-900/30 rounded-xl hover:border-white/10 transition-colors">
-                            <h5 className="text-xl font-display font-bold text-white mb-4 italic">"{award.title}"</h5>
-                            <p className="text-zinc-400 font-light text-sm leading-relaxed">{award.detail}</p>
-                        </div>
+                            </div>
+                        </StaggerItem>
                     ))}
-                </div>
+                </StaggerContainer>
+
             </div>
-        </div>
+        </section>
     );
 }
