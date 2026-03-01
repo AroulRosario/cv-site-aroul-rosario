@@ -1,11 +1,6 @@
-@import "tailwindcss";
-
-@theme inline {
-  --color-background: #000000;
-  --color-foreground: #ffffff;
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-space-grotesk);
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: #000000;
@@ -13,23 +8,106 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background-color: #000000;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-.glass {
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .heading-monochrome {
+    background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .glow-mesh {
+    background-image:
+      radial-gradient(at 0% 0%, rgba(255, 255, 255, 0.05) 0, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(255, 255, 255, 0.03) 0, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(255, 255, 255, 0.05) 0, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(255, 255, 255, 0.03) 0, transparent 50%);
+  }
+
+  .scanline {
+    width: 100%;
+    height: 100px;
+    z-index: 10;
+    pointer-events: none;
+    background: linear-gradient(0deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(255, 255, 255, 0.02) 50%,
+        rgba(0, 0, 0, 0) 100%);
+    animation: scan 8s linear infinite;
+  }
 }
 
-.heading-monochrome {
-  background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+@keyframes scan {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+.glitch-hover:hover {
+  animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(-2px, 2px);
+  }
+
+  40% {
+    transform: translate(-2px, -2px);
+  }
+
+  60% {
+    transform: translate(2px, 2px);
+  }
+
+  80% {
+    transform: translate(2px, -2px);
+  }
+
+  100% {
+    transform: translate(0);
+  }
 }

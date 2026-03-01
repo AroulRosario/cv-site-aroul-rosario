@@ -1,112 +1,72 @@
 "use client";
 
 import { cvData } from "@/data/cv";
-import { FadeIn, RevealText, StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
-import { BrandLogo } from "@/components/ui/BrandLogo";
-import { BookOpen } from "lucide-react";
+import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
+import { BookOpen, ExternalLink, ScrollText } from "lucide-react";
 
 export function Publications() {
     return (
-        <section id="publications" className="py-32 relative bg-zinc-950">
-            <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="max-w-7xl mx-auto py-8">
+            <div className="space-y-32">
 
-                {/* Published Books */}
-                <div className="mb-32">
+                {/* Published Monographs */}
+                <div className="space-y-16">
                     <FadeIn>
-                        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 border-b border-white/10 pb-8">
-                            <h2 className="text-4xl md:text-5xl font-display font-bold text-white tracking-tight flex items-center gap-4">
-                                Published<br />Works
-                                <span className="inline-flex items-center justify-center px-3 py-1 rounded-full border border-zinc-700 bg-zinc-900 text-xs text-zinc-400 font-mono translate-y-2">
-                                    Books
-                                </span>
-                            </h2>
-                            <p className="text-xs font-mono tracking-widest uppercase text-zinc-600">
-                                07 // Literature
-                            </p>
-                        </div>
+                        <h3 className="text-5xl font-display font-bold text-white mb-4 flex items-center gap-6">
+                            <BookOpen className="w-10 h-10 text-zinc-600" />
+                            Published Works.
+                        </h3>
+                        <p className="text-zinc-500 text-lg font-light max-w-2xl">
+                            Authored several fundamental texts and series aimed at simplifying complex scientific abstractions through visual and ontological scaffolding.
+                        </p>
                     </FadeIn>
 
-                    <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {cvData.books.map((book, index) => (
-                            <StaggerItem key={index}>
-                                <div className="group flex flex-col justify-between h-full p-8 border border-white/5 bg-black hover:bg-white/5 hover:border-white/20 transition-all duration-500">
-                                    <div className="flex justify-between items-start mb-12">
-                                        <BookOpen className="w-8 h-8 text-zinc-600 group-hover:text-white transition-colors" />
-                                        <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-600 border border-white/5 px-2 py-1">
-                                            {book.category}
-                                        </span>
-                                    </div>
-                                    <h3 className="text-2xl font-display font-medium text-white transition-colors leading-tight">
-                                        {book.title}
-                                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {cvData.books.map((book, i) => (
+                            <div key={i} className="group p-8 border border-white/5 bg-zinc-950 hover:bg-zinc-900 hover:border-white/20 transition-all rounded-2xl relative overflow-hidden">
+                                <span className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest block mb-4">{book.category}</span>
+                                <h4 className="text-3xl font-display font-bold text-white mb-8 group-hover:text-zinc-200 transition-colors">{book.title}</h4>
+                                <div className="p-2 w-fit bg-zinc-900 border border-white/10 rounded-lg group-hover:bg-white group-hover:text-black transition-all">
+                                    <ExternalLink className="w-4 h-4" />
                                 </div>
-                            </StaggerItem>
+                            </div>
                         ))}
-                    </StaggerContainer>
+                    </div>
                 </div>
 
-                {/* Thesis Publications */}
-                <div className="mb-32">
+                {/* Research Discourse */}
+                <div className="space-y-16">
                     <FadeIn>
-                        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 border-b border-white/10 pb-8">
-                            <h2 className="text-4xl md:text-5xl font-display font-medium text-white tracking-tight flex items-center gap-4">
-                                Thesis<br />Publications
-                            </h2>
-                            <p className="text-xs font-mono tracking-widest uppercase text-zinc-600">
-                                08 // Research
-                            </p>
-                        </div>
+                        <h3 className="text-5xl font-display font-bold text-white mb-4 flex items-center gap-6">
+                            <ScrollText className="w-10 h-10 text-zinc-600" />
+                            Thesis & Archives.
+                        </h3>
+                        <p className="text-zinc-500 text-lg font-light max-w-2xl">
+                            Formal research exploring the synthesis of computational mechanics and chemical pedagogy, hosted across global research repositories.
+                        </p>
                     </FadeIn>
 
-                    <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8 text-zinc-500 hover:text-white transition-colors">
-                        {cvData.thesisPublications.map((pub, index) => (
-                            <StaggerItem key={index}>
-                                <div className="group flex flex-col justify-between h-full p-8 border border-white/5 bg-black hover:bg-white/5 hover:border-white/20 transition-all duration-500 text-zinc-500 relative">
-                                    <div className="absolute top-8 right-8 opacity-40 group-hover:opacity-100 transition-opacity duration-500">
-                                        <BrandLogo name={pub.org} size={40} />
+                    <StaggerContainer className="space-y-12">
+                        {cvData.thesisPublications.map((pub, i) => (
+                            <StaggerItem key={i}>
+                                <div className="group grid grid-cols-1 lg:grid-cols-12 gap-12 p-10 border border-white/5 rounded-3xl hover:bg-white/[0.01] transition-all">
+                                    <div className="lg:col-span-4">
+                                        <p className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest mb-4">Repository // {pub.org}</p>
+                                        <h4 className="text-2xl font-display font-bold text-white leading-tight group-hover:text-zinc-200 transition-colors">
+                                            {pub.title}
+                                        </h4>
                                     </div>
-                                    <div className="mb-12">
-                                        <span className="text-xs font-mono uppercase tracking-widest text-zinc-600 group-hover:text-zinc-400 transition-colors">
-                                            {pub.org}
-                                        </span>
+                                    <div className="lg:col-span-8 flex flex-col justify-between">
+                                        <p className="text-zinc-400 font-light text-lg leading-relaxed italic">
+                                            "{pub.abstract || "The abstract for this research is currently being indexed for the digital archive. It explores the core methodologies and outcomes of the study in detail."}"
+                                        </p>
+                                        <div className="mt-8 flex items-center justify-between border-t border-white/5 pt-6">
+                                            <span className="text-[10px] font-mono text-zinc-700 uppercase">Status // peer-reviewed</span>
+                                            <button className="text-[10px] font-mono text-white flex items-center gap-2 hover:underline">
+                                                READ FULL TEXT <ExternalLink className="w-3 h-3" />
+                                            </button>
+                                        </div>
                                     </div>
-                                    <h3 className="text-lg font-medium text-zinc-300 group-hover:text-white transition-colors leading-relaxed">
-                                        &quot;{pub.title}&quot;
-                                    </h3>
-                                </div>
-                            </StaggerItem>
-                        ))}
-                    </StaggerContainer>
-                </div>
-
-                {/* Research Articles */}
-                <div>
-                    <FadeIn>
-                        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 border-b border-white/10 pb-8">
-                            <h2 className="text-4xl md:text-5xl font-display font-medium text-white tracking-tight flex items-center gap-4">
-                                Scientific<br />Articles
-                            </h2>
-                            <p className="text-xs font-mono tracking-widest uppercase text-zinc-600">
-                                09 // Journals
-                            </p>
-                        </div>
-                    </FadeIn>
-
-                    <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {cvData.researchArticles.map((article, index) => (
-                            <StaggerItem key={index}>
-                                <div className="group flex flex-col justify-between h-full p-8 border border-white/5 bg-black hover:bg-white/5 hover:border-white/20 transition-all duration-500 relative">
-                                    <div className="absolute top-8 right-8 opacity-40 group-hover:opacity-100 transition-opacity duration-500">
-                                        <BrandLogo name={article.org} size={40} />
-                                    </div>
-                                    <div className="mb-12">
-                                        <span className="text-xs font-mono uppercase tracking-widest text-zinc-600 group-hover:text-zinc-400 transition-colors">
-                                            {article.org}
-                                        </span>
-                                    </div>
-                                    <h3 className="text-lg font-medium text-zinc-300 group-hover:text-white transition-colors leading-relaxed">
-                                        &quot;{article.title}&quot;
-                                    </h3>
                                 </div>
                             </StaggerItem>
                         ))}
@@ -114,6 +74,33 @@ export function Publications() {
                 </div>
 
             </div>
-        </section>
+        </div>
+    );
+}
+
+export function Patents() {
+    return (
+        <div className="max-w-7xl mx-auto pb-12">
+            <FadeIn>
+                <div className="p-12 border border-white/5 bg-zinc-950/50 rounded-3xl">
+                    <h3 className="text-3xl font-display font-bold text-white mb-12 flex items-center gap-4 uppercase tracking-tighter">
+                        Intellectual Property.
+                    </h3>
+                    <div className="space-y-8">
+                        {cvData.patents.map((patent, i) => (
+                            <div key={i} className="group flex flex-col md:flex-row md:items-center justify-between gap-6 py-8 border-b border-white/5 last:border-0">
+                                <div className="max-w-2xl">
+                                    <h4 className="text-xl font-medium text-white group-hover:text-zinc-300 transition-colors mb-2 italic">"{patent.title}"</h4>
+                                    <p className="text-zinc-500 text-sm font-light leading-relaxed">{patent.detail}</p>
+                                </div>
+                                <div className="px-4 py-2 bg-zinc-900 border border-white/10 rounded-full text-[10px] font-mono text-zinc-500 uppercase tracking-widest group-hover:border-white/30 group-hover:text-white transition-all whitespace-nowrap">
+                                    Patent Registered
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </FadeIn>
+        </div>
     );
 }
