@@ -9,7 +9,8 @@ import { Spotlight } from "@/components/ui/Spotlight";
 
 export function Hero() {
     return (
-        <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-32 pb-12 w-full bg-black overflow-hidden">
+        <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-32 pb-12 w-full overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(0,242,255,0.03)_0%,transparent_50%)] pointer-events-none" />
             <Spotlight />
 
             {/* Absolute strict architectural grid overlay */}
@@ -49,26 +50,22 @@ export function Hero() {
 
                     <FadeIn delay={0.5}>
                         <div className="flex flex-col space-y-4">
-                            <Magnetic>
-                                <a
-                                    href={`mailto:${cvData.personalInfo.email}`}
-                                    className="group flex items-center justify-between py-4 border-b border-white/20 hover:border-white transition-colors"
-                                >
-                                    <span className="text-lg text-white font-medium">Contact</span>
-                                    <ArrowDownRight className="w-5 h-5 text-zinc-500 group-hover:text-white transition-colors" />
-                                </a>
-                            </Magnetic>
-                            <Magnetic>
-                                <a
-                                    href={`https://${cvData.personalInfo.website}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="group flex items-center justify-between py-4 border-b border-white/20 hover:border-white transition-colors"
-                                >
-                                    <span className="text-lg text-white font-medium">Website</span>
-                                    <ArrowDownRight className="w-5 h-5 text-zinc-500 group-hover:text-white transition-colors" />
-                                </a>
-                            </Magnetic>
+                            <a
+                                href={`mailto:${cvData.personalInfo.email}`}
+                                className="flex items-center justify-between py-4 border-b border-white/20 hover:border-white transition-colors duration-300 group"
+                            >
+                                <span className="text-lg text-white font-medium">Contact</span>
+                                <ArrowDownRight className="w-5 h-5 text-zinc-500 group-hover:text-white transition-colors duration-300" />
+                            </a>
+                            <a
+                                href={`https://${cvData.personalInfo.website}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-between py-4 border-b border-white/20 hover:border-white transition-colors duration-300 group"
+                            >
+                                <span className="text-lg text-white font-medium">Website</span>
+                                <ArrowDownRight className="w-5 h-5 text-zinc-500 group-hover:text-white transition-colors duration-300" />
+                            </a>
                         </div>
                     </FadeIn>
                 </div>

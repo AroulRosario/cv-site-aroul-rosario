@@ -3,6 +3,77 @@
 import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
+interface ParticleType {
+    x: number;
+    y: number;
+    baseX: number;
+    baseY: number;
+    size: number;
+    bx: number;
+    by: number;
+    update: (width: number, height: number, mouse: { x: number, y: number }) => void;
+    draw: (ctx: CanvasRenderingContext2D) => void;
+}
+
+class Particle implements ParticleType {
+    x: number;
+    y: number;
+    baseX: number;
+    baseY: number;
+    size: number;
+    bx: number;
+    by: number;
+
+    constructor(width: number, height: number) {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.baseX = this.x;
+        this.baseY = this.y;
+        this.size = Math.random() * 1.5 + 0.5;
+        this.bx = Math.random() * 2 - 1;
+        this.by = Math.random() * 2 - 1;
+    }
+
+    update(width: number, height: number, mouse: { x: number, y: number }) {
+        this.baseX += this.bx * 0.2;
+        this.baseY += this.by * 0.2;
+
+        if (this.baseX < 0 || this.baseX > width) this.bx *= -1;
+        if (this.baseY < 0 || this.baseY > height) this.by *= -1;
+
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const maxDistance = 150;
+
+        if (distance < maxDistance && distance > 0) {
+            const forceDirectionX = dx / distance;
+            const forceDirectionY = dy / distance;
+            const force = (maxDistance - distance) / maxDistance;
+            const directionX = forceDirectionX * force * 5;
+            const directionY = forceDirectionY * force * 5;
+            this.x -= directionX;
+            this.y -= directionY;
+        } else {
+            if (this.x !== this.baseX) {
+                const mdx = this.x - this.baseX;
+                this.x -= mdx / 20;
+            }
+            if (this.y !== this.baseY) {
+                const mdy = this.y - this.baseY;
+                this.y -= mdy / 20;
+            }
+        }
+    }
+
+    draw(ctx: CanvasRenderingContext2D) {
+        ctx.fillStyle = "rgba(0, 242, 255, 0.4)";
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
 export function MolecularLattice() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const mouse = useRef({ x: 0, y: 0 });
@@ -20,90 +91,26 @@ export function MolecularLattice() {
         let height: number;
         let particles: Particle[] = [];
 
-        class Particle {
-            x: number;
-            y: number;
-            baseX: number;
-            baseY: number;
-            size: number;
-            bx: number;
-            by: number;
-
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.baseX = this.x;
-                this.baseY = this.y;
-                this.size = Math.random() * 1.5 + 0.5;
-                // Float movement
-                this.bx = Math.random() * 2 - 1;
-                this.by = Math.random() * 2 - 1;
-            }
-
-            update() {
-                // Subtle float
-                this.baseX += this.bx * 0.2;
-                this.baseY += this.by * 0.2;
-
-                if (this.baseX < 0 || this.baseX > width) this.bx *= -1;
-                if (this.baseY < 0 || this.baseY > height) this.by *= -1;
-
-                // Interaction with mouse
-                let dx = mouse.current.x - this.x;
-                let dy = mouse.current.y - this.y;
-                let distance = Math.sqrt(dx * dx + dy * dy);
-                let forceDirectionX = dx / distance;
-                let forceDirectionY = dy / distance;
-                let maxDistance = 150;
-                let force = (maxDistance - distance) / maxDistance;
-                let directionX = forceDirectionX * force * 5;
-                let directionY = forceDirectionY * force * 5;
-
-                if (distance < maxDistance) {
-                    this.x -= directionX;
-                    this.y -= directionY;
-                } else {
-                    if (this.x !== this.baseX) {
-                        let dx = this.x - this.baseX;
-                        this.x -= dx / 20;
-                    }
-                    if (this.y !== this.baseY) {
-                        let dy = this.y - this.baseY;
-                        this.y -= dy / 20;
-                    }
-                }
-            }
-
-            draw() {
-                if (!ctx) return;
-                ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
         const init = () => {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
             particles = [];
             const numberOfParticles = (width * height) / 15000;
             for (let i = 0; i < numberOfParticles; i++) {
-                particles.push(new Particle());
+                particles.push(new Particle(width, height));
             }
         };
 
         const animate = () => {
             ctx.clearRect(0, 0, width, height);
             for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
+                particles[i].update(width, height, mouse.current);
+                particles[i].draw(ctx);
 
-                // Connect lines
                 for (let j = i; j < particles.length; j++) {
-                    let dx = particles[i].x - particles[j].x;
-                    let dy = particles[i].y - particles[j].y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
 
                     if (distance < 100) {
                         ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 * (1 - distance / 100)})`;

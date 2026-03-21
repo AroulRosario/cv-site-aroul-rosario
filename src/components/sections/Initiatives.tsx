@@ -2,76 +2,89 @@
 
 import { useState } from "react";
 import { cvData } from "@/data/cv";
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
-import { BrandLogo } from "@/components/ui/BrandLogo";
+import { motion } from "framer-motion";
+import { FadeIn } from "@/components/ui/motion-helpers";
 import { DeepDive } from "@/components/ui/DeepDive";
-import { ArrowUpRight } from "lucide-react";
 
 export function Initiatives() {
     const [activeDive, setActiveDive] = useState<number | null>(null);
 
     return (
         <section id="initiatives" className="py-32 bg-black relative overflow-hidden">
-            {/* Abstract Background Element */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-zinc-900/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 opacity-30" />
+            {/* Background grid pattern */}
+            <div
+                className="absolute inset-0 opacity-[0.03] pointer-events-none"
+                style={{
+                    backgroundImage: "linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)",
+                    backgroundSize: "80px 80px",
+                }}
+            />
 
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+                <FadeIn>
+                    <p className="text-xs font-mono tracking-widest uppercase text-zinc-600 mb-4">03 // Key Initiatives</p>
+                    <h2 className="text-6xl md:text-8xl font-display font-black text-white tracking-tighter mb-24 leading-none">
+                        Ideas<br />
+                        <span className="text-white/30">into</span><br />
+                        Impact.
+                    </h2>
+                </FadeIn>
 
-                <div className="mb-20">
-                    <FadeIn>
-                        <p className="text-xs font-mono tracking-widest uppercase text-zinc-600 mb-4">
-                            03 // Key Initiatives
-                        </p>
-                        <h2 className="text-5xl md:text-7xl font-display font-bold text-white tracking-tighter mb-6">
-                            Strategic Impact.
-                        </h2>
-                    </FadeIn>
-                </div>
-
-                <StaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                {/* Full-width dramatic cards */}
+                <div className="space-y-6">
                     {cvData.initiatives.map((item, index) => (
-                        <StaggerItem key={index}>
-                            <div
-                                onClick={() => setActiveDive(index)}
-                                className="group relative p-10 border border-white/5 bg-zinc-950/50 hover:bg-zinc-900/50 hover:border-white/20 transition-all duration-700 rounded-2xl overflow-hidden cursor-pointer"
-                            >
-                                <div className="flex items-start gap-8">
-                                    <div className="p-4 bg-zinc-900 rounded-xl border border-white/5 group-hover:border-white/20 transition-colors">
-                                        <BrandLogo name={item.title} size={64} />
-                                    </div>
-                                    <div className="flex-1">
-                                        <div className="flex items-center justify-between mb-2">
-                                            <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest">
-                                                {item.role}
-                                            </span>
-                                            <ArrowUpRight className="w-4 h-4 text-zinc-700 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
-                                        </div>
-                                        <h3 className="text-3xl font-display font-bold text-white mb-4 group-hover:text-zinc-200 transition-colors">
-                                            {item.title}
-                                        </h3>
-                                        <p className="text-zinc-400 font-light leading-relaxed text-lg line-clamp-2">
-                                            {item.description}
-                                        </p>
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 60 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ delay: index * 0.2, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                            viewport={{ once: true }}
+                            onClick={() => setActiveDive(index)}
+                            className="group relative glass-card border-white/5 cursor-pointer overflow-hidden min-h-[240px] flex items-end p-10 md:p-16 hover:border-white/20"
+                        >
+                            {/* Dramatic number bg */}
+                            <span className="absolute top-6 right-8 text-[160px] md:text-[220px] font-display font-black text-white/[0.03] group-hover:text-white/[0.06] transition-colors leading-none pointer-events-none select-none">
+                                {String(index + 1).padStart(2, "0")}
+                            </span>
+
+                            {/* Top tag */}
+                            <div className="absolute top-8 left-10 flex items-center gap-3">
+                                <span className="w-2 h-2 rounded-full bg-white/20 animate-pulse" />
+                                <span className="text-[10px] font-mono text-zinc-600 uppercase tracking-[0.3em]">{item.role}</span>
+                            </div>
+
+                            {/* Bottom content — title only, large */}
+                            <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between w-full gap-6">
+                                <div>
+                                    <h3 className="text-3xl md:text-5xl font-display font-black text-white leading-tight tracking-tight">
+                                        {item.title}
+                                    </h3>
+                                </div>
+                                <div className="shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                    <div className="flex items-center gap-3 text-xs font-mono text-white uppercase tracking-widest border border-white/20 px-6 py-3 rounded-full hover:bg-white/10">
+                                        <span>Explore</span>
+                                        <motion.span animate={{ x: [0, 4, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>→</motion.span>
                                     </div>
                                 </div>
-
-                                {/* Decorative index */}
-                                <span className="absolute bottom-6 right-10 text-8xl font-display font-black text-white/[0.02] group-hover:text-white/[0.05] transition-colors pointer-events-none">
-                                    0{index + 1}
-                                </span>
-
-                                <DeepDive
-                                    isOpen={activeDive === index}
-                                    onClose={() => setActiveDive(null)}
-                                    title={item.title}
-                                    content={item.deepDive || item.description}
-                                    org={item.role}
-                                />
                             </div>
-                        </StaggerItem>
+
+                            {/* Noise grain hover */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                        </motion.div>
                     ))}
-                </StaggerContainer>
+                </div>
             </div>
+
+            {cvData.initiatives.map((item, index) => (
+                <DeepDive
+                    key={index}
+                    isOpen={activeDive === index}
+                    onClose={() => setActiveDive(null)}
+                    title={item.title}
+                    content={item.deepDive || item.description}
+                    org={item.role}
+                />
+            ))}
         </section>
     );
 }

@@ -1,66 +1,110 @@
 "use client";
 
-import { useState } from "react";
 import { cvData } from "@/data/cv";
-import { FadeIn, StaggerContainer, StaggerItem, LineDraw } from "@/components/ui/motion-helpers";
-import { DeepDive } from "@/components/ui/DeepDive";
-import { Award, ChevronRight } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { FadeIn } from "@/components/ui/motion-helpers";
+import { useRef } from "react";
+
+const AWARD_ICONS = ["🏛️", "⚗️", "🌍"];
+
+const CEREMONY_PHOTOS = [
+    {
+        src: "/photos/award-ceremony-2.jpg",
+        caption: "Republic Day Award — presented by the Lt. Governor of Puducherry",
+    },
+    {
+        src: "/photos/award-ceremony-1.jpg",
+        caption: "National conclave recognition ceremony",
+    },
+];
 
 export function Awards() {
-    const [activeDive, setActiveDive] = useState<number | null>(null);
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
+    const y1 = useTransform(scrollYProgress, [0, 1], ["0%", "-8%"]);
+    const y2 = useTransform(scrollYProgress, [0, 1], ["5%", "-5%"]);
 
     return (
-        <section id="awards" className="py-32 relative bg-black border-y border-white/5 noise-bg">
-            <div className="max-w-5xl mx-auto px-6 md:px-12">
+        <section ref={sectionRef} id="awards" className="py-32 bg-zinc-950 relative overflow-hidden border-y border-white/5">
+            {/* Scanline texture */}
+            <div className="absolute inset-0 opacity-[0.02] pointer-events-none"
+                style={{ backgroundImage: "repeating-linear-gradient(0deg, white 0px, white 1px, transparent 1px, transparent 60px)" }} />
+
+            <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
                 <FadeIn>
-                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
-                        <h2 className="text-4xl md:text-5xl font-display font-medium text-white tracking-tight">
-                            Honours<br />& Recognition.
-                        </h2>
-                        <p className="text-xs font-mono tracking-widest uppercase text-zinc-600">
-                            06 // Accolades
-                        </p>
-                    </div>
+                    <p className="text-xs font-mono tracking-widest uppercase text-zinc-500 mb-4 inline-block px-4 py-1.5 rounded-full border border-white/10 glass">06 // Recognitions & Awards</p>
+                    <h2 className="text-6xl md:text-8xl font-display font-black text-white tracking-tighter mt-6 mb-24 leading-none">
+                        Recognised.<br />
+                        <span className="text-white/20">Celebrated.</span>
+                    </h2>
                 </FadeIn>
 
-                <LineDraw className="mb-12" />
-
-                <StaggerContainer className="flex flex-col space-y-4">
-                    {cvData.awards.map((award, index) => (
-                        <StaggerItem key={index}>
-                            <div
-                                onClick={() => award.deepDive ? setActiveDive(index) : null}
-                                className={`group flex flex-col md:flex-row items-center justify-between p-8 glass-card border-white/5 ${award.deepDive ? 'cursor-pointer hover:border-white/20' : 'cursor-default'}`}
+                <div className="grid lg:grid-cols-2 gap-12 items-start">
+                    {/* Award plates */}
+                    <div className="space-y-5">
+                        {cvData.awards.map((award, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, x: -40 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ delay: i * 0.12, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                                viewport={{ once: true }}
+                                className="group glass-card p-8 flex gap-6 items-start hover:border-white/20 transition-all duration-500"
                             >
-                                <div className="flex items-center gap-8 w-full">
-                                    <div className="p-3 bg-white/5 rounded-xl border border-white/5 group-hover:border-white/20 transition-colors">
-                                        <Award className="w-6 h-6 text-zinc-500 group-hover:text-white transition-colors" />
-                                    </div>
-                                    <div className="flex-1">
-                                        <h3 className="text-xl md:text-2xl font-display font-medium text-white transition-colors leading-tight">
-                                            {award.title}
-                                        </h3>
-                                        <p className="text-sm text-zinc-500 mt-1">{award.description}</p>
-                                    </div>
+                                <span className="text-4xl grayscale group-hover:grayscale-0 transition-all duration-500 shrink-0 mt-1">
+                                    {AWARD_ICONS[i] || "🏆"}
+                                </span>
+                                <div>
+                                    <h3 className="text-xl font-display font-black text-white leading-snug mb-3 group-hover:text-white transition-colors">
+                                        {award.title}
+                                    </h3>
+                                    <p className="text-sm text-zinc-500 leading-relaxed group-hover:text-zinc-300 transition-colors">
+                                        {award.description}
+                                    </p>
                                 </div>
+                            </motion.div>
+                        ))}
+                    </div>
 
-                                {award.deepDive && (
-                                    <div className="hidden md:flex items-center gap-2 text-[10px] font-mono text-zinc-600 uppercase tracking-widest group-hover:text-white transition-colors">
-                                        Exploration // Deep Dive <ChevronRight className="w-3 h-3" />
-                                    </div>
-                                )}
-
-                                <DeepDive
-                                    isOpen={activeDive === index}
-                                    onClose={() => setActiveDive(null)}
-                                    title={award.title}
-                                    content={award.deepDive || award.description}
-                                    org="National Recognition"
-                                />
+                    {/* Ceremony photo collage with parallax */}
+                    <div className="relative flex flex-col gap-5 lg:mt-12">
+                        <motion.div
+                            style={{ y: y1 }}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                            viewport={{ once: true }}
+                            className="relative overflow-hidden rounded-2xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.8)] group"
+                        >
+                            <img
+                                src={CEREMONY_PHOTOS[0].src}
+                                alt={CEREMONY_PHOTOS[0].caption}
+                                className="w-full h-80 object-cover object-top"
+                            />
+                            <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 to-transparent p-5">
+                                <p className="text-xs font-mono text-zinc-400 uppercase tracking-widest">{CEREMONY_PHOTOS[0].caption}</p>
                             </div>
-                        </StaggerItem>
-                    ))}
-                </StaggerContainer>
+                        </motion.div>
+
+                        <motion.div
+                            style={{ y: y2 }}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.2, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                            viewport={{ once: true }}
+                            className="relative overflow-hidden rounded-2xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.8)] ml-8"
+                        >
+                            <img
+                                src={CEREMONY_PHOTOS[1].src}
+                                alt={CEREMONY_PHOTOS[1].caption}
+                                className="w-full h-80 object-cover object-top"
+                            />
+                            <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 to-transparent p-5">
+                                <p className="text-xs font-mono text-zinc-400 uppercase tracking-widest">{CEREMONY_PHOTOS[1].caption}</p>
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
             </div>
         </section>
     );

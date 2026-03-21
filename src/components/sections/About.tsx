@@ -1,8 +1,13 @@
-"use client";
-
 import { cvData } from "@/data/cv";
-import { SlideUp, FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion-helpers";
-import { Beaker, Globe, Mail, Activity, Cpu, Award } from "lucide-react";
+import { SlideUp, FadeIn } from "@/components/ui/motion-helpers";
+import { motion } from "framer-motion";
+import { Beaker, Globe, Mail, Cpu, Linkedin, Twitter } from "lucide-react";
+
+const SOCIAL = [
+    { icon: Linkedin, label: "LinkedIn", url: "https://www.linkedin.com/in/aroulrosario/", handle: "aroulrosario" },
+    { icon: Twitter, label: "X / Twitter", url: "https://x.com/rosarioaroul", handle: "@rosarioaroul" },
+    { label: "Medium", url: "https://medium.com/@aroul.rosario", handle: "@aroul.rosario", icon: null },
+];
 
 export function About() {
     const tagline = cvData.personalInfo.tagline;
@@ -14,7 +19,7 @@ export function About() {
                 <div className="mb-20">
                     <FadeIn>
                         <p className="text-xs font-mono tracking-widest uppercase text-zinc-600 mb-4">
-                            02 // Mission & Background
+                            02 // Mission &amp; Background
                         </p>
                         <h2 className="text-5xl md:text-7xl font-display font-bold text-white tracking-tighter">
                             Bridging Core Science <br />with Digital Frontiers.
@@ -44,8 +49,60 @@ export function About() {
                         </SlideUp>
                     </div>
 
+                    {/* Profile Photo */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                        viewport={{ once: true }}
+                        className="md:col-span-4 glass-card overflow-hidden relative group"
+                    >
+                        <img
+                            src="/photos/profile.png"
+                            alt="Dr. Aroul Rosario S — Vice Principal & Ed-Tech Founder"
+                            className="w-full h-full object-cover object-top min-h-[400px]"
+                        />
+
+                        {/* SYSTEM STATUS Overlay */}
+                        <div className="absolute inset-0 p-6 flex flex-col justify-between pointer-events-none">
+                            <motion.div
+                                initial={{ opacity: 0, x: 20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.5 }}
+                                className="glass-card bg-black/40 backdrop-blur-md border-white/10 p-4 self-start w-full max-w-[200px]"
+                            >
+                                <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center bg-white/5">
+                                        <div className="w-4 h-4 text-white">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-[0.2em]">System Status</span>
+                                </div>
+                                <div className="space-y-3">
+                                    <div className="flex items-center justify-between border-b border-white/5 pb-2">
+                                        <span className="text-[9px] font-mono text-zinc-500 uppercase">Network</span>
+                                        <span className="text-[9px] font-mono text-white uppercase tracking-wider">Optimized</span>
+                                    </div>
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-[9px] font-mono text-zinc-500 uppercase">Phase</span>
+                                        <span className="text-[9px] font-mono text-white uppercase tracking-wider">Execution</span>
+                                    </div>
+                                </div>
+                            </motion.div>
+
+                            {/* Bio details overlay at bottom */}
+                            <div className="bg-gradient-to-t from-black/90 via-black/40 to-transparent pt-12 pb-2 px-2 backdrop-blur-[2px]">
+                                <p className="text-sm font-display font-bold text-white leading-tight">Dr. Aroul Rosario S</p>
+                                <p className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest mt-1">FRSA · IUPAC Affiliate · ACS Member</p>
+                            </div>
+                        </div>
+                    </motion.div>
+
                     {/* Stats Grid */}
-                    <div className="md:col-span-4 grid grid-cols-1 gap-6">
+                    <div className="md:col-span-12 lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-6">
                         <div className="glass-card p-8 flex flex-col justify-between group">
                             <Cpu className="w-8 h-8 text-zinc-700 group-hover:text-white transition-colors" />
                             <div>
@@ -56,48 +113,37 @@ export function About() {
                         <div className="glass-card p-8 flex flex-col justify-between group">
                             <Beaker className="w-8 h-8 text-zinc-700 group-hover:text-white transition-colors" />
                             <div>
-                                <span className="text-4xl font-display font-bold text-white block">3rd</span>
-                                <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Generation Pedagogy</span>
+                                <span className="text-4xl font-display font-bold text-white block">5+</span>
+                                <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Ventures Founded</span>
                             </div>
                         </div>
                     </div>
 
-                    {/* Infrastructure Tile */}
-                    <div className="md:col-span-12 lg:col-span-4 glass-card p-8 group overflow-hidden">
-                        <div className="flex items-center gap-4 mb-8">
-                            <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
-                                <Activity className="w-5 h-5 text-white/40" />
-                            </div>
-                            <span className="text-xs font-mono text-white/60 uppercase tracking-widest">System Status</span>
-                        </div>
-                        <div className="space-y-4">
-                            {[
-                                { l: "Network State", v: "Optimized" },
-                                { l: "Research Phase", v: "Execution" },
-                                { l: "Infrastructure", v: "Azure/Hybrid" }
-                            ].map((s, i) => (
-                                <div key={i} className="flex justify-between items-center py-2 border-b border-white/5">
-                                    <span className="text-xs text-zinc-500">{s.l}</span>
-                                    <span className="text-xs font-mono text-white">{s.v}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Connectivity Tile */}
+                    {/* Social / Connectivity Tile */}
                     <div className="md:col-span-12 lg:col-span-8 px-10 py-12 glass-card flex flex-col md:flex-row items-center justify-between gap-12 bg-white/[0.01]">
                         <div className="max-w-md">
-                            <h4 className="text-2xl font-display font-bold text-white mb-2">Connect to the Hive.</h4>
-                            <p className="text-zinc-500 text-sm">Direct encrypted communication for institutional collaboration and research inquiries.</p>
+                            <h4 className="text-2xl font-display font-bold text-white mb-2">Connect.</h4>
+                            <p className="text-zinc-500 text-sm">Reach out for institutional collaboration, research inquiries, or speaking invitations.</p>
                         </div>
-                        <div className="flex flex-wrap gap-4">
-                            <a href={`mailto:${cvData.personalInfo.email}`} className="flex items-center gap-3 px-6 py-3 bg-white text-black rounded-full font-medium hover:bg-zinc-200 transition-colors">
+                        <div className="flex flex-wrap gap-3">
+                            <a href={`mailto:${cvData.personalInfo.email}`} className="flex items-center gap-2 px-5 py-2.5 bg-white text-black rounded-full font-medium hover:bg-zinc-200 transition-colors text-sm">
                                 <Mail className="w-4 h-4" />
-                                <span>Dispatch Email</span>
+                                Email
                             </a>
-                            <a href={`https://${cvData.personalInfo.website}`} target="_blank" className="flex items-center gap-3 px-6 py-3 border border-white/20 rounded-full font-medium hover:bg-white/5 transition-colors">
+                            {cvData.socialLinks.map((s) => {
+                                const Icon = s.platform === "LinkedIn" ? Linkedin : s.platform === "Twitter" ? Twitter : null;
+                                return (
+                                    <a key={s.platform} href={s.url} target="_blank" rel="noopener noreferrer"
+                                        className="flex items-center gap-2 px-5 py-2.5 border border-white/20 rounded-full font-medium hover:bg-white/10 transition-colors text-sm text-white">
+                                        {Icon && <Icon className="w-4 h-4" />}
+                                        {!Icon && <span className="font-bold text-xs">M</span>}
+                                        {s.platform}
+                                    </a>
+                                );
+                            })}
+                            <a href={`https://${cvData.personalInfo.website}`} target="_blank" className="flex items-center gap-2 px-5 py-2.5 border border-white/20 rounded-full font-medium hover:bg-white/5 transition-colors text-sm text-white">
                                 <Globe className="w-4 h-4" />
-                                <span>Open Portal</span>
+                                Website
                             </a>
                         </div>
                     </div>

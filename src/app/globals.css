@@ -7,12 +7,20 @@
 
 @layer base {
   :root {
-    --background: #000000;
+    --background: #020204;
     --foreground: #ffffff;
-    --zinc-950: #09090b;
-    --zinc-900: #18181b;
-    --zinc-800: #27272a;
-    --zinc-700: #3f3f46;
+    --zinc-950: #050508;
+    --zinc-900: #0a0a0f;
+    --zinc-800: #14141a;
+    --zinc-700: #27272a;
+    --glass-bg: rgba(8, 8, 12, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-blur: blur(32px) saturate(190%);
+    --glass-shadow: 0 10px 50px -10px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    --glass-glow: 0 0 80px -40px rgba(255, 255, 255, 0.08);
+    
+    --accent-primary: #00f2ff;
+    --accent-secondary: #ff00ff;
   }
 
   body {
@@ -20,66 +28,136 @@
     color: var(--foreground);
     @apply antialiased overflow-x-hidden;
     font-family: var(--font-sans);
+    
+    /* Global Background Depth */
+    background-image: 
+      radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.03) 0%, transparent 40%),
+      radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.025) 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, rgba(25, 25, 35, 0.6) 0%, transparent 100%);
+    background-attachment: fixed;
   }
 }
 
-/* Custom UI Components using standard CSS to avoid @apply conflicts in v4 */
+/* ─── EXTREME DARK GLASSMORPHISM ─────────────────────────────────────────── */
+
+/* Base glass layer – nav bar, overlays */
 .glass {
-  background: rgba(9, 9, 11, 0.4);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), var(--glass-glow);
+  position: relative;
 }
 
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.03) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Card glass – interactive cards */
 .glass-card {
   position: relative;
   overflow: hidden;
   border-radius: 1.5rem;
   transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  background: rgba(9, 9, 11, 0.4);
-  backdrop-filter: blur(24px);
+  background: linear-gradient(165deg,
+      rgba(15, 15, 22, 0.8) 0%,
+      rgba(5, 5, 8, 0.95) 100%);
+  backdrop-filter: blur(40px) saturate(210%);
+  -webkit-backdrop-filter: blur(40px) saturate(210%);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 10px 40px -10px rgba(0, 0, 0, 0.95),
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.4) inset;
+}
+
+/* Top-edge iridescent micro-highlight */
+.glass-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.15) 20%,
+      rgba(255, 255, 255, 0.28) 50%,
+      rgba(255, 255, 255, 0.15) 80%,
+      transparent);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Ambient inner radial glow */
+.glass-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%,
+      rgba(255, 255, 255, 0.05) 0%,
+      transparent 70%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .glass-card:hover {
   border-color: rgba(255, 255, 255, 0.2);
-  background: rgba(24, 24, 27, 0.4);
-  box-shadow: 0 20px 40px -20px rgba(255, 255, 255, 0.1);
+  background: linear-gradient(165deg,
+      rgba(20, 20, 30, 0.85) 0%,
+      rgba(8, 8, 12, 0.98) 100%);
+  box-shadow:
+    0 15px 50px -5px rgba(0, 0, 0, 1),
+    0 1px 0 rgba(255, 255, 255, 0.15) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.5) inset,
+    0 0 80px -20px rgba(255, 255, 255, 0.1);
   transform: translateY(-4px) scale(1.01);
 }
 
+/* ─── TYPOGRAPHY ────────────────────────────────────────────────────────────── */
 .heading-monochrome {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 900;
   letter-spacing: -0.05em;
   color: white;
-  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.1));
+  filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.12));
 }
 
+/* ─── NOISE TEXTURE ─────────────────────────────────────────────────────────── */
 .noise-bg {
   position: relative;
 }
 
 .noise-bg::before {
   content: "";
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: 0;
-  opacity: 0.03;
+  opacity: 0.025;
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
+/* ─── SCANLINE ──────────────────────────────────────────────────────────────── */
 .scanline {
   position: fixed;
   inset: 0;
   z-index: 50;
   pointer-events: none;
-  opacity: 0.03;
-  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.1), transparent);
-  height: 40vh;
-  animation: scan 12s linear infinite;
+  opacity: 0.04;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.15), transparent);
+  height: 30vh;
+  animation: scan 14s linear infinite;
 }
 
 @keyframes scan {
@@ -92,9 +170,9 @@
   }
 }
 
-/* Custom Scrollbar */
+/* ─── SCROLLBAR ─────────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 3px;
 }
 
 ::-webkit-scrollbar-track {
@@ -110,7 +188,11 @@
   background: #3f3f46;
 }
 
+/* ─── SELECTION ─────────────────────────────────────────────────────────────── */
 ::selection {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
   color: #fff;
 }
+
+/* ─── CURSOR ────────────────────────────────────────────────────────────────── */
+/* Custom cursor removed per user feedback */
