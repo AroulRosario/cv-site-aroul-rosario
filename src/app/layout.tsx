@@ -12,19 +12,19 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://cv-site-rosario.vercel.app";
+const siteUrl = "https://www.aroulrosario.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Dr. Aroul Rosario S | Vice Principal, Chemist & Ed-Tech Founder | Puducherry",
-    template: "%s | Dr. Aroul Rosario S",
+    default: "Aroul Rosario | Vice Principal, Chemist & Ed-Tech Founder | Puducherry",
+    template: "%s | Aroul Rosario",
   },
   description:
     "Dr. Aroul Rosario S — Vice Principal, Research Chemist, and serial Ed-Tech founder. Founder of OG Chemistry, Starborn IVY, Starborn Young Scientist Academy, and Neural Review. Keynote speaker at IIT Delhi. IIM-A certified Digital Strategist. FRSA. Author of 10,000+ educational simulations and multiple publications at CERN, Cambridge, and Harvard Dataverse.",
   keywords: [
-    "Dr Aroul Rosario",
     "Aroul Rosario",
+    "Dr Aroul Rosario",
     "OG Chemistry",
     "Starborn IVY",
     "Starborn Young Scientist Academy",
@@ -178,7 +178,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased text-white bg-black`}
+        className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased text-white`}
       >
         {children}
       </body>

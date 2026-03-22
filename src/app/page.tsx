@@ -18,7 +18,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black selection:bg-white/30 text-white selection:text-white relative noise-bg">
+    <main className="min-h-screen selection:bg-white/30 text-white selection:text-white relative noise-bg">
       <div className="scanline" />
       <MolecularLattice />
       <ScrollProgress />
@@ -50,8 +50,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative py-20 bg-black/50">
-          <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-center gap-12 text-center">
+        <section className="relative py-20 relative overflow-hidden">
+          {/* Subtle glow for academics section on home page */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_50%_50%,rgba(0,242,255,0.015),transparent)] pointer-events-none" />
+          <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-center gap-12 text-center relative z-10">
             <h2 className="text-4xl md:text-6xl font-display font-black text-white/10 uppercase tracking-tighter">Academic Excellence</h2>
             <Link href="/academics" className="px-12 py-6 border border-white/10 hover:border-white transition-all text-sm font-mono uppercase tracking-[0.3em] bg-white/5 backdrop-blur-sm">
               Enter Academic Archives

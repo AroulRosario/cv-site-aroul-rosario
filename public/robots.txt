@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cv-site-rosario.vercel.app/sitemap.xml
+Sitemap: https://www.aroulrosario.com/sitemap.xml
