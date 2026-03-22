@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 const BOOKS = [
     {
@@ -42,38 +41,18 @@ const BOOKS = [
 ];
 
 function BookCard({ book, index }: { book: typeof BOOKS[0]; index: number }) {
-    const ref = useRef<HTMLDivElement>(null);
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-
-    const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [8, -8]), { stiffness: 300, damping: 30 });
-    const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-8, 8]), { stiffness: 300, damping: 30 });
-
-    const handleMouse = (e: React.MouseEvent<HTMLDivElement>) => {
-        const rect = ref.current?.getBoundingClientRect();
-        if (!rect) return;
-        x.set((e.clientX - rect.left) / rect.width - 0.5);
-        y.set((e.clientY - rect.top) / rect.height - 0.5);
-    };
-
     return (
         <motion.div
-            initial={{ opacity: 0, y: 60 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ delay: index * 0.08, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true }}
-            ref={ref}
-            onMouseMove={handleMouse}
-            onMouseLeave={() => { x.set(0); y.set(0); }}
-            style={{ perspective: 800 }}
+            whileHover={{ y: -6, scale: 1.02 }}
             className="group cursor-default"
         >
-            <motion.div
-                style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-                className="relative"
-            >
+            <div className="relative">
                 {/* Book Cover */}
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.8)] group-hover:shadow-[0_30px_80px_rgba(255,255,255,0.05),0_20px_60px_rgba(0,0,0,0.9)] transition-shadow duration-700">
+                <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.8)] group-hover:shadow-[0_30px_80px_rgba(255,255,255,0.05),0_20px_60px_rgba(0,0,0,0.9)] group-hover:border-white/20 transition-all duration-500">
                     <img
                         src={book.cover}
                         alt={`${book.title} — book by Dr. Aroul Rosario`}
@@ -100,16 +79,16 @@ function BookCard({ book, index }: { book: typeof BOOKS[0]; index: number }) {
                     </h3>
                     <p className="text-xs font-mono text-zinc-600 mt-1">{book.subtitle}</p>
                 </div>
-            </motion.div>
+            </div>
         </motion.div>
     );
 }
 
 export function Books() {
     return (
-        <section id="books" className="py-32 bg-zinc-950 relative border-y border-white/5 overflow-hidden">
+        <section id="books" className="py-32 relative border-y border-white/5 overflow-hidden">
             {/* Ambient glow */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_100%,rgba(255,255,255,0.03),transparent)] pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_100%,rgba(0,242,255,0.025),transparent)] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">

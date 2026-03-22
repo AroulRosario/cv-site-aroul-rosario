@@ -8,73 +8,31 @@ import { Startups } from "@/components/sections/Startups";
 import { Initiatives } from "@/components/sections/Initiatives";
 import { Experience } from "@/components/sections/Experience";
 import { Education } from "@/components/sections/Education";
+import { Certifications } from "@/components/sections/Certifications";
 import { Skills } from "@/components/sections/Skills";
 import { Press } from "@/components/sections/Press";
 import { Contact } from "@/components/sections/Contact";
-import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { MolecularLattice } from "@/components/ui/MolecularLattice";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
-    <main className="min-h-screen selection:bg-white/30 text-white selection:text-white relative noise-bg">
-      <div className="scanline" />
+    <main className="min-h-screen text-white relative">
       <MolecularLattice />
-      <ScrollProgress />
       <Navbar />
 
       <Hero />
       <About />
+      <Startups />
+      <Initiatives />
+      <Experience />
 
-      {/* Sections with 'View All' triggers for the multi-page feel */}
-      <div className="space-y-0">
+      {/* Academic credentials always visible */}
+      <Education />
+      <Certifications />
 
-        <section className="relative">
-          <Startups />
-          <div className="max-w-7xl mx-auto px-6 md:px-12 pb-20 -mt-10">
-            <Link href="/startups" className="group flex items-center gap-4 text-xs font-mono uppercase tracking-widest text-zinc-500 hover:text-white transition-colors">
-              <span>View All Ventures & Initiatives</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
-            </Link>
-          </div>
-        </section>
-
-        <section className="relative">
-          <Experience />
-          <div className="max-w-7xl mx-auto px-6 md:px-12 pb-20 -mt-10">
-            <Link href="/experience" className="group flex items-center gap-4 text-xs font-mono uppercase tracking-widest text-zinc-500 hover:text-white transition-colors">
-              <span>View Full Experience</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
-            </Link>
-          </div>
-        </section>
-
-        <section className="relative py-20 relative overflow-hidden">
-          {/* Subtle glow for academics section on home page */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_50%_50%,rgba(0,242,255,0.015),transparent)] pointer-events-none" />
-          <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-center gap-12 text-center relative z-10">
-            <h2 className="text-4xl md:text-6xl font-display font-black text-white/10 uppercase tracking-tighter">Academic Excellence</h2>
-            <Link href="/academics" className="px-12 py-6 border border-white/10 hover:border-white transition-all text-sm font-mono uppercase tracking-[0.3em] bg-white/5 backdrop-blur-sm">
-              Enter Academic Archives
-            </Link>
-          </div>
-        </section>
-
-        <Skills />
-
-        <section className="relative">
-          <Press />
-          <div className="max-w-7xl mx-auto px-6 md:px-12 pb-20 -mt-12 relative z-20">
-            <Link href="/press" className="group flex items-center gap-4 text-xs font-mono uppercase tracking-widest text-zinc-500 hover:text-white transition-colors">
-              <span>Enter Media Portal</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
-            </Link>
-          </div>
-        </section>
-
-        <Contact />
-      </div>
+      <Skills />
+      <Press />
+      <Contact />
 
       <Footer />
     </main>

@@ -1,9 +1,8 @@
 "use client";
 
 import { cvData } from "@/data/cv";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { FadeIn } from "@/components/ui/motion-helpers";
-import { useRef } from "react";
 
 const AWARD_ICONS = ["🏛️", "⚗️", "🌍"];
 
@@ -19,15 +18,9 @@ const CEREMONY_PHOTOS = [
 ];
 
 export function Awards() {
-    const sectionRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
-    const y1 = useTransform(scrollYProgress, [0, 1], ["0%", "-8%"]);
-    const y2 = useTransform(scrollYProgress, [0, 1], ["5%", "-5%"]);
-
     return (
-        <section ref={sectionRef} id="awards" className="py-32 bg-zinc-950 relative overflow-hidden border-y border-white/5">
-            {/* Scanline texture */}
-            <div className="absolute inset-0 opacity-[0.02] pointer-events-none"
+        <section id="awards" className="py-32 relative overflow-hidden border-y border-white/5">
+            <div className="absolute inset-0 opacity-[0.015] pointer-events-none"
                 style={{ backgroundImage: "repeating-linear-gradient(0deg, white 0px, white 1px, transparent 1px, transparent 60px)" }} />
 
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
@@ -69,7 +62,6 @@ export function Awards() {
                     {/* Ceremony photo collage with parallax */}
                     <div className="relative flex flex-col gap-5 lg:mt-12">
                         <motion.div
-                            style={{ y: y1 }}
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -87,7 +79,6 @@ export function Awards() {
                         </motion.div>
 
                         <motion.div
-                            style={{ y: y2 }}
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.2, duration: 1, ease: [0.16, 1, 0.3, 1] }}

@@ -1,9 +1,8 @@
 "use client";
 
 import { cvData } from "@/data/cv";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { FadeIn } from "@/components/ui/motion-helpers";
-import { useRef } from "react";
 import { ExternalLink, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
@@ -27,12 +26,8 @@ const STARTUP_GLOW = [
 ];
 
 export function Startups() {
-    const sectionRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
-    const photoY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
-
     return (
-        <section ref={sectionRef} id="startups" className="py-32 relative overflow-hidden">
+        <section id="startups" className="py-32 relative overflow-hidden">
             {/* Background glow */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_80%_50%,rgba(255,255,255,0.03),transparent)] pointer-events-none" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(0,120,255,0.02)_0%,transparent_60%)] pointer-events-none" />
@@ -89,15 +84,14 @@ export function Startups() {
                     viewport={{ once: true }}
                     className="relative overflow-hidden rounded-3xl border border-white/10 bg-zinc-950 min-h-[420px] flex"
                 >
-                    {/* Photo left side — parallax */}
+                    {/* Photo left side */}
                     <div className="relative w-1/2 hidden md:block overflow-hidden">
-                        <motion.img
+                        <img
                             src="/photos/iit-delhi-talk.jpg"
                             alt="Dr. Aroul Rosario speaking at IIT Delhi Technology Showcase"
-                            style={{ y: photoY }}
-                            className="absolute inset-0 w-full h-[110%] object-cover object-left"
+                            className="absolute inset-0 w-full h-full object-cover object-left"
                         />
-                        {/* Film grain overlay */}
+                        {/* Gradient overlay */}
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent to-zinc-950/80" />
                     </div>
 

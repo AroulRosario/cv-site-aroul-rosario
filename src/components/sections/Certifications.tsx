@@ -1,35 +1,21 @@
 "use client";
 
-import { useRef } from "react";
 import { cvData } from "@/data/cv";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { FadeIn } from "@/components/ui/motion-helpers";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 
 export function Certifications() {
-    const sectionRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: sectionRef,
-        offset: ["start end", "end start"]
-    });
-
-    // Parallax background effects
-    const yBackground = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-    const opacityBackground = useTransform(scrollYProgress, [0, 0.5, 1], [0.1, 0.6, 0.1]);
-
     const allCerts = [
         ...cvData.designAndTechCertifications.map(c => ({ ...c, type: "tech" as const })),
         ...cvData.academicCertifications.map(c => ({ ...c, type: "academic" as const })),
     ];
 
     return (
-        <section ref={sectionRef} id="certifications" className="py-32 bg-zinc-950 relative border-y border-white/5 overflow-hidden">
-            <motion.div
-                style={{ y: yBackground, opacity: opacityBackground }}
-                className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_0%,rgba(255,255,255,0.06),transparent)] pointer-events-none"
-            />
+        <section id="certifications" className="py-32 relative border-y border-white/5 overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_0%,rgba(255,255,255,0.04),transparent)] pointer-events-none" />
 
-            <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at center, white 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+            <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: 'radial-gradient(circle at center, white 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
                 <FadeIn>

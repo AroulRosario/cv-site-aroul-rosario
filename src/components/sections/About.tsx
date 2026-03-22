@@ -13,7 +13,7 @@ export function About() {
     const tagline = cvData.personalInfo.tagline;
 
     return (
-        <section id="about" className="py-32 relative bg-black noise-bg">
+        <section id="about" className="py-32 relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-6 md:px-12">
 
                 <div className="mb-20">
