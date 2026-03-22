@@ -86,8 +86,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl,
   },
-  verification: {
-    google: "google-site-verification",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/favicon.svg",
   },
 };
 
@@ -166,12 +169,16 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="canonical" href={siteUrl} />
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#05050f" />
         <meta name="color-scheme" content="dark" />
         <meta property="og:locale" content="en_IN" />
         <meta name="geo.region" content="IN-PY" />
         <meta name="geo.placename" content="Puducherry, India" />
+        <meta name="author" content="Dr. Aroul Rosario S" />
+        <meta name="classification" content="Education, Research, Academic" />
+        <meta name="category" content="Educationalist, Ed-Tech, Research Scientist" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

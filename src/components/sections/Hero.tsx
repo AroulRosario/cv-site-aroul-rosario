@@ -1,10 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { cvData } from "@/data/cv";
 import { ArrowDownRight } from "lucide-react";
-import { RevealText, SlideUp, FadeIn, LineDraw } from "@/components/ui/motion-helpers";
-import { Magnetic, GlitchText } from "@/components/ui/InteractiveHelpers";
+import { RevealText, FadeIn, LineDraw } from "@/components/ui/motion-helpers";
+import { GlitchText } from "@/components/ui/InteractiveHelpers";
 import { Spotlight } from "@/components/ui/Spotlight";
 
 export function Hero() {
@@ -41,10 +40,10 @@ export function Hero() {
 
                 {/* Supporting Contact / Title */}
                 <div className="md:col-span-4 flex flex-col justify-end md:pb-4 space-y-8">
-                    <FadeIn delay={0.4}>
+                    <FadeIn>
                         <p className="text-xl md:text-2xl text-zinc-400 font-light leading-snug">
-                            Educator & Chemist.<br />
-                            Bridging classical science with modern computation.
+                            Educationalist &amp; Researcher.<br />
+                            Transforming how the world learns through science and technology.
                         </p>
                     </FadeIn>
 

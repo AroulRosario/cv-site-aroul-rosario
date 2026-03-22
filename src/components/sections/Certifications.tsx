@@ -33,44 +33,31 @@ export function Certifications() {
                     </div>
                 </FadeIn>
 
-                <motion.div
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={{
-                        hidden: {},
-                        show: { transition: { staggerChildren: 0.1 } }
-                    }}
-                    className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-24 relative"
-                >
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-24 relative">
                     {allCerts.map((cert, index) => (
-                        <motion.div
+                        <div
                             key={index}
-                            variants={{
-                                hidden: { opacity: 0, y: 40, scale: 0.8 },
-                                show: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 100, damping: 15 } }
-                            }}
-                            className="group glass border border-white/10 p-8 flex flex-col items-center gap-6 rounded-2xl hover:-translate-y-2 hover:border-white/30 hover:shadow-[0_20px_40px_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-500 text-center"
+                            className="group glass border border-white/10 p-6 md:p-8 flex flex-col items-center gap-4 rounded-2xl hover:-translate-y-2 hover:border-white/30 hover:shadow-[0_20px_40px_rgba(255,255,255,0.05)] transition-all duration-300 text-center"
                         >
-                            <BrandLogo name={cert.org} size={140} />
+                            <BrandLogo name={cert.org} size={100} />
 
                             <div className="w-full flex-grow flex flex-col justify-between">
-                                <p className="text-xs font-display font-bold text-white/80 uppercase tracking-widest group-hover:text-white transition-colors mb-3">
+                                <p className="text-xs font-display font-bold text-white/80 uppercase tracking-widest group-hover:text-white transition-colors mb-2">
                                     {cert.org}
                                 </p>
-                                <p className="text-[10px] font-mono text-zinc-500 leading-relaxed group-hover:text-zinc-300 transition-colors line-clamp-3 mb-4">
+                                <p className="text-[10px] font-mono text-zinc-500 leading-relaxed group-hover:text-zinc-300 transition-colors line-clamp-3 mb-3">
                                     {cert.title}
                                 </p>
                             </div>
 
-                            <div className="mt-auto">
+                            <div>
                                 <span className="text-[9px] font-mono uppercase tracking-[0.2em] px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-zinc-400 group-hover:bg-white/10 group-hover:text-white transition-colors">
                                     {cert.type === "tech" ? "Tech" : "Academic"}
                                 </span>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
-                </motion.div>
+                </div>
 
                 <div className="relative overflow-hidden py-6 border-t border-b border-white/10 bg-gradient-to-r from-transparent via-white/5 to-transparent backdrop-blur-sm">
                     <motion.div
