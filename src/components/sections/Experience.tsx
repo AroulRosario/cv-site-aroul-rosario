@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { cvData } from "@/data/cv";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { FadeIn } from "@/components/ui/motion-helpers";
 import { DeepDive } from "@/components/ui/DeepDive";
@@ -54,12 +53,8 @@ export function Experience() {
                             href="/experience"
                             className="block"
                         >
-                            <motion.div
-                                initial={{ opacity: 0, x: -40 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ delay: index * 0.15, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                                viewport={{ once: true }}
-                                className="group relative flex items-center gap-8 p-8 glass-card border-white/5 cursor-pointer overflow-hidden hover:border-white/20 transition-all"
+                            <div
+                                className="group relative flex items-center gap-4 md:gap-8 p-5 md:p-8 glass-card border-white/5 cursor-pointer overflow-hidden hover:border-white/20 transition-all"
                             >
                                 {/* Logo — big and prominent */}
                                 <div className="flex-shrink-0">
@@ -83,10 +78,10 @@ export function Experience() {
                                 </div>
 
                                 {/* Rank watermark */}
-                                <span className="absolute right-8 bottom-2 text-[120px] font-display font-black text-white/[0.02] leading-none pointer-events-none select-none">
+                                <span className="absolute right-4 md:right-8 bottom-2 text-[80px] md:text-[120px] font-display font-black text-white/[0.02] leading-none pointer-events-none select-none">
                                     {String(index + 1).padStart(2, "0")}
                                 </span>
-                            </motion.div>
+                            </div>
                         </Link>
                     ))}
                 </div>

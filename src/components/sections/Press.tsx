@@ -67,30 +67,28 @@ export function Press() {
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_100%,rgba(0,242,255,0.03),transparent)] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-                <FadeIn>
-                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+                {/* Header */}
+                <div className="mb-20">
+                    <p className="text-xs font-mono tracking-widest uppercase text-zinc-500 mb-4 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 glass">
+                        <Newspaper className="w-3 h-3" />
+                        Press &amp; Media
+                    </p>
+                    <h2 className="text-6xl md:text-8xl lg:text-9xl font-display font-black text-white tracking-tighter leading-none mt-6 mb-12">
+                        Featured<br />
+                        <span className="text-white/20">Nationwide.</span>
+                    </h2>
+                    {/* Stats row — separate so they don't overlap title */}
+                    <div className="flex flex-wrap gap-12 md:gap-20 border-t border-white/5 pt-8">
                         <div>
-                            <p className="text-xs font-mono tracking-widest uppercase text-zinc-500 mb-4 inline-block px-4 py-1.5 rounded-full border border-white/10 glass">
-                                <Newspaper className="inline w-3 h-3 mr-2 mb-0.5" />
-                                Press & Media
-                            </p>
-                            <h2 className="text-7xl md:text-9xl lg:text-[10rem] font-display font-black text-white tracking-tighter leading-none mt-6">
-                                Featured<br />
-                                <span className="text-white/20">Nationwide.</span>
-                            </h2>
+                            <p className="text-5xl md:text-6xl font-display font-black text-white leading-none">{cvData.press.totalOutlets}</p>
+                            <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest mt-3">Media Outlets</p>
                         </div>
-                        <div className="flex flex-col md:flex-row gap-8 md:gap-24 md:justify-end">
-                            <div className="text-left md:text-right">
-                                <p className="text-7xl md:text-8xl lg:text-9xl font-display font-black text-white leading-none">{cvData.press.totalOutlets}</p>
-                                <p className="text-xs font-mono text-zinc-600 uppercase tracking-widest mt-4">Media Outlets</p>
-                            </div>
-                            <div className="text-left md:text-right">
-                                <p className="text-7xl md:text-8xl lg:text-9xl font-display font-black text-white leading-none">{cvData.press.totalReach}</p>
-                                <p className="text-xs font-mono text-zinc-600 uppercase tracking-widest mt-4">Combined Reach</p>
-                            </div>
+                        <div>
+                            <p className="text-5xl md:text-6xl font-display font-black text-white leading-none">{cvData.press.totalReach}</p>
+                            <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest mt-3">Combined Reach</p>
                         </div>
                     </div>
-                </FadeIn>
+                </div>
 
                 {/* Featured press cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16">

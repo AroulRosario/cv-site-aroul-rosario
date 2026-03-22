@@ -1,7 +1,6 @@
 "use client";
 
 import { cvData } from "@/data/cv";
-import { motion } from "framer-motion";
 import { FadeIn } from "@/components/ui/motion-helpers";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 
@@ -48,13 +47,9 @@ export function Education() {
                         {cvData.fellowshipsAndSocieties.map((item, index) => {
                             const meta = DEGREE_META[item.title] ?? { rank: 8, color: "from-white/4 to-white/[0.01]", size: "text-lg" };
                             return (
-                                <motion.div
+                                <div
                                     key={index}
-                                    initial={{ opacity: 0, x: -30 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: index * 0.08, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                                    viewport={{ once: true }}
-                                    className={`group relative flex items-center gap-0 overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-r ${meta.color} hover:border-white/20 backdrop-blur-sm transition-all duration-500`}
+                                    className={`group relative flex items-center gap-0 overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-r ${meta.color} hover:border-white/20 backdrop-blur-sm transition-all duration-300`}
                                 >
                                     {/* Left: Large Logo */}
                                     <div className="w-[120px] md:w-[200px] shrink-0 flex items-center justify-center py-8 px-6 border-r border-white/5">
@@ -88,7 +83,7 @@ export function Education() {
                                     <span className="absolute right-6 bottom-1 text-[60px] font-display font-black text-white/[0.03] leading-none select-none pointer-events-none">
                                         {String(meta.rank).padStart(2, "0")}
                                     </span>
-                                </motion.div>
+                                </div>
                             );
                         })}
                     </div>
