@@ -22,32 +22,30 @@ export function Hero() {
 
                 {/* Main Typography */}
                 <div className="md:col-span-8 space-y-2">
-                    <RevealText>
+                    <div>
                         <span className="text-zinc-500 font-mono text-sm tracking-widest uppercase mb-4 block">
                             01 // Profile
                         </span>
-                    </RevealText>
+                    </div>
 
                     <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-bold tracking-tighter leading-[0.9]">
-                        <RevealText>
-                            <GlitchText text="Dr. Aroul" className="text-zinc-400" />
-                        </RevealText>
-                        <RevealText delay={0.1}>
-                            <span className="text-white">Rosario.</span>
-                        </RevealText>
+                        <div className="text-zinc-400">
+                            <GlitchText text="Dr. Aroul" />
+                        </div>
+                        <div className="text-white">Rosario.</div>
                     </h1>
                 </div>
 
                 {/* Supporting Contact / Title */}
                 <div className="md:col-span-4 flex flex-col justify-end md:pb-4 space-y-8">
-                    <FadeIn>
+                    <div>
                         <p className="text-xl md:text-2xl text-zinc-400 font-light leading-snug">
-                            Educationalist &amp; Researcher.<br />
+                            Educationalist, EdTech Founder & Strategist.<br />
                             Transforming how the world learns through science and technology.
                         </p>
-                    </FadeIn>
+                    </div>
 
-                    <FadeIn delay={0.5}>
+                    <div>
                         <div className="flex flex-col space-y-4">
                             <a
                                 href={`mailto:${cvData.personalInfo.email}`}
@@ -66,11 +64,11 @@ export function Hero() {
                                 <ArrowDownRight className="w-5 h-5 text-zinc-500 group-hover:text-white transition-colors duration-300" />
                             </a>
                         </div>
-                    </FadeIn>
+                    </div>
                 </div>
             </div>
 
-            <LineDraw delay={0.8} className="absolute bottom-12 left-6 right-6 md:left-12 md:right-12" />
+            <div className="absolute bottom-12 left-6 right-6 md:left-12 md:right-12 h-px bg-white/20" />
         </section>
     );
 }

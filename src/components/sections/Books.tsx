@@ -42,12 +42,7 @@ const BOOKS = [
 
 function BookCard({ book, index }: { book: typeof BOOKS[0]; index: number }) {
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.08, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            viewport={{ once: true }}
-            whileHover={{ y: -6, scale: 1.02 }}
+        <div
             className="group cursor-default"
         >
             <div className="relative">
@@ -80,7 +75,7 @@ function BookCard({ book, index }: { book: typeof BOOKS[0]; index: number }) {
                     <p className="text-xs font-mono text-zinc-600 mt-1">{book.subtitle}</p>
                 </div>
             </div>
-        </motion.div>
+        </div>
     );
 }
 
@@ -126,11 +121,7 @@ export function Books() {
                         ))}
                     </div>
 
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                        viewport={{ once: true }}
+                    <div
                         className="relative overflow-hidden rounded-2xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.8)] group"
                     >
                         <img
@@ -143,7 +134,7 @@ export function Books() {
                                 Chemistry for IIT-JEE &amp; NEET — Author&apos;s copy
                             </p>
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
             </div>
         </section>

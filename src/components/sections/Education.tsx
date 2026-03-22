@@ -30,13 +30,13 @@ export function Education() {
             />
 
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-                <FadeIn>
+                <div>
                     <p className="text-xs font-mono tracking-widest uppercase text-zinc-600 mb-4">08 // Academics & Fellowships</p>
                     <h2 className="text-6xl md:text-8xl font-display font-black text-white tracking-tighter mb-24 leading-none">
                         Credentials<br />
                         <span className="text-white/20">that Matter.</span>
                     </h2>
-                </FadeIn>
+                </div>
 
                 {/* Timeline */}
                 <div className="relative">

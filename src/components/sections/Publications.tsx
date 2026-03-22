@@ -12,7 +12,7 @@ export function Publications() {
 
                 {/* Published Books */}
                 <div className="mb-32">
-                    <FadeIn>
+                    <div>
                         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 border-b border-white/10 pb-8">
                             <h2 className="text-4xl md:text-5xl font-display font-bold text-white tracking-tight flex items-center gap-4">
                                 Published<br />Works
@@ -24,11 +24,11 @@ export function Publications() {
                                 07 // Literature
                             </p>
                         </div>
-                    </FadeIn>
+                    </div>
 
-                    <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {cvData.books.map((book, index) => (
-                            <StaggerItem key={index}>
+                            <div key={index}>
                                 <div className="group flex flex-col justify-between h-full p-8 border border-white/5 bg-black hover:bg-white/5 hover:border-white/20 transition-all duration-500">
                                     <div className="flex justify-between items-start mb-12">
                                         <BookOpen className="w-8 h-8 text-zinc-600 group-hover:text-white transition-colors" />
@@ -40,14 +40,14 @@ export function Publications() {
                                         {book.title}
                                     </h3>
                                 </div>
-                            </StaggerItem>
+                            </div>
                         ))}
-                    </StaggerContainer>
+                    </div>
                 </div>
 
                 {/* Thesis Publications */}
                 <div className="mb-32">
-                    <FadeIn>
+                    <div>
                         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 border-b border-white/10 pb-8">
                             <h2 className="text-4xl md:text-5xl font-display font-medium text-white tracking-tight flex items-center gap-4">
                                 Thesis<br />Publications
@@ -56,11 +56,11 @@ export function Publications() {
                                 08 // Research
                             </p>
                         </div>
-                    </FadeIn>
+                    </div>
 
-                    <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8 text-zinc-500 hover:text-white transition-colors">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-zinc-500 hover:text-white transition-colors">
                         {cvData.thesisPublications.map((pub, index) => (
-                            <StaggerItem key={index}>
+                            <div key={index}>
                                 <div className="group flex flex-col justify-between h-full p-8 border border-white/5 bg-black hover:bg-white/5 hover:border-white/20 transition-all duration-500 text-zinc-500 relative">
                                     <div className="absolute top-8 right-8 opacity-40 group-hover:opacity-100 transition-opacity duration-500">
                                         <BrandLogo name={pub.org} size={40} />
@@ -74,14 +74,14 @@ export function Publications() {
                                         &quot;{pub.title}&quot;
                                     </h3>
                                 </div>
-                            </StaggerItem>
+                            </div>
                         ))}
-                    </StaggerContainer>
+                    </div>
                 </div>
 
                 {/* Research Articles */}
                 <div>
-                    <FadeIn>
+                    <div>
                         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 border-b border-white/10 pb-8">
                             <h2 className="text-4xl md:text-5xl font-display font-medium text-white tracking-tight flex items-center gap-4">
                                 Scientific<br />Articles
@@ -90,11 +90,11 @@ export function Publications() {
                                 09 // Journals
                             </p>
                         </div>
-                    </FadeIn>
+                    </div>
 
-                    <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {cvData.researchArticles.map((article, index) => (
-                            <StaggerItem key={index}>
+                            <div key={index}>
                                 <div className="group flex flex-col justify-between h-full p-8 border border-white/5 bg-black hover:bg-white/5 hover:border-white/20 transition-all duration-500 relative">
                                     <div className="absolute top-8 right-8 opacity-40 group-hover:opacity-100 transition-opacity duration-500">
                                         <BrandLogo name={article.org} size={40} />
@@ -108,9 +108,9 @@ export function Publications() {
                                         &quot;{article.title}&quot;
                                     </h3>
                                 </div>
-                            </StaggerItem>
+                            </div>
                         ))}
-                    </StaggerContainer>
+                    </div>
                 </div>
 
             </div>

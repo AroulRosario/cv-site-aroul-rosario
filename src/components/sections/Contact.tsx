@@ -29,12 +29,8 @@ export function Contact() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {/* Phone */}
-                    <motion.a
+                    <a
                         href={`tel:${contact.phone}`}
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        viewport={{ once: true }}
                         className="group glass-card p-10 flex flex-col gap-6 hover:border-white/25 hover:-translate-y-2 transition-all duration-500"
                     >
                         <div className="w-12 h-12 rounded-xl border border-white/10 flex items-center justify-center group-hover:border-white/30 transition-colors bg-white/5">
@@ -44,14 +40,10 @@ export function Contact() {
                             <p className="text-xs font-mono uppercase tracking-widest text-zinc-600 mb-3">Phone</p>
                             <p className="text-2xl font-display font-black text-white tracking-tight">{contact.phone}</p>
                         </div>
-                    </motion.a>
+                    </a>
 
                     {/* Emails */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        viewport={{ once: true }}
+                    <div
                         className="group glass-card p-10 flex flex-col gap-8 md:col-span-1 border-white/20 hover:border-accent-primary/50 hover:shadow-[0_0_50px_-10px_rgba(0,242,255,0.15)] transition-all duration-700"
                     >
                         <div className="w-14 h-14 rounded-2xl border border-white/10 flex items-center justify-center group-hover:border-accent-primary/50 group-hover:bg-accent-primary/5 transition-all duration-500 bg-white/5">
@@ -69,14 +61,10 @@ export function Contact() {
                                 </a>
                             ))}
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* Links */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        viewport={{ once: true }}
+                    <div
                         className="group glass-card p-10 flex flex-col gap-6 hover:border-white/25 hover:-translate-y-2 transition-all duration-500"
                     >
                         <div className="w-12 h-12 rounded-xl border border-white/10 flex items-center justify-center group-hover:border-white/30 transition-colors bg-white/5">
@@ -94,23 +82,19 @@ export function Contact() {
                                 </a>
                             ))}
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
 
                 {/* Location */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3, duration: 0.8 }}
-                    viewport={{ once: true }}
-                    className="mt-6 glass-card p-8 flex items-center gap-6"
-                >
+                    <div
+                        className="mt-6 glass-card p-8 flex items-center gap-6"
+                    >
                     <MapPin size={20} className="text-zinc-600 shrink-0" />
                     <div>
                         <p className="text-xs font-mono uppercase tracking-widest text-zinc-600 mb-1">Location</p>
                         <p className="text-lg font-display font-bold text-white">Puducherry, India</p>
                     </div>
-                </motion.div>
+                </div>
             </div>
         </section>
     );

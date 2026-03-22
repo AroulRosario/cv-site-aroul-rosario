@@ -24,24 +24,24 @@ export function Experience() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_90%_20%,rgba(0,242,255,0.015)_0%,transparent_50%)] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-                <FadeIn>
+                <div>
                     <p className="text-xs font-mono tracking-widest uppercase text-zinc-600 mb-4">02 // Career Trajectory</p>
                     <h2 className="text-6xl md:text-8xl font-display font-black text-white tracking-tighter mb-24 leading-none">
                         Built.<br />
                         <span className="text-white/20">Led.</span><br />
                         <span className="text-white/10">Scaled.</span>
                     </h2>
-                </FadeIn>
+                </div>
 
                 {/* Stat bar */}
                 <div className="grid grid-cols-3 gap-6 mb-20 pb-20 border-b border-white/5">
                     {STATS.map((s) => (
-                        <FadeIn key={s.label}>
+                        <div key={s.label}>
                             <div className="text-center">
                                 <p className="text-5xl md:text-6xl font-display font-black text-white tracking-tighter">{s.value}</p>
                                 <p className="text-xs font-mono text-zinc-600 uppercase tracking-widest mt-2">{s.label}</p>
                             </div>
-                        </FadeIn>
+                        </div>
                     ))}
                 </div>
 

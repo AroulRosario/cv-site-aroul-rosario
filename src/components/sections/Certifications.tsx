@@ -18,7 +18,6 @@ export function Certifications() {
             <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: 'radial-gradient(circle at center, white 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-                <FadeIn>
                     <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
                         <div>
                             <p className="text-xs font-mono tracking-widest uppercase text-zinc-500 mb-4 inline-block px-4 py-1.5 rounded-full border border-white/10 glass">07 // Certified by the Best</p>
@@ -31,7 +30,6 @@ export function Certifications() {
                             {allCerts.length} certifications from the world&apos;s most prestigious institutions and technology leaders.
                         </p>
                     </div>
-                </FadeIn>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-24 relative">
                     {allCerts.map((cert, index) => (

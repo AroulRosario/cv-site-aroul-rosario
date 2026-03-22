@@ -17,11 +17,11 @@ const siteUrl = "https://www.aroulrosario.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Aroul Rosario | Vice Principal, Chemist & Ed-Tech Founder | Puducherry",
+    default: "Aroul Rosario | Educationalist, EdTech Founder & Strategist",
     template: "%s | Aroul Rosario",
   },
   description:
-    "Dr. Aroul Rosario S — Vice Principal, Research Chemist, and serial Ed-Tech founder. Founder of OG Chemistry, Starborn IVY, Starborn Young Scientist Academy, and Neural Review. Keynote speaker at IIT Delhi. IIM-A certified Digital Strategist. FRSA. Author of 10,000+ educational simulations and multiple publications at CERN, Cambridge, and Harvard Dataverse.",
+    "Dr. Aroul Rosario S — Educationalist, EdTech Founder and Strategist. Founder of OG Chemistry, Starborn IVY, Starborn Young Scientist Academy, and Neural Review. Keynote speaker at IIT Delhi. IIM-A certified Digital Strategist. FRSA. Author of 10,000+ educational simulations and multiple publications at CERN, Cambridge, and Harvard Dataverse.",
   keywords: [
     "Aroul Rosario",
     "Dr Aroul Rosario",
@@ -31,9 +31,10 @@ export const metadata: Metadata = {
     "Neural Review",
     "Ed-Tech India",
     "EdTech founder India",
-    "Vice Principal Puducherry",
-    "Chemistry educator India",
-    "JEE NEET chemistry teacher",
+    "Educationalist India",
+    "EdTech Founder and Strategist",
+    "STEM educator India",
+    "JEE NEET science teacher",
     "AI education India",
     "IIT Delhi speaker",
     "molecular simulation education",
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
     "IUPAC member",
     "chemistry PhD India",
     "best chemistry teacher India",
-    "research chemist India",
+    "research scientist India",
   ],
   authors: [{ name: "Dr. Aroul Rosario S", url: siteUrl }],
   creator: "Dr. Aroul Rosario S",
@@ -53,23 +54,23 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: siteUrl,
     siteName: "Dr. Aroul Rosario S",
-    title: "Dr. Aroul Rosario S — Chemist, Educator & Ed-Tech Founder",
+    title: "Dr. Aroul Rosario S — Educationalist, EdTech Founder & Strategist",
     description:
-      "Vice Principal · Founder of OG Chemistry, Starborn IVY, Neural Review · IIT Delhi Speaker · FRSA · 10,000+ Educational Simulations · Published at CERN, Cambridge & Harvard",
+      "Educationalist, EdTech Founder & Strategist · Founder of OG Chemistry, Starborn IVY, Neural Review · IIT Delhi Speaker · FRSA · 10,000+ Educational Simulations · Published at CERN, Cambridge & Harvard",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Dr. Aroul Rosario S — Chemist, Educator & Founder",
+        alt: "Dr. Aroul Rosario S — Educationalist, EdTech Founder & Strategist",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dr. Aroul Rosario S — Chemist, Educator & Founder",
+    title: "Dr. Aroul Rosario S — Educationalist, EdTech Founder & Strategist",
     description:
-      "Vice Principal · Founder OG Chemistry, Starborn IVY, Neural Review · IIT Delhi Speaker · FRSA · 10K+ Simulations",
+      "Educationalist, EdTech Founder & Strategist · Founder OG Chemistry, Starborn IVY, Neural Review · IIT Delhi Speaker · FRSA · 10K+ Simulations",
     images: ["/og-image.png"],
   },
   robots: {
@@ -103,7 +104,7 @@ const jsonLd = {
       "@id": `${siteUrl}/#person`,
       name: "Dr. Aroul Rosario S",
       honorificPrefix: "Dr.",
-      jobTitle: "Vice Principal, Research Chemist & Ed-Tech Founder",
+      jobTitle: "Educationalist, EdTech Founder & Strategist",
       url: siteUrl,
       sameAs: ["https://www.ogchemistry.in"],
       worksFor: {
@@ -150,7 +151,7 @@ const jsonLd = {
       "@type": "WebPage",
       "@id": `${siteUrl}/#webpage`,
       url: siteUrl,
-      name: "Dr. Aroul Rosario S — Vice Principal, Chemist & Ed-Tech Founder",
+      name: "Dr. Aroul Rosario S — Educationalist, EdTech Founder & Strategist",
       isPartOf: { "@id": `${siteUrl}/#website` },
       about: { "@id": `${siteUrl}/#person` },
       breadcrumb: {

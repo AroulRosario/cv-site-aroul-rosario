@@ -8,27 +8,27 @@ export function Footer() {
         <footer className="py-32 bg-black relative border-t border-white/10 flex flex-col items-center justify-center text-center">
             <div className="max-w-4xl mx-auto px-6 md:px-12 w-full">
                 <div className="space-y-12 mb-24">
-                    <RevealText>
+                    <div>
                         <p
                             className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white leading-[1.1] tracking-tight"
                             dangerouslySetInnerHTML={{
                                 __html: cvData.footerQuotes[0]
-                                    .replace("crack IIT or NEET.", "<span class='text-zinc-500'>crack IIT or NEET.</span>"),
+                                    .replace("ignite curiosity in every learner.", "<span class='text-zinc-500'>ignite curiosity in every learner.</span>"),
                             }}
                         />
-                    </RevealText>
-                    <RevealText delay={0.2}>
+                    </div>
+                    <div>
                         <p
                             className="text-2xl md:text-3xl font-light text-zinc-400 leading-snug max-w-2xl mx-auto"
                             dangerouslySetInnerHTML={{
                                 __html: cvData.footerQuotes[1]
-                                    .replace("It's built to simplify, not mystify.", "<span class='text-white font-medium'>It's built to simplify, not mystify.</span>"),
+                                    .replace("path to knowledge, not mystify it.", "<span class='text-white font-medium'>path to knowledge, not mystify it.</span>"),
                             }}
                         />
-                    </RevealText>
+                    </div>
                 </div>
 
-                <FadeIn delay={0.4}>
+                <div>
                     <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/10 text-xs font-mono uppercase tracking-widest text-zinc-500">
                         <p>© {new Date().getFullYear()} {cvData.personalInfo.name}</p>
                         <a
@@ -40,7 +40,7 @@ export function Footer() {
                             {cvData.personalInfo.website}
                         </a>
                     </div>
-                </FadeIn>
+                </div>
             </div>
         </footer>
     );

@@ -24,24 +24,20 @@ export function Awards() {
                 style={{ backgroundImage: "repeating-linear-gradient(0deg, white 0px, white 1px, transparent 1px, transparent 60px)" }} />
 
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-                <FadeIn>
+                <div>
                     <p className="text-xs font-mono tracking-widest uppercase text-zinc-500 mb-4 inline-block px-4 py-1.5 rounded-full border border-white/10 glass">06 // Recognitions & Awards</p>
                     <h2 className="text-6xl md:text-8xl font-display font-black text-white tracking-tighter mt-6 mb-24 leading-none">
                         Recognised.<br />
                         <span className="text-white/20">Celebrated.</span>
                     </h2>
-                </FadeIn>
+                </div>
 
                 <div className="grid lg:grid-cols-2 gap-12 items-start">
                     {/* Award plates */}
                     <div className="space-y-5">
                         {cvData.awards.map((award, i) => (
-                            <motion.div
+                            <div
                                 key={i}
-                                initial={{ opacity: 0, x: -40 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ delay: i * 0.12, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                                viewport={{ once: true }}
                                 className="group glass-card p-8 flex gap-6 items-start hover:border-white/20 transition-all duration-500"
                             >
                                 <span className="text-4xl grayscale group-hover:grayscale-0 transition-all duration-500 shrink-0 mt-1">
@@ -55,17 +51,13 @@ export function Awards() {
                                         {award.description}
                                     </p>
                                 </div>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
 
                     {/* Ceremony photo collage with parallax */}
                     <div className="relative flex flex-col gap-5 lg:mt-12">
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                            viewport={{ once: true }}
+                        <div
                             className="relative overflow-hidden rounded-2xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.8)] group"
                         >
                             <img
@@ -76,13 +68,9 @@ export function Awards() {
                             <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 to-transparent p-5">
                                 <p className="text-xs font-mono text-zinc-400 uppercase tracking-widest">{CEREMONY_PHOTOS[0].caption}</p>
                             </div>
-                        </motion.div>
+                        </div>
 
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.2, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                            viewport={{ once: true }}
+                        <div
                             className="relative overflow-hidden rounded-2xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.8)] ml-8"
                         >
                             <img
@@ -93,7 +81,7 @@ export function Awards() {
                             <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 to-transparent p-5">
                                 <p className="text-xs font-mono text-zinc-400 uppercase tracking-widest">{CEREMONY_PHOTOS[1].caption}</p>
                             </div>
-                        </motion.div>
+                        </div>
                     </div>
                 </div>
             </div>

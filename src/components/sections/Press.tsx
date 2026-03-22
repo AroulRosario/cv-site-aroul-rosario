@@ -93,15 +93,11 @@ export function Press() {
                 {/* Featured press cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16">
                     {cvData.press.featured.map((p, i) => (
-                        <motion.a
+                        <a
                             key={i}
                             href={p.url}
                             target={p.url !== "#" ? "_blank" : undefined}
                             rel="noopener noreferrer"
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                            viewport={{ once: true }}
                             className="group glass-card p-8 flex flex-col gap-6 hover:border-white/30 hover:-translate-y-1 transition-all duration-500 relative overflow-hidden"
                         >
                             {/* Glow on hover */}
@@ -124,7 +120,7 @@ export function Press() {
                                     {p.audience}
                                 </span>
                             </div>
-                        </motion.a>
+                        </a>
                     ))}
                 </div>
 

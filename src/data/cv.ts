@@ -1,14 +1,14 @@
 export const cvData = {
     personalInfo: {
         name: "Dr. Aroul Rosario S",
-        title: "Vice Principal & Ed-Tech Innovator",
+        title: "Educationalist, EdTech Founder & Strategist",
         phone: "+91-9790517185",
         email: "aroul.rosario@gmail.com",
         alternateEmails: ["contact@starborn.in", "rosario@amalorpavamgroup.com"],
         website: "ogchemistry.in",
         location: "Puducherry, India",
-        tagline: "Chemist. Educator. Founder. Building the future of STEM education.",
-        bio: "Dr. S. Aroul Rosario is a distinguished Indian educationalist, research chemist, and serial ed-tech founder. As Vice Principal of the Amalorpavam Group of Institutions and founder of OG Chemistry, Starborn IVY, Starborn Young Scientist Academy, and Neural Review, he bridges classical scientific research with cutting-edge digital pedagogy at scale.",
+        tagline: "Educationalist, EdTech Founder & Strategist. Building the future of learning.",
+        bio: "Dr. S. Aroul Rosario is a distinguished Indian educationalist, STEM researcher, and serial ed-tech founder. As Founder of OG Chemistry, Starborn IVY, Starborn Young Scientist Academy, and Neural Review, he bridges classical scientific research with cutting-edge digital pedagogy at scale.",
     },
     contact: {
         phone: "+91-9790517185",
@@ -28,8 +28,8 @@ export const cvData = {
             title: "Founder",
             org: "OG Chemistry",
             period: "2020 - Present",
-            description: "Built India's most immersive chemistry learning platform with 10,000+ AI-powered VR simulations.",
-            deepDive: "Conceptualised and built OG Chemistry from zero—a multi-layered ed-tech ecosystem with VR molecular simulations, adaptive assessments, and AI-driven personalisation. ogchemistry.in now serves thousands of JEE/NEET aspirants.",
+            description: "Built India's most immersive STEM learning platform with 10,000+ AI-powered VR simulations.",
+            deepDive: "Conceptualised and built OG Chemistry from zero—a multi-layered ed-tech ecosystem with VR molecular simulations, adaptive assessments, and AI-driven personalisation. ogchemistry.in now serves thousands of STEM students.",
             url: "https://ogchemistry.in"
         },
         {
@@ -70,19 +70,19 @@ export const cvData = {
             deepDive: "Reduced cognitive load for students by implementing evidence-based learning schedules and digital assessment cycles, improving exam outcomes across the board."
         },
         {
-            title: "Chemistry Lecturer",
+            title: "STEM Lecturer",
             org: "Amalorpavam Lourds Academy",
             period: "2019 - 2024",
-            description: "Specialized in Chemistry and advanced JEE/NEET preparation with a 95%+ success rate.",
-            deepDive: "Developed the 'Formula to Intuition' methodology—turning abstract chemistry into visual models. Students consistently rank in the top percentile of JEE and NEET exams."
+            description: "Specialized in STEM and advanced college entrance preparation with a 95%+ success rate.",
+            deepDive: "Developed the 'Formula to Intuition' methodology—turning abstract concepts into visual models. Students consistently rank in the top percentile of competitive exams."
         }
     ],
     startups: [
         {
             name: "OG Chemistry",
-            tagline: "India's Most Immersive Chemistry Learning Platform",
+            tagline: "India's Most Immersive STEM Learning Platform",
             url: "https://ogchemistry.in",
-            description: "A next-generation ed-tech platform redefining how students learn organic chemistry—through 10,000+ AI-powered VR simulations, adaptive assessments, and cinematic video lessons.",
+            description: "A next-generation ed-tech platform redefining how students learn science—through 10,000+ AI-powered VR simulations, adaptive assessments, and cinematic video lessons.",
         },
         {
             name: "Starborn IVY",
@@ -112,7 +112,7 @@ export const cvData = {
         }
     ],
     skills: {
-        scientific: ["Organic Chemistry", "Coordination Chemistry", "Molecular Modeling", "Quantum Mechanics", "Neuro-cognitive STEM Pedagogy"],
+        scientific: ["STEM Education", "Curriculum Design", "Molecular Modeling", "Quantum Mechanics", "Neuro-cognitive STEM Pedagogy"],
         technical: ["Azure Cognitive Services", "Full-stack EdTech Development", "VR Molecular Simulations", "AI-Augmented Assessment", "Infrastructure Scalability"],
         leadership: ["Digital Strategy (IIM-A)", "Institutional Governance", "Curriculum Innovation", "Public Speaking", "Strategic Counseling"]
     },
@@ -236,12 +236,12 @@ export const cvData = {
         }
     ],
     patents: [
-        "Adaptive Chemistry Simulation Engine for Curriculum-Aligned Learning",
-        "Dynamic Concept Mapping Engine for Chemistry Curriculum Integration",
+        "Adaptive STEM Simulation Engine for Curriculum-Aligned Learning",
+        "Dynamic Concept Mapping Engine for Multidisciplinary Science Integration",
         "Smart Formula Retrieval Hub for Complex Scientific Data"
     ],
     footerQuotes: [
-        "Chemistry isn't a barrier—it's a bridge. With the right tools, anyone can crack IIT or NEET.",
+        "Education isn't about filling a bucket, but lighting a fire. We build the tools that ignite that spark.",
         "Learning should be as immersive as a video game and as rigorous as a lab experiment."
     ]
 };

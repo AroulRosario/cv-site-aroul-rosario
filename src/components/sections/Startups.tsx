@@ -45,11 +45,7 @@ export function Startups() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
                     {cvData.startups.map((s, i) => (
                         <Link key={i} href="/startups" className="block h-full">
-                            <motion.div
-                                initial={{ opacity: 0, y: 50 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: i * 0.12, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                                viewport={{ once: true }}
+                            <div
                                 className={`group glass-card h-full bg-gradient-to-br ${STARTUP_COLORS[i % STARTUP_COLORS.length]} border border-white/8 ${STARTUP_BORDER[i % STARTUP_BORDER.length]} ${STARTUP_GLOW[i % STARTUP_GLOW.length]} p-10 flex flex-col justify-between gap-6 transition-all duration-500`}
                             >
                                 <div>
@@ -71,17 +67,13 @@ export function Startups() {
                                         {s.url.replace("https://", "")}
                                     </div>
                                 )}
-                            </motion.div>
+                            </div>
                         </Link>
                     ))}
                 </div>
 
                 {/* IIT Delhi Talk — full-width cinematic callout */}
-                <motion.div
-                    initial={{ opacity: 0, y: 60 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                    viewport={{ once: true }}
+                <div
                     className="relative overflow-hidden rounded-3xl border border-white/10 bg-zinc-950 min-h-[420px] flex"
                 >
                     {/* Photo left side */}
@@ -125,7 +117,7 @@ export function Startups() {
                             ))}
                         </div>
                     </div>
-                </motion.div>
+                </div>
             </div>
         </section>
     );

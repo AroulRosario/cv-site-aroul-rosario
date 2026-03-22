@@ -26,7 +26,7 @@ export function About() {
                     <div className="lg:col-span-4 glass-card overflow-hidden relative group min-h-[280px] md:min-h-[420px]">
                         <img
                             src="/photos/profile.png"
-                            alt="Dr. Aroul Rosario S — Vice Principal & Ed-Tech Founder"
+                            alt="Dr. Aroul Rosario S — Educationalist, EdTech Founder & Strategist"
                             className="w-full h-full object-cover object-top absolute inset-0"
                         />
                         {/* Bio overlay at bottom — no floating card */}
@@ -39,7 +39,7 @@ export function About() {
                     {/* Main Statement */}
                     <div className="lg:col-span-8 glass-card p-6 md:p-10 xl:p-14 flex flex-col justify-center">
                         <p className="text-xl md:text-3xl xl:text-4xl font-light leading-snug tracking-tight text-white">
-                            {tagline}
+                            Designing the future of pedagogy through deep science and intentional technology. Educationalist, EdTech Founder & Strategist.
                         </p>
                         <div className="mt-8 h-px w-full bg-gradient-to-r from-white/20 to-transparent" />
                         <div className="mt-6 flex flex-wrap gap-6 md:gap-8">

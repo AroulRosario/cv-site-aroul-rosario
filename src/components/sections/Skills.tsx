@@ -36,13 +36,9 @@ function SkillBar({ name, pct, delay = 0 }: { name: string; pct: number; delay?:
                 <span className="text-sm font-mono text-zinc-400 group-hover:text-white transition-colors">{name}</span>
             </div>
             <div className="h-px bg-white/5 relative overflow-hidden">
-                <motion.div
+                <div
                     className="absolute inset-y-0 left-0 bg-white/60"
-                    initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: pct / 100 }}
-                    transition={{ duration: 1.2, delay, ease: [0.16, 1, 0.3, 1] }}
-                    style={{ transformOrigin: "left" }}
-                    viewport={{ once: true }}
+                    style={{ transformOrigin: "left", width: `${pct}%` }}
                 />
             </div>
         </div>
