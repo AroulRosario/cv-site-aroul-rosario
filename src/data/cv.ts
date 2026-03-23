@@ -109,6 +109,12 @@ export const cvData = {
             org: "IIT Delhi",
             year: "2025",
             description: "Invited talk at the Indian Institute of Technology Delhi on the intersection of artificial intelligence, neuro-cognitive science, and next-generation chemistry education.",
+        },
+        {
+            title: "Guest Judge — EdTech Pitching Competition",
+            org: "BITS Pilani",
+            year: "2024",
+            description: "Evaluating the next generation of digital learning innovators at one of India's premier technological institutes.",
         }
     ],
     skills: {
