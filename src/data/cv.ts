@@ -182,6 +182,10 @@ export const cvData = {
             description: "Creator of the world's largest library of interactive molecular simulations for chemistry education.",
             deepDive: "Built 10,000+ VR-ready molecular simulations to make atoms visible to students. Each simulation has driven millions of 'aha!' moments in chemistry classrooms worldwide."
         },
+        {
+            title: "Guest Judge — EdTech Pitching Competition",
+            description: "Invited to evaluate high-potential EdTech startups at BITS Pilani, one of India's premier technological institutes.",
+        },
     ],
     designAndTechCertifications: [
         { title: "Computer Vision App With Azure Cognitive Services", org: "Microsoft" },
