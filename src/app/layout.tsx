@@ -17,8 +17,8 @@ const siteUrl = "https://www.aroulrosario.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Aroul Rosario | Educationalist, EdTech Founder & Strategist",
-    template: "%s | Aroul Rosario",
+    default: "Dr. Aroul Rosario S | Educationalist, EdTech Founder & Strategist",
+    template: "%s | Dr. Aroul Rosario S",
   },
   description:
     "Dr. Aroul Rosario S — Educationalist, EdTech Founder and Strategist. Founder of OG Chemistry, Starborn IVY, Starborn Young Scientist Academy, and Neural Review. Keynote speaker at IIT Delhi. IIM-A certified Digital Strategist. FRSA. Author of 10,000+ educational simulations and multiple publications at CERN, Cambridge, and Harvard Dataverse.",
