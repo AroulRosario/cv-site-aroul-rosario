@@ -19,46 +19,27 @@ export function AboutNew() {
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
                     
-                    {/* Visual Narrative Side */}
-                    <div className="lg:col-span-12 xl:col-span-5 relative group">
-                        <div className="relative aspect-[3/4] overflow-hidden">
-                            <img
-                                src="/photos/profile.png"
-                                alt="Dr. Aroul Rosario S"
-                                className="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 hover:brightness-100 transition-all duration-1000 ease-out"
-                            />
-                            {/* Simple minimal overlay */}
-                            <div className="absolute inset-0 border border-white/10 m-4 pointer-events-none" />
-                        </div>
-                        
-                        {/* Status bar - clean & meaningful */}
-                        <div className="mt-8 flex items-center justify-between border-b border-white/10 pb-4">
-                            <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-[0.4em]">Current Focus</span>
-                            <span className="text-xs text-white font-medium uppercase tracking-widest">Digital Learning Ecosystems</span>
-                        </div>
-                    </div>
-
-                    {/* Content Narrative Side */}
-                    <div className="lg:col-span-12 xl:col-span-7">
-                        <div className="space-y-12">
-                            <div>
+                    {/* Content Narrative Side - Centered */}
+                    <div className="lg:col-span-12 flex flex-col items-center">
+                        <div className="space-y-12 max-w-4xl text-center lg:text-left">
+                            <div className="flex flex-col items-center lg:items-start">
                                 <span className="text-xs font-mono text-zinc-600 uppercase tracking-[0.5em] mb-8 block">
                                     02 // Perspective
                                 </span>
                                 <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-medium text-white tracking-tighter leading-[0.95] mb-12">
                                     Architect of <br />
-                                    <span className="text-zinc-500">Pedagogical Innovation.</span>
+                                    <span className="text-zinc-500 italic">Pedagogical Innovation.</span>
                                 </h2>
-                                <p className="text-xl md:text-2xl text-zinc-400 font-light leading-relaxed max-w-3xl">
+                                <p className="text-xl md:text-2xl text-zinc-400 font-light leading-relaxed">
                                     Dr. S. Aroul Rosario is a serial ed-tech founder, STEM researcher, and educational strategist. 
                                     He bridges the gap between deep scientific inquiry and high-scale digital empowerment.
                                 </p>
                             </div>
 
                             {/* Core Pillars */}
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-12 border-t border-white/10">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-12 border-t border-white/10 w-full">
                                 <div className="space-y-4">
-                                    <div className="flex items-center gap-3 text-white">
+                                    <div className="flex items-center gap-3 text-white justify-center lg:justify-start">
                                         <Microscope className="w-4 h-4 text-zinc-600" />
                                         <h4 className="text-sm font-display font-bold uppercase tracking-widest">Research</h4>
                                     </div>
@@ -67,7 +48,7 @@ export function AboutNew() {
                                     </p>
                                 </div>
                                 <div className="space-y-4">
-                                    <div className="flex items-center gap-3 text-white">
+                                    <div className="flex items-center gap-3 text-white justify-center lg:justify-start">
                                         <Rocket className="w-4 h-4 text-zinc-600" />
                                         <h4 className="text-sm font-display font-bold uppercase tracking-widest">Founder</h4>
                                     </div>
@@ -76,7 +57,7 @@ export function AboutNew() {
                                     </p>
                                 </div>
                                 <div className="space-y-4">
-                                    <div className="flex items-center gap-3 text-white">
+                                    <div className="flex items-center gap-3 text-white justify-center lg:justify-start">
                                         <GraduationCap className="w-4 h-4 text-zinc-600" />
                                         <h4 className="text-sm font-display font-bold uppercase tracking-widest">Impact</h4>
                                     </div>
@@ -87,7 +68,7 @@ export function AboutNew() {
                             </div>
 
                             {/* Narrative Action */}
-                            <div className="pt-8">
+                            <div className="pt-8 flex justify-center lg:justify-start">
                                 <a 
                                     href="/experience" 
                                     className="group inline-flex items-center gap-4 text-white hover:text-zinc-400 transition-colors"
