@@ -33,7 +33,7 @@ export const cvData = {
             url: "https://ogchemistry.in"
         },
         {
-            title: "Editor-in-Chief",
+            title: "Editor & Article Reviewer",
             org: "Neural Review",
             period: "2023 - Present",
             description: "Leading AI-powered academic peer review platform democratising research access.",
@@ -79,6 +79,12 @@ export const cvData = {
     ],
     startups: [
         {
+            name: "Neural Review",
+            tagline: "AI-Powered Academic Peer Review",
+            url: "",
+            description: "A platform leveraging large language models to expedite and democratize academic peer review for researchers in STEM fields across the developing world.",
+        },
+        {
             name: "OG Chemistry",
             tagline: "India's Most Immersive STEM Learning Platform",
             url: "https://ogchemistry.in",
@@ -95,12 +101,6 @@ export const cvData = {
             tagline: "Where Curiosity Becomes Discovery",
             url: "https://www.starbornscientist.com",
             description: "An elite ecosystem designed to nurture high-potential young minds through immersive research experiences, hands-on scientific projects, and access to cutting-edge simulations.",
-        },
-        {
-            name: "Neural Review",
-            tagline: "AI-Powered Academic Peer Review",
-            url: "",
-            description: "A platform leveraging large language models to expedite and democratize academic peer review for researchers in STEM fields across the developing world.",
         }
     ],
     talks: [

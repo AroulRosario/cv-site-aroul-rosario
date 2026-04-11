@@ -7,8 +7,8 @@ import { ExternalLink, ArrowUpRight, Rocket } from "lucide-react";
 import Link from "next/link";
 
 const STARTUP_STYLES = [
+    { bg: "bg-gradient-to-br from-violet-50 to-purple-50/50", border: "border-violet-100", hover: "hover:border-violet-300 hover:shadow-violet-100/50", dot: "bg-violet-500" },
     { bg: "bg-gradient-to-br from-orange-50 to-amber-50/50", border: "border-orange-100", hover: "hover:border-orange-300 hover:shadow-orange-100/50", dot: "bg-orange-400" },
-    { bg: "bg-gradient-to-br from-violet-50 to-purple-50/50", border: "border-violet-100", hover: "hover:border-violet-300 hover:shadow-violet-100/50", dot: "bg-violet-400" },
     { bg: "bg-gradient-to-br from-sky-50 to-blue-50/50", border: "border-sky-100", hover: "hover:border-sky-300 hover:shadow-sky-100/50", dot: "bg-sky-400" },
     { bg: "bg-gradient-to-br from-emerald-50 to-teal-50/50", border: "border-emerald-100", hover: "hover:border-emerald-300 hover:shadow-emerald-100/50", dot: "bg-emerald-400" },
 ];

@@ -64,7 +64,7 @@ export function Publications() {
                         <div className="space-y-6">
                             {cvData.thesisPublications.map((pub, index) => (
                                 <div key={index} className="group p-8 border border-slate-100 bg-white hover:border-zinc-300 hover:shadow-xl hover:shadow-zinc-200/50 transition-all duration-500 rounded-3xl relative overflow-hidden">
-                                     <div className="absolute top-8 right-8 grayscale opacity-20 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700">
+                                     <div className="absolute top-8 right-8 opacity-30 group-hover:opacity-100 transition-all duration-500">
                                         <BrandLogo name={pub.org} size={32} />
                                     </div>
                                     <p className="text-[10px] font-mono uppercase tracking-widest text-slate-400 mb-4">{pub.org}</p>
@@ -91,7 +91,7 @@ export function Publications() {
                         <div className="space-y-6">
                             {cvData.researchArticles.map((article, index) => (
                                 <div key={index} className="group p-8 border border-slate-100 bg-zinc-50/50 hover:bg-white hover:border-zinc-300 hover:shadow-xl hover:shadow-zinc-200/50 transition-all duration-500 rounded-3xl relative overflow-hidden">
-                                     <div className="absolute top-8 right-8 grayscale opacity-20 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700">
+                                     <div className="absolute top-8 right-8 opacity-30 group-hover:opacity-100 transition-all duration-500">
                                         <BrandLogo name={article.org} size={32} />
                                     </div>
                                     <p className="text-[10px] font-mono uppercase tracking-widest text-slate-400 mb-4">{article.org}</p>

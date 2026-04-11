@@ -42,7 +42,7 @@ export function Education() {
                                 >
                                     {/* Left: Logo */}
                                     <div className="w-[80px] md:w-[120px] shrink-0 flex items-center justify-center py-10 px-6 border-r border-slate-100 bg-white group-hover:bg-white transition-colors duration-500">
-                                        <div className="grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700">
+                                        <div className="opacity-70 group-hover:opacity-100 transition-all duration-500">
                                             <BrandLogo name={item.org} size={64} />
                                         </div>
                                     </div>

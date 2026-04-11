@@ -33,7 +33,7 @@ export function Certifications() {
                             key={index}
                             className="group bg-white border border-slate-100 p-8 flex flex-col items-center gap-6 rounded-3xl hover:border-zinc-300 hover:shadow-2xl hover:shadow-zinc-200/50 transition-all duration-500 text-center"
                         >
-                            <div className="grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700">
+                            <div className="opacity-70 group-hover:opacity-100 transition-all duration-500">
                                 <BrandLogo name={cert.org} size={80} />
                             </div>
 

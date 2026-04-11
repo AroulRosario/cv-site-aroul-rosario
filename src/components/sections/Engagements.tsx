@@ -36,8 +36,8 @@ export function Engagements() {
                         Public Engagements
                     </span>
                     <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-slate-900 tracking-tighter leading-[0.9]">
-                        Speaking &<br />
-                        <span className="gradient-text">Judging.</span>
+                        Keynote<br />
+                        <span className="gradient-text">Addresses.</span>
                     </h2>
                 </div>
 
