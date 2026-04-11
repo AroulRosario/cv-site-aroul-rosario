@@ -16,10 +16,12 @@ export function Certifications() {
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
                 <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
                     <div>
-                        <p className="text-xs font-mono tracking-widest uppercase text-slate-400 mb-6 inline-block px-4 py-1.5 rounded-full border border-slate-100 bg-zinc-50">07 // Certified Excellence</p>
-                        <h2 className="text-6xl md:text-8xl font-display font-medium text-slate-900 tracking-tighter leading-[0.85] relative">
+                        <span className="inline-flex items-center gap-2 text-violet-600 font-mono text-xs tracking-widest uppercase mb-6 bg-violet-50 px-4 py-2 rounded-full border border-violet-100">
+                            07 // Certified Excellence
+                        </span>
+                        <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-slate-900 tracking-tighter leading-[0.9] relative">
                             Certified<br />
-                            <span className="text-zinc-300 italic">by the Best.</span>
+                            <span className="gradient-text">By the Best.</span>
                         </h2>
                     </div>
                     <p className="text-slate-500 font-mono text-sm max-w-xs text-left md:text-right hidden md:block leading-relaxed">
@@ -31,23 +33,23 @@ export function Certifications() {
                     {allCerts.map((cert, index) => (
                         <div
                             key={index}
-                            className="group bg-white border border-slate-100 p-8 flex flex-col items-center gap-6 rounded-3xl hover:border-zinc-300 hover:shadow-2xl hover:shadow-zinc-200/50 transition-all duration-500 text-center"
+                            className={`group relative bg-white border border-slate-100 p-8 flex flex-col items-center gap-8 rounded-3xl transition-all duration-500 text-center ${cert.type === 'tech' ? 'hover:border-blue-300 hover:shadow-blue-100/50 hover:bg-blue-50/20' : 'hover:border-violet-300 hover:shadow-violet-100/50 hover:bg-violet-50/20'} hover:shadow-xl`}
                         >
-                            <div className="opacity-70 group-hover:opacity-100 transition-all duration-500">
-                                <BrandLogo name={cert.org} size={80} />
+                            <div className="opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110">
+                                <BrandLogo name={cert.org} size={110} />
                             </div>
 
-                            <div className="w-full flex-grow flex flex-col justify-between">
+                            <div className="w-full flex-grow flex flex-col justify-between pt-2">
                                 <p className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest group-hover:text-slate-900 transition-colors mb-4">
                                     {cert.org}
                                 </p>
-                                <p className="text-sm font-display font-medium text-slate-900 leading-relaxed group-hover:text-zinc-600 transition-colors line-clamp-3 mb-6">
+                                <p className="text-sm md:text-base font-display font-bold text-slate-900 leading-relaxed group-hover:text-indigo-600 transition-colors line-clamp-3 mb-6">
                                     {cert.title}
                                 </p>
                             </div>
 
                             <div>
-                                <span className="text-[9px] font-mono uppercase tracking-[0.2em] px-3 py-1.5 rounded-full border border-slate-100 bg-zinc-50 text-slate-400 group-hover:bg-zinc-950 group-hover:text-white group-hover:border-zinc-950 transition-all duration-500">
+                                <span className={`text-[10px] font-mono uppercase tracking-[0.2em] px-4 py-2 rounded-full border transition-all duration-500 ${cert.type === 'tech' ? 'bg-blue-50 text-blue-600 border-blue-100 group-hover:bg-blue-600 group-hover:text-white' : 'bg-violet-50 text-violet-600 border-violet-100 group-hover:bg-violet-600 group-hover:text-white'}`}>
                                     {cert.type === "tech" ? "Tech" : "Academic"}
                                 </span>
                             </div>
@@ -55,16 +57,16 @@ export function Certifications() {
                     ))}
                 </div>
 
-                <div className="relative overflow-hidden py-10 border-t border-b border-slate-100 bg-zinc-50/50">
+                <div className="relative overflow-hidden py-10 border-t border-b border-indigo-100 bg-gradient-to-r from-indigo-50/30 via-violet-50/50 to-indigo-50/30">
                     <motion.div
                         className="flex gap-20 whitespace-nowrap items-center"
                         animate={{ x: ["0%", "-50%"] }}
                         transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
                     >
                         {[...allCerts, ...allCerts].map((cert, i) => (
-                            <span key={i} className="text-xs font-mono text-zinc-300 uppercase tracking-[0.3em] shrink-0 hover:text-slate-900 transition-colors cursor-default">
+                            <span key={i} className="text-sm font-mono text-indigo-300 uppercase tracking-[0.3em] shrink-0 hover:text-indigo-600 transition-colors cursor-default">
                                 {cert.title}
-                                <span className="mx-10 text-zinc-200">✦</span>
+                                <span className="mx-10 text-indigo-200">✦</span>
                             </span>
                         ))}
                     </motion.div>
