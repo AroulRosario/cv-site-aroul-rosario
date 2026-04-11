@@ -168,12 +168,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="canonical" href={siteUrl} />
-        <meta name="theme-color" content="#05050f" />
-        <meta name="color-scheme" content="dark" />
+        <meta name="theme-color" content="#fbfbfb" />
+        <meta name="color-scheme" content="light" />
         <meta property="og:locale" content="en_IN" />
         <meta name="geo.region" content="IN-PY" />
         <meta name="geo.placename" content="Puducherry, India" />
@@ -186,7 +186,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased text-white`}
+        className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased text-zinc-950 bg-[#fbfbfb] grain-bg`}
       >
         {children}
       </body>

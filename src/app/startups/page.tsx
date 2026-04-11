@@ -3,17 +3,18 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Startups } from "@/components/sections/Startups";
 import { Initiatives } from "@/components/sections/Initiatives";
+import { Spotlight } from "@/components/ui/Spotlight";
 
 export const metadata: Metadata = {
-    title: "EdTech Startups & Initiatives | Dr. Aroul Rosario S",
-    description: "Discover building the future of learning. Dr. Aroul Rosario S: Founder of OG Chemistry, Starborn IVY, and Neural Review. Transforming STEM pedagogy through technology.",
-    keywords: ["Startups", "EdTech", "OG Chemistry", "Starborn IVY", "Neural Review", "STEM Pedagogy", "Educational Innovation"],
+    title: "Startups & Initiatives | Dr. Aroul Rosario S",
+    description: "Explore the innovative EdTech startups and architectural initiatives led by Dr. Aroul Rosario S, including OG Chemistry and Starborn IVY.",
+    keywords: ["Aroul Rosario startups", "EdTech innovations India", "Starborn IVY", "OG Chemistry"],
 };
 
 export default function StartupsPage() {
     return (
-        <main className="min-h-screen text-white relative">
-            <h1 className="sr-only">EdTech Startups & Global Initiatives — Dr. Aroul Rosario S</h1>
+        <main className="min-h-screen bg-[#fbfbfb] text-zinc-950 relative">
+            <Spotlight />
             <Navbar />
             <div className="pt-20">
                 <Startups />

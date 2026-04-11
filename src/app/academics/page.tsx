@@ -3,27 +3,26 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Education } from "@/components/sections/Education";
 import { Certifications } from "@/components/sections/Certifications";
-import { Publications } from "@/components/sections/Publications";
-import { Books } from "@/components/sections/Books";
 import { Patents } from "@/components/sections/Patents";
+import { Publications } from "@/components/sections/Publications";
+import { Spotlight } from "@/components/ui/Spotlight";
 
 export const metadata: Metadata = {
-    title: "Academics & Research | Dr. Aroul Rosario S",
-    description: "Explore the academic background, research publications, and fellowships of Dr. Aroul Rosario S. Featuring work published at CERN, Cambridge, and Harvard Dataverse.",
-    keywords: ["Academic", "Research", "PhD Chemistry", "STEM Education", "Publications", "CERN Zenodo", "University of Manchester", "Fellowship Royal Society"],
+    title: "Academic Background & Research | Dr. Aroul Rosario S",
+    description: "Academic journey, certifications, patents, and scientific publications of Dr. Aroul Rosario S, featuring work from CERN, Cambridge, and Harvard Dataverse.",
+    keywords: ["Aroul Rosario PhD", "Aroul Rosario Research", "OG Chemistry patents", "chemistry research publications"],
 };
 
 export default function AcademicsPage() {
     return (
-        <main className="min-h-screen text-white relative">
-            <h1 className="sr-only">Academics, Research & Fellowships — Dr. Aroul Rosario S</h1>
+        <main className="min-h-screen bg-[#fbfbfb] text-zinc-950 relative">
+            <Spotlight />
             <Navbar />
-            <div className="pt-20">
+            <div className="pt-24 space-y-0">
                 <Education />
                 <Certifications />
-                <Publications />
-                <Books />
                 <Patents />
+                <Publications />
             </div>
             <Footer />
         </main>

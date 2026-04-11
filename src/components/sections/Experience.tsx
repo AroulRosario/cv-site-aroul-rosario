@@ -18,34 +18,30 @@ export function Experience() {
     const [activeDive, setActiveDive] = useState<number | null>(null);
 
     return (
-        <section id="experience" className="py-32 relative overflow-hidden">
-            {/* Ambient glow */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_100%,rgba(255,255,255,0.03),transparent)] pointer-events-none" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_90%_20%,rgba(0,242,255,0.015)_0%,transparent_50%)] pointer-events-none" />
-
+        <section id="experience" className="py-32 relative overflow-hidden bg-white">
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
                 <div>
-                    <p className="text-xs font-mono tracking-widest uppercase text-zinc-600 mb-4">02 // Career Trajectory</p>
-                    <h2 className="text-6xl md:text-8xl font-display font-black text-white tracking-tighter mb-24 leading-none">
+                    <p className="text-xs font-mono tracking-widest uppercase text-zinc-400 mb-6">02 // Career Trajectory</p>
+                    <h2 className="text-6xl md:text-8xl font-display font-medium text-zinc-950 tracking-tighter mb-24 leading-[0.85]">
                         Built.<br />
-                        <span className="text-white/20">Led.</span><br />
-                        <span className="text-white/10">Scaled.</span>
+                        <span className="text-zinc-300">Led.</span><br />
+                        <span className="text-zinc-100">Scaled.</span>
                     </h2>
                 </div>
 
                 {/* Stat bar */}
-                <div className="grid grid-cols-3 gap-6 mb-20 pb-20 border-b border-white/5">
+                <div className="grid grid-cols-3 gap-6 mb-24 pb-20 border-b border-zinc-100">
                     {STATS.map((s) => (
                         <div key={s.label}>
                             <div className="text-center">
-                                <p className="text-5xl md:text-6xl font-display font-black text-white tracking-tighter">{s.value}</p>
-                                <p className="text-xs font-mono text-zinc-600 uppercase tracking-widest mt-2">{s.label}</p>
+                                <p className="text-5xl md:text-6xl font-display font-medium text-zinc-950 tracking-tighter">{s.value}</p>
+                                <p className="text-xs font-mono text-zinc-400 uppercase tracking-widest mt-3">{s.label}</p>
                             </div>
                         </div>
                     ))}
                 </div>
 
-                {/* Experience Cards — Horizontal stacking visual-first */}
+                {/* Experience Cards — Continuous vertical list */}
                 <div className="space-y-4">
                     {cvData.experience.map((item, index) => (
                         <Link
@@ -54,31 +50,31 @@ export function Experience() {
                             className="block"
                         >
                             <div
-                                className="group relative flex items-center gap-4 md:gap-8 p-5 md:p-8 glass-card border-white/5 cursor-pointer overflow-hidden hover:border-white/20 transition-all"
+                                className="group relative flex items-center gap-6 md:gap-10 p-6 md:p-10 bg-white border border-zinc-100 rounded-2xl cursor-pointer overflow-hidden hover:border-zinc-300 hover:shadow-xl hover:shadow-zinc-200/50 transition-all duration-500"
                             >
-                                {/* Logo — big and prominent */}
-                                <div className="flex-shrink-0">
-                                    <BrandLogo name={item.org} size={80} />
+                                {/* Logo */}
+                                <div className="flex-shrink-0 grayscale brightness-125 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700">
+                                    <BrandLogo name={item.org} size={72} />
                                 </div>
 
                                 {/* Content */}
                                 <div className="flex-1 min-w-0">
-                                    <div className="flex items-baseline gap-4 mb-1">
-                                        <h3 className="text-2xl md:text-4xl font-display font-black text-white tracking-tight break-words">
+                                    <div className="flex items-baseline gap-4 mb-2">
+                                        <h3 className="text-2xl md:text-4xl font-display font-medium text-zinc-950 tracking-tight break-words leading-none">
                                             {item.title}
                                         </h3>
-                                        <span className="hidden md:block text-sm font-mono text-zinc-600 shrink-0">{item.period}</span>
+                                        <span className="hidden md:block text-sm font-mono text-zinc-300 shrink-0">{item.period}</span>
                                     </div>
                                     <p className="text-sm font-mono text-zinc-500 uppercase tracking-widest">{item.org}</p>
                                 </div>
 
                                 {/* Link Indicator */}
-                                <div className="opacity-40 group-hover:opacity-100 transition-all duration-300 shrink-0">
-                                    <ArrowUpRight className="w-6 h-6 text-zinc-500 group-hover:text-white" />
+                                <div className="text-zinc-200 group-hover:text-zinc-950 transition-all duration-500 shrink-0">
+                                    <ArrowUpRight className="w-6 h-6" />
                                 </div>
 
                                 {/* Rank watermark */}
-                                <span className="absolute right-4 md:right-8 bottom-2 text-[80px] md:text-[120px] font-display font-black text-white/[0.02] leading-none pointer-events-none select-none">
+                                <span className="absolute right-4 md:right-8 bottom-0 text-[80px] md:text-[140px] font-display font-black text-zinc-500/[0.03] leading-none pointer-events-none select-none">
                                     {String(index + 1).padStart(2, "0")}
                                 </span>
                             </div>

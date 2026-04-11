@@ -105,16 +105,20 @@ export const cvData = {
     ],
     talks: [
         {
+            title: "Future of Digital Pedagogy: Immersive Simulations",
+            org: "BITS Pilani",
+            year: "2026",
+            description: "A keynote session discussing the architectural shift in STEM education towards immersive, simulation-driven learning models.",
+            media: [
+                "https://video.wixstatic.com/video/f7ab94_5395ebaeffde4d41ba9167e2067df282/480p/mp4/file.mp4",
+                "https://video.wixstatic.com/video/f7ab94_080f769ae28f4efda4bfff7e84a0fbfc/480p/mp4/file.mp4"
+            ]
+        },
+        {
             title: "AI in STEM Education: From Classroom to Global Scale",
             org: "IIT Delhi",
             year: "2025",
             description: "Invited talk at the Indian Institute of Technology Delhi on the intersection of artificial intelligence, neuro-cognitive science, and next-generation chemistry education.",
-        },
-        {
-            title: "Guest Judge — EdTech Pitching Competition",
-            org: "BITS Pilani",
-            year: "2024",
-            description: "Evaluating the next generation of digital learning innovators at one of India's premier technological institutes.",
         }
     ],
     skills: {
@@ -189,8 +193,15 @@ export const cvData = {
             deepDive: "Built 10,000+ VR-ready molecular simulations to make atoms visible to students. Each simulation has driven millions of 'aha!' moments in chemistry classrooms worldwide."
         },
         {
-            title: "Guest Judge — EdTech Pitching Competition",
-            description: "Invited to evaluate high-potential EdTech startups at BITS Pilani, one of India's premier technological institutes.",
+            title: "Guest Judge — Launchpad 2026",
+            org: "BITS Pilani",
+            description: "Invited to evaluate high-potential EdTech startups and innovations at Launchpad 2026, premier entrepreneurship summit at BITS Pilani.",
+            media: [
+                "https://static.wixstatic.com/media/f7ab94_a08bde1371e4442b8f7b3fc43b3b6b97~mv2.jpeg",
+                "https://static.wixstatic.com/media/f7ab94_1e7ffe0d897a4b25bd5b94452cd92312~mv2.jpeg",
+                "https://static.wixstatic.com/media/f7ab94_bb44267a3f0045008f58e6f3440fea8c~mv2.jpeg",
+                "https://static.wixstatic.com/media/f7ab94_76b4c4a5af1548c99c38efd8d24eec8b~mv2.jpeg"
+            ]
         },
     ],
     designAndTechCertifications: [

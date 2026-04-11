@@ -37,8 +37,8 @@ export function Navbar() {
                     }`}
             >
                 <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-                    <Link href="/" className="text-xl font-display font-bold text-white tracking-widest uppercase">
-                        Aroul<span className="text-zinc-500">R.</span>
+                    <Link href="/" className="text-xl font-display font-bold text-zinc-950 tracking-widest uppercase">
+                        Aroul<span className="text-zinc-400">R.</span>
                     </Link>
 
                     {/* Desktop Nav */}
@@ -47,7 +47,7 @@ export function Navbar() {
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="text-xs font-mono tracking-widest uppercase text-zinc-400 hover:text-white transition-colors relative group"
+                                className="text-xs font-mono tracking-widest uppercase text-zinc-500 hover:text-zinc-950 transition-colors relative group"
                             >
                                 {link.name}
                             </Link>
@@ -59,9 +59,9 @@ export function Navbar() {
                         className="lg:hidden w-8 h-8 flex flex-col items-end justify-center space-y-1.5 focus:outline-none z-50 relative"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     >
-                        <span className={`block h-[1px] bg-white transition-all duration-300 ${isMobileMenuOpen ? "w-8 rotate-45 translate-y-[7px]" : "w-8"}`} />
-                        <span className={`block h-[1px] bg-white transition-all duration-300 ${isMobileMenuOpen ? "w-0 opacity-0" : "w-6"}`} />
-                        <span className={`block h-[1px] bg-white transition-all duration-300 ${isMobileMenuOpen ? "w-8 -rotate-45 -translate-y-[7px]" : "w-4"}`} />
+                        <span className={`block h-[1px] bg-zinc-950 transition-all duration-300 ${isMobileMenuOpen ? "w-8 rotate-45 translate-y-[7px]" : "w-8"}`} />
+                        <span className={`block h-[1px] bg-zinc-950 transition-all duration-300 ${isMobileMenuOpen ? "w-0 opacity-0" : "w-6"}`} />
+                        <span className={`block h-[1px] bg-zinc-950 transition-all duration-300 ${isMobileMenuOpen ? "w-8 -rotate-45 -translate-y-[7px]" : "w-4"}`} />
                     </button>
                 </div>
             </motion.nav>
@@ -74,9 +74,9 @@ export function Navbar() {
                         animate={{ opacity: 1, clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}
                         exit={{ opacity: 0, clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)" }}
                         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                        className="fixed inset-0 z-40 bg-zinc-950/98 backdrop-blur-3xl pt-32 px-6 lg:hidden flex flex-col"
+                        className="fixed inset-0 z-40 bg-white/98 backdrop-blur-3xl pt-32 px-6 lg:hidden flex flex-col"
                     >
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.05)_0%,transparent_70%)] pointer-events-none" />
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,0,0,0.03)_0%,transparent_70%)] pointer-events-none" />
                         <div className="flex flex-col space-y-8 relative z-10">
                             {navLinks.map((link, i) => (
                                 <motion.div
@@ -88,7 +88,7 @@ export function Navbar() {
                                     <Link
                                         href={link.href}
                                         onClick={() => setIsMobileMenuOpen(false)}
-                                        className="text-4xl font-display font-medium text-white hover:text-zinc-400 transition-colors"
+                                        className="text-4xl font-display font-medium text-zinc-950 hover:text-zinc-600 transition-colors"
                                     >
                                         {link.name}
                                     </Link>

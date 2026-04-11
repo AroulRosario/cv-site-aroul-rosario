@@ -23,9 +23,9 @@ export function Spotlight() {
 
     return (
         <motion.div
-            className="pointer-events-none fixed inset-0 z-0 opacity-40 mix-blend-overlay"
+            className="pointer-events-none fixed inset-0 z-0 opacity-20"
             style={{
-                background: `radial-gradient(600px at ${springX}px ${springY}px, rgba(255, 255, 255, 0.15), transparent 80%)`,
+                background: `radial-gradient(800px at ${springX}px ${springY}px, rgba(228, 228, 231, 0.4), transparent 80%)`,
             }}
         />
     );

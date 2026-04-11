@@ -12,23 +12,27 @@ import { Certifications } from "@/components/sections/Certifications";
 import { Skills } from "@/components/sections/Skills";
 import { Press } from "@/components/sections/Press";
 import { Contact } from "@/components/sections/Contact";
-import { MolecularLattice } from "@/components/ui/MolecularLattice";
+import { Engagements } from "@/components/sections/Engagements";
+import { Patents } from "@/components/sections/Patents";
+import { Spotlight } from "@/components/ui/Spotlight";
 
 export default function Home() {
   return (
-    <main className="min-h-screen text-white relative">
-      <MolecularLattice />
+    <main className="min-h-screen bg-[#fbfbfb] text-zinc-950 relative selection:bg-zinc-950 selection:text-white">
+      <Spotlight />
       <Navbar />
 
       <Hero />
       <AboutNew />
+      <Engagements />
       <Startups />
       <Initiatives />
       <Experience />
 
-      {/* Academic credentials always visible */}
+      {/* Academic & IP credentials */}
       <Education />
       <Certifications />
+      <Patents />
 
       <Skills />
       <Press />

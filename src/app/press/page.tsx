@@ -2,17 +2,18 @@ import { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Press } from "@/components/sections/Press";
+import { Spotlight } from "@/components/ui/Spotlight";
 
 export const metadata: Metadata = {
     title: "Press & Media Coverage | Dr. Aroul Rosario S",
-    description: "Featured news, interviews, and media mentions of Dr. Aroul Rosario S and his impact on the EdTech ecosystem in India.",
-    keywords: ["Press", "Media", "Interviews", "News", "The Hindu", "EdTech Features", "Academic Recognition"],
+    description: "National media coverage and press features highlighting the work of Dr. Aroul Rosario S in chemistry education and EdTech strategy.",
+    keywords: ["Aroul Rosario news", "Aroul Rosario press", "OG Chemistry media coverage"],
 };
 
 export default function PressPage() {
     return (
-        <main className="min-h-screen text-white relative">
-            <h1 className="sr-only">Press, Media & Public Recognition — Dr. Aroul Rosario S</h1>
+        <main className="min-h-screen bg-[#fbfbfb] text-zinc-950 relative">
+            <Spotlight />
             <Navbar />
             <div className="pt-20">
                 <Press />

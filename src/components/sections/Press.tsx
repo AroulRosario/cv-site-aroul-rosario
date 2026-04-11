@@ -62,61 +62,55 @@ const OUTLETS = [
 
 export function Press() {
     return (
-        <section id="press" className="py-32 relative border-y border-white/5 overflow-hidden">
-            {/* Ambient gradient */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_100%,rgba(0,242,255,0.03),transparent)] pointer-events-none" />
-
+        <section id="press" className="py-32 relative border-y border-zinc-100 overflow-hidden bg-white">
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
                 {/* Header */}
                 <div className="mb-20">
-                    <p className="text-xs font-mono tracking-widest uppercase text-zinc-500 mb-4 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 glass">
-                        <Newspaper className="w-3 h-3" />
+                    <p className="text-xs font-mono tracking-widest uppercase text-zinc-400 mb-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-100 bg-zinc-50">
+                        <Newspaper className="w-3 h-3 text-zinc-400" />
                         Press &amp; Media
                     </p>
-                    <h2 className="text-6xl md:text-8xl lg:text-9xl font-display font-black text-white tracking-tighter leading-none mt-6 mb-12">
+                    <h2 className="text-6xl md:text-8xl lg:text-9xl font-display font-medium text-zinc-950 tracking-tighter leading-[0.85] mt-6 mb-16">
                         Featured<br />
-                        <span className="text-white/20">Nationwide.</span>
+                        <span className="text-zinc-200 italic">Nationwide.</span>
                     </h2>
-                    {/* Stats row — separate so they don't overlap title */}
-                    <div className="flex flex-wrap gap-12 md:gap-20 border-t border-white/5 pt-8">
+                    {/* Stats row */}
+                    <div className="flex flex-wrap gap-12 md:gap-20 border-t border-zinc-100 pt-10">
                         <div>
-                            <p className="text-5xl md:text-6xl font-display font-black text-white leading-none">{cvData.press.totalOutlets}</p>
-                            <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest mt-3">Media Outlets</p>
+                            <p className="text-5xl md:text-6xl font-display font-medium text-zinc-950 leading-none">{cvData.press.totalOutlets}</p>
+                            <p className="text-xs font-mono text-zinc-400 uppercase tracking-widest mt-4">Media Outlets</p>
                         </div>
                         <div>
-                            <p className="text-5xl md:text-6xl font-display font-black text-white leading-none">{cvData.press.totalReach}</p>
-                            <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest mt-3">Combined Reach</p>
+                            <p className="text-5xl md:text-6xl font-display font-medium text-zinc-950 leading-none">{cvData.press.totalReach}</p>
+                            <p className="text-xs font-mono text-zinc-400 uppercase tracking-widest mt-4">Combined Reach</p>
                         </div>
                     </div>
                 </div>
 
                 {/* Featured press cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
                     {cvData.press.featured.map((p, i) => (
                         <a
                             key={i}
                             href={p.url}
                             target={p.url !== "#" ? "_blank" : undefined}
                             rel="noopener noreferrer"
-                            className="group glass-card p-8 flex flex-col gap-6 hover:border-white/30 hover:-translate-y-1 transition-all duration-500 relative overflow-hidden"
+                            className="group bg-white border border-zinc-100 p-10 flex flex-col gap-8 rounded-3xl hover:border-zinc-300 hover:shadow-2xl hover:shadow-zinc-200/50 transition-all duration-500 relative overflow-hidden"
                         >
-                            {/* Glow on hover */}
-                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(255,255,255,0.06),transparent)]" />
-
                             <div className="flex items-start justify-between">
-                                <div className="w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center bg-white/5 group-hover:border-white/30 transition-colors">
-                                    <Newspaper size={16} className="text-zinc-400 group-hover:text-white transition-colors" />
+                                <div className="w-12 h-12 rounded-2xl border border-zinc-100 flex items-center justify-center bg-zinc-50 group-hover:border-zinc-950 group-hover:bg-zinc-950 transition-all duration-500">
+                                    <Newspaper size={20} className="text-zinc-400 group-hover:text-white transition-colors duration-500" />
                                 </div>
-                                <ExternalLink size={14} className="text-zinc-700 group-hover:text-white transition-colors" />
+                                <ExternalLink size={16} className="text-zinc-300 group-hover:text-zinc-950 transition-colors duration-500" />
                             </div>
 
                             <div>
-                                <h3 className="text-xl font-display font-black text-white mb-2">{p.outlet}</h3>
-                                <p className="text-sm text-zinc-500 leading-relaxed">{p.desc}</p>
+                                <h3 className="text-2xl font-display font-medium text-zinc-950 mb-3">{p.outlet}</h3>
+                                <p className="text-zinc-500 leading-relaxed font-light">{p.desc}</p>
                             </div>
 
                             <div className="mt-auto">
-                                <span className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest border border-white/5 rounded-full px-3 py-1 group-hover:text-white group-hover:border-white/20 transition-colors">
+                                <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-[0.2em] border border-zinc-100 rounded-full px-4 py-2 group-hover:text-zinc-950 group-hover:border-zinc-950 transition-all duration-500">
                                     {p.audience}
                                 </span>
                             </div>
@@ -125,32 +119,32 @@ export function Press() {
                 </div>
 
                 {/* Outlet scrolling ticker — top row */}
-                <div className="relative overflow-hidden py-5 border-t border-white/5 mb-2">
+                <div className="relative overflow-hidden py-6 border-t border-zinc-100 mb-2">
                     <motion.div
-                        className="flex gap-12 whitespace-nowrap items-center"
+                        className="flex gap-16 whitespace-nowrap items-center"
                         animate={{ x: ["0%", "-50%"] }}
-                        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                        transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
                     >
                         {[...OUTLETS.slice(0, 110), ...OUTLETS.slice(0, 110)].map((o, i) => (
-                            <span key={i} className="text-[10px] font-mono text-white/30 uppercase tracking-[0.2em] shrink-0">
+                            <span key={i} className="text-[11px] font-mono text-zinc-400 uppercase tracking-[0.2em] shrink-0 hover:text-zinc-950 transition-colors cursor-default">
                                 {o}
-                                <span className="mx-6 text-white/10">✦</span>
+                                <span className="mx-8 text-zinc-200">✦</span>
                             </span>
                         ))}
                     </motion.div>
                 </div>
 
                 {/* Outlet scrolling ticker — bottom row (reverse) */}
-                <div className="relative overflow-hidden py-5 border-b border-white/5">
+                <div className="relative overflow-hidden py-6 border-b border-zinc-100">
                     <motion.div
-                        className="flex gap-12 whitespace-nowrap items-center"
+                        className="flex gap-16 whitespace-nowrap items-center"
                         animate={{ x: ["-50%", "0%"] }}
-                        transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
+                        transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
                     >
                         {[...OUTLETS.slice(110), ...OUTLETS.slice(110)].map((o, i) => (
-                            <span key={i} className="text-[10px] font-mono text-white/20 uppercase tracking-[0.2em] shrink-0">
+                            <span key={i} className="text-[11px] font-mono text-zinc-300 uppercase tracking-[0.2em] shrink-0 hover:text-zinc-950 transition-colors cursor-default">
                                 {o}
-                                <span className="mx-6 text-white/10">✦</span>
+                                <span className="mx-8 text-zinc-200">✦</span>
                             </span>
                         ))}
                     </motion.div>

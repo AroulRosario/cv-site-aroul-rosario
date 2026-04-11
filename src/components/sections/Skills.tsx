@@ -29,16 +29,21 @@ const SKILLS_WITH_LEVELS = {
     ],
 };
 
-function SkillBar({ name, pct, delay = 0 }: { name: string; pct: number; delay?: number }) {
+function SkillBar({ name, pct }: { name: string; pct: number }) {
     return (
         <div className="group">
-            <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-mono text-zinc-400 group-hover:text-white transition-colors">{name}</span>
+            <div className="flex items-center justify-between mb-3">
+                <span className="text-sm font-mono text-zinc-400 group-hover:text-zinc-950 transition-colors uppercase tracking-widest">{name}</span>
+                <span className="text-[10px] font-mono text-zinc-200 group-hover:text-zinc-400 transition-colors">{pct}%</span>
             </div>
-            <div className="h-px bg-white/5 relative overflow-hidden">
-                <div
-                    className="absolute inset-y-0 left-0 bg-white/60"
-                    style={{ transformOrigin: "left", width: `${pct}%` }}
+            <div className="h-[2px] bg-zinc-100 relative overflow-hidden">
+                <motion.div
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: pct / 100 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.5, ease: "circOut" }}
+                    className="absolute inset-y-0 left-0 bg-zinc-950"
+                    style={{ transformOrigin: "left", width: "100%" }}
                 />
             </div>
         </div>
@@ -47,54 +52,52 @@ function SkillBar({ name, pct, delay = 0 }: { name: string; pct: number; delay?:
 
 export function Skills() {
     return (
-        <section id="skills" className="py-32 relative border-b border-white/5 overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_40%_at_80%_50%,rgba(0,242,255,0.02),transparent)] pointer-events-none" />
-
+        <section id="skills" className="py-32 relative border-b border-zinc-100 overflow-hidden bg-white">
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
                 <FadeIn>
-                    <p className="text-xs font-mono tracking-widest uppercase text-zinc-600 mb-4">05 // Core Competencies</p>
-                    <h2 className="text-6xl md:text-8xl font-display font-black text-white tracking-tighter mb-24 leading-none">
+                    <p className="text-xs font-mono tracking-widest uppercase text-zinc-400 mb-6 inline-block px-4 py-1.5 rounded-full border border-zinc-100 bg-zinc-50">05 // Core Competencies</p>
+                    <h2 className="text-6xl md:text-8xl font-display font-medium text-zinc-950 tracking-tighter mb-24 leading-[0.85]">
                         Technical<br />
-                        <span className="text-white/20">Ecosystem.</span>
+                        <span className="text-zinc-200 italic">Ecosystem.</span>
                     </h2>
                 </FadeIn>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Scientific */}
-                    <div className="glass-card p-10 space-y-8">
-                        <div className="flex items-center gap-3 mb-10 pb-6 border-b border-white/5">
-                            <div className="text-3xl">⚗️</div>
-                            <h3 className="text-sm font-mono text-zinc-400 uppercase tracking-[0.2em]">Scientific</h3>
+                    <div className="bg-zinc-50 border border-zinc-100 p-12 space-y-10 rounded-[2rem] hover:border-zinc-300 hover:shadow-2xl hover:shadow-zinc-200/50 transition-all duration-500">
+                        <div className="flex items-center gap-4 mb-4 pb-8 border-b border-zinc-200">
+                            <div className="text-4xl grayscale brightness-125">⚗️</div>
+                            <h3 className="text-xs font-mono text-zinc-400 uppercase tracking-[0.3em]">Scientific</h3>
                         </div>
-                        <div className="space-y-6">
-                            {SKILLS_WITH_LEVELS.scientific.map((s, i) => (
-                                <SkillBar key={s.name} name={s.name} pct={s.pct} delay={i * 0.08} />
+                        <div className="space-y-8">
+                            {SKILLS_WITH_LEVELS.scientific.map((s) => (
+                                <SkillBar key={s.name} name={s.name} pct={s.pct} />
                             ))}
                         </div>
                     </div>
 
                     {/* Technical */}
-                    <div className="glass-card p-10 space-y-8">
-                        <div className="flex items-center gap-3 mb-10 pb-6 border-b border-white/5">
-                            <div className="text-3xl">💻</div>
-                            <h3 className="text-sm font-mono text-zinc-400 uppercase tracking-[0.2em]">Technical</h3>
+                    <div className="bg-white border border-zinc-200 p-12 space-y-10 rounded-[2rem] hover:border-zinc-400 hover:shadow-2xl hover:shadow-zinc-300/50 transition-all duration-500">
+                        <div className="flex items-center gap-4 mb-4 pb-8 border-b border-zinc-200">
+                            <div className="text-4xl grayscale brightness-125">💻</div>
+                            <h3 className="text-xs font-mono text-zinc-400 uppercase tracking-[0.3em]">Technical</h3>
                         </div>
-                        <div className="space-y-6">
-                            {SKILLS_WITH_LEVELS.technical.map((s, i) => (
-                                <SkillBar key={s.name} name={s.name} pct={s.pct} delay={i * 0.08} />
+                        <div className="space-y-8">
+                            {SKILLS_WITH_LEVELS.technical.map((s) => (
+                                <SkillBar key={s.name} name={s.name} pct={s.pct} />
                             ))}
                         </div>
                     </div>
 
                     {/* Leadership */}
-                    <div className="glass-card p-10 space-y-8">
-                        <div className="flex items-center gap-3 mb-10 pb-6 border-b border-white/5">
-                            <div className="text-3xl">🛡️</div>
-                            <h3 className="text-sm font-mono text-zinc-400 uppercase tracking-[0.2em]">Leadership</h3>
+                    <div className="bg-zinc-50 border border-zinc-100 p-12 space-y-10 rounded-[2rem] hover:border-zinc-300 hover:shadow-2xl hover:shadow-zinc-200/50 transition-all duration-500">
+                        <div className="flex items-center gap-4 mb-4 pb-8 border-b border-zinc-200">
+                            <div className="text-4xl grayscale brightness-125">🛡️</div>
+                            <h3 className="text-xs font-mono text-zinc-400 uppercase tracking-[0.3em]">Leadership</h3>
                         </div>
-                        <div className="space-y-6">
-                            {SKILLS_WITH_LEVELS.leadership.map((s, i) => (
-                                <SkillBar key={s.name} name={s.name} pct={s.pct} delay={i * 0.08} />
+                        <div className="space-y-8">
+                            {SKILLS_WITH_LEVELS.leadership.map((s) => (
+                                <SkillBar key={s.name} name={s.name} pct={s.pct} />
                             ))}
                         </div>
                     </div>
