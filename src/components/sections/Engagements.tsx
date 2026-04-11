@@ -1,18 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FadeIn } from "@/components/ui/motion-helpers";
-import { Play, Camera, Trophy } from "lucide-react";
+import { Play, Trophy, Video } from "lucide-react";
 
 const ENGAGEMENTS = [
     {
-        type: "video",
         title: "Keynote at BITS Pilani",
         description: "Discussing the architectural shift in STEM education towards immersive, simulation-driven learning models.",
         url: "https://video.wixstatic.com/video/f7ab94_5395ebaeffde4d41ba9167e2067df282/480p/mp4/file.mp4"
     },
     {
-        type: "video",
         title: "Future of Pedagogy",
         description: "Insights on AI-augmented adaptive assessments and learner-driven discovery.",
         url: "https://video.wixstatic.com/video/f7ab94_080f769ae28f4efda4bfff7e84a0fbfc/480p/mp4/file.mp4"
@@ -28,59 +25,84 @@ const PHOTOS = [
 
 export function Engagements() {
     return (
-        <section id="engagements" className="py-32 relative overflow-hidden bg-white">
+        <section id="engagements" className="py-32 relative overflow-hidden">
+            {/* Background gradient */}
+            <div className="absolute inset-0 bg-gradient-to-b from-violet-50/40 via-transparent to-blue-50/30 pointer-events-none" />
+
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-                <div className="mb-24">
-                    <p className="text-xs font-mono tracking-widest uppercase text-zinc-400 mb-6 inline-block px-4 py-1.5 rounded-full border border-zinc-100 bg-zinc-50">04 // Public Engagements</p>
-                    <h2 className="text-6xl md:text-8xl font-display font-medium text-zinc-950 tracking-tighter leading-[0.85]">
+                <div className="mb-20">
+                    <span className="inline-flex items-center gap-2 text-violet-600 font-mono text-xs tracking-widest uppercase mb-6 bg-violet-50 px-4 py-2 rounded-full border border-violet-100">
+                        <Video className="w-3.5 h-3.5" />
+                        Public Engagements
+                    </span>
+                    <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-slate-900 tracking-tighter leading-[0.9]">
                         Speaking &<br />
-                        <span className="text-zinc-200 italic">Judging.</span>
+                        <span className="gradient-text">Judging.</span>
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24">
+                {/* Video Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
                     {ENGAGEMENTS.map((ev, i) => (
-                        <div key={i} className="group flex flex-col gap-6">
-                            <div className="relative aspect-video rounded-3xl overflow-hidden border border-zinc-100 bg-zinc-50 shadow-sm group-hover:shadow-2xl group-hover:shadow-zinc-200 transition-all duration-700">
+                        <motion.div
+                            key={i}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.15 }}
+                            className="group flex flex-col gap-5"
+                        >
+                            <div className="relative aspect-video rounded-2xl overflow-hidden bg-slate-100 shadow-lg group-hover:shadow-2xl group-hover:shadow-indigo-200/40 transition-all duration-700">
                                 <video 
                                     src={ev.url} 
-                                    className="w-full h-full object-cover grayscale brightness-110 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000"
+                                    className="w-full h-full object-cover"
+                                    autoPlay
                                     muted
                                     loop
-                                    onMouseOver={e => e.currentTarget.play()}
-                                    onMouseOut={e => e.currentTarget.pause()}
+                                    playsInline
                                 />
-                                <div className="absolute inset-0 bg-white/20 group-hover:bg-transparent transition-all duration-700" />
-                                <div className="absolute bottom-8 left-8">
-                                    <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-500">
-                                        <Play className="w-5 h-5 text-zinc-950 fill-zinc-950" />
+                                {/* Gradient overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
+                                <div className="absolute bottom-6 left-6 right-6">
+                                    <h3 className="text-xl font-display font-bold text-white mb-1">{ev.title}</h3>
+                                    <p className="text-white/70 text-sm">{ev.description}</p>
+                                </div>
+                                {/* Play indicator */}
+                                <div className="absolute top-6 right-6">
+                                    <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
+                                        <Play className="w-4 h-4 text-white fill-white" />
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <h3 className="text-2xl font-display font-medium text-zinc-950 mb-2">{ev.title}</h3>
-                                <p className="text-zinc-500 leading-relaxed font-light">{ev.description}</p>
-                            </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
 
-                {/* Photo Wall */}
-                <div className="space-y-12">
-                   <div className="flex items-center gap-4">
-                       <Trophy className="w-5 h-5 text-zinc-400" />
-                       <h3 className="text-xl font-display font-medium text-zinc-950">Judging at Launchpad 2026 · BITS Pilani</h3>
-                   </div>
+                {/* Photo Gallery */}
+                <div className="space-y-8">
+                    <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center">
+                            <Trophy className="w-5 h-5 text-amber-500" />
+                        </div>
+                        <h3 className="text-2xl font-display font-bold text-slate-900">Judging at Launchpad 2026 · BITS Pilani</h3>
+                    </div>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         {PHOTOS.map((src, i) => (
-                            <div key={i} className="relative aspect-[4/5] rounded-[2rem] overflow-hidden border border-zinc-100 group">
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1 }}
+                                className="relative aspect-[4/5] rounded-2xl overflow-hidden group shadow-md hover:shadow-xl transition-all duration-500"
+                            >
                                 <img 
                                     src={src} 
                                     alt={`Launchpad 2026 - BITS Pilani - Role: Judge`} 
-                                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 transform group-hover:scale-105"
+                                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                                 />
-                                <div className="absolute inset-0 bg-zinc-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                            </div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-violet-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            </motion.div>
                         ))}
                     </div>
                 </div>

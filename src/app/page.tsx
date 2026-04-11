@@ -18,7 +18,7 @@ import { Spotlight } from "@/components/ui/Spotlight";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#fbfbfb] text-zinc-950 relative selection:bg-zinc-950 selection:text-white">
+    <main className="min-h-screen bg-[#fafbfc] text-slate-900 relative selection:bg-indigo-100 selection:text-indigo-900">
       <Spotlight />
       <Navbar />
 

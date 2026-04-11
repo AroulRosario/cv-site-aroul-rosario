@@ -186,7 +186,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased text-zinc-950 bg-[#fbfbfb] grain-bg`}
+        className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased text-slate-900 bg-[#fafbfc]`}
       >
         {children}
       </body>

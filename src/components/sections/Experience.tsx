@@ -6,79 +6,79 @@ import Link from "next/link";
 import { FadeIn } from "@/components/ui/motion-helpers";
 import { DeepDive } from "@/components/ui/DeepDive";
 import { BrandLogo } from "@/components/ui/BrandLogo";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Briefcase } from "lucide-react";
+import { motion } from "framer-motion";
 
 const STATS = [
-    { value: "10K+", label: "Students Impacted" },
-    { value: "300+", label: "Educators Trained" },
-    { value: "5+", label: "Years Leading" },
+    { value: "10K+", label: "Students Impacted", color: "text-blue-600" },
+    { value: "300+", label: "Educators Trained", color: "text-violet-600" },
+    { value: "5+", label: "Years Leading", color: "text-emerald-600" },
 ];
 
 export function Experience() {
     const [activeDive, setActiveDive] = useState<number | null>(null);
 
     return (
-        <section id="experience" className="py-32 relative overflow-hidden bg-white">
+        <section id="experience" className="py-32 relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-                <div>
-                    <p className="text-xs font-mono tracking-widest uppercase text-zinc-400 mb-6">02 // Career Trajectory</p>
-                    <h2 className="text-6xl md:text-8xl font-display font-medium text-zinc-950 tracking-tighter mb-24 leading-[0.85]">
-                        Built.<br />
-                        <span className="text-zinc-300">Led.</span><br />
-                        <span className="text-zinc-100">Scaled.</span>
+                <div className="mb-20">
+                    <span className="inline-flex items-center gap-2 text-blue-600 font-mono text-xs tracking-widest uppercase mb-6 bg-blue-50 px-4 py-2 rounded-full border border-blue-100">
+                        <Briefcase className="w-3.5 h-3.5" />
+                        Career Trajectory
+                    </span>
+                    <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-slate-900 tracking-tighter leading-[0.9]">
+                        Built. <span className="text-blue-300">Led.</span><br />
+                        <span className="gradient-text">Scaled.</span>
                     </h2>
                 </div>
 
                 {/* Stat bar */}
-                <div className="grid grid-cols-3 gap-6 mb-24 pb-20 border-b border-zinc-100">
-                    {STATS.map((s) => (
-                        <div key={s.label}>
-                            <div className="text-center">
-                                <p className="text-5xl md:text-6xl font-display font-medium text-zinc-950 tracking-tighter">{s.value}</p>
-                                <p className="text-xs font-mono text-zinc-400 uppercase tracking-widest mt-3">{s.label}</p>
-                            </div>
-                        </div>
+                <div className="grid grid-cols-3 gap-6 mb-20 pb-16 border-b border-slate-100">
+                    {STATS.map((s, i) => (
+                        <motion.div
+                            key={s.label}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.1 }}
+                            className="text-center"
+                        >
+                            <p className={`text-5xl md:text-6xl font-display font-bold ${s.color} tracking-tighter`}>{s.value}</p>
+                            <p className="text-xs font-mono text-slate-400 uppercase tracking-widest mt-3">{s.label}</p>
+                        </motion.div>
                     ))}
                 </div>
 
-                {/* Experience Cards — Continuous vertical list */}
+                {/* Experience Cards */}
                 <div className="space-y-4">
                     {cvData.experience.map((item, index) => (
-                        <Link
+                        <motion.div
                             key={index}
-                            href="/experience"
-                            className="block"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.08 }}
                         >
-                            <div
-                                className="group relative flex items-center gap-6 md:gap-10 p-6 md:p-10 bg-white border border-zinc-100 rounded-2xl cursor-pointer overflow-hidden hover:border-zinc-300 hover:shadow-xl hover:shadow-zinc-200/50 transition-all duration-500"
-                            >
-                                {/* Logo */}
-                                <div className="flex-shrink-0 grayscale brightness-125 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700">
-                                    <BrandLogo name={item.org} size={72} />
-                                </div>
-
-                                {/* Content */}
-                                <div className="flex-1 min-w-0">
-                                    <div className="flex items-baseline gap-4 mb-2">
-                                        <h3 className="text-2xl md:text-4xl font-display font-medium text-zinc-950 tracking-tight break-words leading-none">
-                                            {item.title}
-                                        </h3>
-                                        <span className="hidden md:block text-sm font-mono text-zinc-300 shrink-0">{item.period}</span>
+                            <Link href="/experience" className="block">
+                                <div className="group relative flex items-center gap-6 md:gap-10 p-6 md:p-8 bg-white border border-slate-100 rounded-2xl cursor-pointer overflow-hidden hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-100/40 transition-all duration-500">
+                                    <div className="flex-shrink-0">
+                                        <BrandLogo name={item.org} size={72} />
                                     </div>
-                                    <p className="text-sm font-mono text-zinc-500 uppercase tracking-widest">{item.org}</p>
+                                    <div className="flex-1 min-w-0">
+                                        <div className="flex items-baseline gap-4 mb-2">
+                                            <h3 className="text-xl md:text-3xl font-display font-bold text-slate-900 tracking-tight leading-tight">
+                                                {item.title}
+                                            </h3>
+                                            <span className="hidden md:block text-sm font-mono text-indigo-400 shrink-0">{item.period}</span>
+                                        </div>
+                                        <p className="text-sm font-mono text-slate-500 uppercase tracking-widest">{item.org}</p>
+                                    </div>
+                                    <div className="text-slate-300 group-hover:text-indigo-500 transition-all duration-500 shrink-0">
+                                        <ArrowUpRight className="w-6 h-6" />
+                                    </div>
                                 </div>
-
-                                {/* Link Indicator */}
-                                <div className="text-zinc-200 group-hover:text-zinc-950 transition-all duration-500 shrink-0">
-                                    <ArrowUpRight className="w-6 h-6" />
-                                </div>
-
-                                {/* Rank watermark */}
-                                <span className="absolute right-4 md:right-8 bottom-0 text-[80px] md:text-[140px] font-display font-black text-zinc-500/[0.03] leading-none pointer-events-none select-none">
-                                    {String(index + 1).padStart(2, "0")}
-                                </span>
-                            </div>
-                        </Link>
+                            </Link>
+                        </motion.div>
                     ))}
                 </div>
             </div>

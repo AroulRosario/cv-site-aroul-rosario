@@ -29,21 +29,27 @@ const SKILLS_WITH_LEVELS = {
     ],
 };
 
-function SkillBar({ name, pct }: { name: string; pct: number }) {
+const CATEGORIES = [
+    { key: "scientific" as const, label: "Scientific", emoji: "⚗️", color: "from-blue-500 to-indigo-500", bg: "from-blue-50 to-indigo-50/50", border: "border-blue-100" },
+    { key: "technical" as const, label: "Technical", emoji: "💻", color: "from-violet-500 to-purple-500", bg: "from-violet-50 to-purple-50/50", border: "border-violet-100" },
+    { key: "leadership" as const, label: "Leadership", emoji: "🛡️", color: "from-emerald-500 to-teal-500", bg: "from-emerald-50 to-teal-50/50", border: "border-emerald-100" },
+];
+
+function SkillBar({ name, pct, color }: { name: string; pct: number; color: string }) {
     return (
         <div className="group">
-            <div className="flex items-center justify-between mb-3">
-                <span className="text-sm font-mono text-zinc-400 group-hover:text-zinc-950 transition-colors uppercase tracking-widest">{name}</span>
-                <span className="text-[10px] font-mono text-zinc-200 group-hover:text-zinc-400 transition-colors">{pct}%</span>
+            <div className="flex items-center justify-between mb-2">
+                <span className="text-sm text-slate-600 group-hover:text-slate-900 transition-colors">{name}</span>
+                <span className="text-xs text-slate-400">{pct}%</span>
             </div>
-            <div className="h-[2px] bg-zinc-100 relative overflow-hidden">
+            <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
                 <motion.div
                     initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: pct / 100 }}
+                    whileInView={{ scaleX: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 1.5, ease: "circOut" }}
-                    className="absolute inset-y-0 left-0 bg-zinc-950"
-                    style={{ transformOrigin: "left", width: "100%" }}
+                    transition={{ duration: 1.2, ease: "circOut" }}
+                    className={`h-full rounded-full bg-gradient-to-r ${color}`}
+                    style={{ transformOrigin: "left", width: `${pct}%` }}
                 />
             </div>
         </div>
@@ -52,55 +58,37 @@ function SkillBar({ name, pct }: { name: string; pct: number }) {
 
 export function Skills() {
     return (
-        <section id="skills" className="py-32 relative border-b border-zinc-100 overflow-hidden bg-white">
+        <section id="skills" className="py-32 relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
                 <FadeIn>
-                    <p className="text-xs font-mono tracking-widest uppercase text-zinc-400 mb-6 inline-block px-4 py-1.5 rounded-full border border-zinc-100 bg-zinc-50">05 // Core Competencies</p>
-                    <h2 className="text-6xl md:text-8xl font-display font-medium text-zinc-950 tracking-tighter mb-24 leading-[0.85]">
+                    <span className="text-xs font-mono text-indigo-500 uppercase tracking-widest mb-6 block">05 // Core Competencies</span>
+                    <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-slate-900 tracking-tighter mb-20 leading-[0.9]">
                         Technical<br />
-                        <span className="text-zinc-200 italic">Ecosystem.</span>
+                        <span className="gradient-text">Ecosystem.</span>
                     </h2>
                 </FadeIn>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {/* Scientific */}
-                    <div className="bg-zinc-50 border border-zinc-100 p-12 space-y-10 rounded-[2rem] hover:border-zinc-300 hover:shadow-2xl hover:shadow-zinc-200/50 transition-all duration-500">
-                        <div className="flex items-center gap-4 mb-4 pb-8 border-b border-zinc-200">
-                            <div className="text-4xl grayscale brightness-125">⚗️</div>
-                            <h3 className="text-xs font-mono text-zinc-400 uppercase tracking-[0.3em]">Scientific</h3>
-                        </div>
-                        <div className="space-y-8">
-                            {SKILLS_WITH_LEVELS.scientific.map((s) => (
-                                <SkillBar key={s.name} name={s.name} pct={s.pct} />
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Technical */}
-                    <div className="bg-white border border-zinc-200 p-12 space-y-10 rounded-[2rem] hover:border-zinc-400 hover:shadow-2xl hover:shadow-zinc-300/50 transition-all duration-500">
-                        <div className="flex items-center gap-4 mb-4 pb-8 border-b border-zinc-200">
-                            <div className="text-4xl grayscale brightness-125">💻</div>
-                            <h3 className="text-xs font-mono text-zinc-400 uppercase tracking-[0.3em]">Technical</h3>
-                        </div>
-                        <div className="space-y-8">
-                            {SKILLS_WITH_LEVELS.technical.map((s) => (
-                                <SkillBar key={s.name} name={s.name} pct={s.pct} />
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Leadership */}
-                    <div className="bg-zinc-50 border border-zinc-100 p-12 space-y-10 rounded-[2rem] hover:border-zinc-300 hover:shadow-2xl hover:shadow-zinc-200/50 transition-all duration-500">
-                        <div className="flex items-center gap-4 mb-4 pb-8 border-b border-zinc-200">
-                            <div className="text-4xl grayscale brightness-125">🛡️</div>
-                            <h3 className="text-xs font-mono text-zinc-400 uppercase tracking-[0.3em]">Leadership</h3>
-                        </div>
-                        <div className="space-y-8">
-                            {SKILLS_WITH_LEVELS.leadership.map((s) => (
-                                <SkillBar key={s.name} name={s.name} pct={s.pct} />
-                            ))}
-                        </div>
-                    </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {CATEGORIES.map((cat, ci) => (
+                        <motion.div
+                            key={cat.key}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: ci * 0.1 }}
+                            className={`bg-gradient-to-br ${cat.bg} border ${cat.border} p-10 space-y-8 rounded-2xl hover:shadow-xl transition-all duration-500`}
+                        >
+                            <div className="flex items-center gap-3 pb-6 border-b border-slate-200/50">
+                                <span className="text-3xl">{cat.emoji}</span>
+                                <h3 className="text-sm font-mono text-slate-500 uppercase tracking-widest">{cat.label}</h3>
+                            </div>
+                            <div className="space-y-5">
+                                {SKILLS_WITH_LEVELS[cat.key].map((s) => (
+                                    <SkillBar key={s.name} name={s.name} pct={s.pct} color={cat.color} />
+                                ))}
+                            </div>
+                        </motion.div>
+                    ))}
                 </div>
             </div>
         </section>

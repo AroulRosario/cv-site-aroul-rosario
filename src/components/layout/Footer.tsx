@@ -1,43 +1,33 @@
 "use client";
 
 import { cvData } from "@/data/cv";
-import { FadeIn, RevealText } from "@/components/ui/motion-helpers";
 
 export function Footer() {
     return (
-        <footer className="py-32 bg-white relative border-t border-zinc-100 flex flex-col items-center justify-center text-center">
-            <div className="max-w-4xl mx-auto px-6 md:px-12 w-full">
-                <div className="space-y-16 mb-24">
-                    <div>
-                        <p
-                            className="text-4xl md:text-6xl lg:text-7xl font-display font-medium text-zinc-950 leading-[0.9] tracking-tight"
-                        >
-                            {cvData.footerQuotes[0]}
-                        </p>
-                    </div>
-                    <div>
-                        <p
-                            className="text-xl md:text-2xl font-light text-zinc-500 leading-relaxed max-w-2xl mx-auto"
-                        >
-                            {cvData.footerQuotes[1]}
-                        </p>
-                    </div>
+        <footer className="py-24 bg-slate-900 relative overflow-hidden">
+            {/* Ambient gradient */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-b from-indigo-500/10 to-transparent blur-3xl pointer-events-none" />
+
+            <div className="max-w-4xl mx-auto px-6 md:px-12 w-full relative z-10 text-center">
+                <div className="space-y-10 mb-20">
+                    <p className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-white leading-[0.95] tracking-tight">
+                        {cvData.footerQuotes[0]}
+                    </p>
+                    <p className="text-lg md:text-xl font-light text-slate-400 leading-relaxed max-w-2xl mx-auto">
+                        {cvData.footerQuotes[1]}
+                    </p>
                 </div>
 
-                <div>
-                    <div className="flex flex-col md:flex-row items-center justify-between pt-10 border-t border-zinc-100 text-[10px] font-mono uppercase tracking-[0.3em] text-zinc-400">
-                        <p>© {new Date().getFullYear()} {cvData.personalInfo.name}</p>
-                        <div className="flex gap-8 mt-6 md:mt-0">
-                            <a
-                                href={`https://${cvData.personalInfo.website}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="hover:text-zinc-950 transition-colors"
-                            >
-                                {cvData.personalInfo.website}
-                            </a>
-                        </div>
-                    </div>
+                <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-slate-700/50 text-xs font-mono uppercase tracking-widest text-slate-500">
+                    <p>© {new Date().getFullYear()} {cvData.personalInfo.name}</p>
+                    <a
+                        href={`https://${cvData.personalInfo.website}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-indigo-400 transition-colors mt-4 md:mt-0"
+                    >
+                        {cvData.personalInfo.website}
+                    </a>
                 </div>
             </div>
         </footer>
