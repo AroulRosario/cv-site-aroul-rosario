@@ -1,71 +1,74 @@
-"use client";
-
 import { cvData } from "@/data/cv";
-import { motion } from "framer-motion";
-import { FadeIn } from "@/components/ui/motion-helpers";
-
-const AWARD_ICONS = ["🏛️", "⚗️", "🌍"];
-const AWARD_COLORS = [
-    { bg: "bg-amber-50", border: "border-amber-100", hover: "hover:border-amber-200 hover:shadow-amber-100/40" },
-    { bg: "bg-blue-50", border: "border-blue-100", hover: "hover:border-blue-200 hover:shadow-blue-100/40" },
-    { bg: "bg-emerald-50", border: "border-emerald-100", hover: "hover:border-emerald-200 hover:shadow-emerald-100/40" },
-];
-
-const CEREMONY_PHOTOS = [
-    { src: "/photos/award-ceremony-2.jpg", caption: "Republic Day Award — presented by the Lt. Governor of Puducherry" },
-    { src: "/photos/award-ceremony-1.jpg", caption: "National conclave recognition ceremony" },
-];
+import { BrandLogo } from "@/components/ui/BrandLogo";
+import { Trophy } from "lucide-react";
 
 export function Awards() {
     return (
-        <section id="awards" className="py-32 relative overflow-hidden">
+        <section id="awards" className="py-32 relative overflow-hidden bg-[#fafafa]">
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-                <div className="mb-20">
-                    <span className="text-xs font-mono text-amber-500 uppercase tracking-widest mb-6 block">06 // Recognitions & Awards</span>
-                    <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-slate-900 tracking-tighter leading-[0.9]">
-                        Recognised.<br />
-                        <span className="gradient-text-warm">Celebrated.</span>
-                    </h2>
+                <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-10">
+                    <div>
+                        <span className="inline-flex items-center gap-2 text-amber-600 font-mono text-xs font-bold tracking-[0.4em] uppercase mb-10 bg-amber-50 px-6 py-2.5 rounded-full border border-amber-100">
+                            <Trophy className="w-3.5 h-3.5" />
+                            Elite Honors
+                        </span>
+                        <h2 className="text-6xl md:text-8xl lg:text-9xl font-display font-bold text-slate-900 tracking-tighter leading-[0.8]">
+                            Recognised.<br />
+                            <span className="gradient-text-warm">Celebrated.</span>
+                        </h2>
+                    </div>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-16 items-start">
-                    <div className="space-y-4">
+                <div className="grid lg:grid-cols-2 gap-20 items-start">
+                    <div className="space-y-10">
                         {cvData.awards.map((award, i) => (
-                            <motion.div
+                            <div
                                 key={i}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                className={`group ${AWARD_COLORS[i % 3].bg} border ${AWARD_COLORS[i % 3].border} ${AWARD_COLORS[i % 3].hover} p-8 flex gap-6 items-start rounded-2xl transition-all duration-500 hover:shadow-xl`}
+                                className="group bg-white border border-slate-100 p-12 flex flex-col md:flex-row gap-10 items-start md:items-center rounded-[2.5rem] transition-all duration-700 hover:shadow-2xl hover:shadow-slate-200/50 hover:border-amber-200 hover:-translate-y-1"
                             >
-                                <span className="text-4xl shrink-0 transform group-hover:scale-110 transition-transform duration-500">
-                                    {AWARD_ICONS[i] || "🏆"}
-                                </span>
-                                <div>
-                                    <h3 className="text-xl font-display font-bold text-slate-900 leading-tight mb-2">{award.title}</h3>
-                                    <p className="text-slate-500 leading-relaxed text-sm">{award.description}</p>
+                                <div className="shrink-0 scale-110 group-hover:scale-125 transition-transform duration-500">
+                                    {award.org ? (
+                                        <BrandLogo name={award.org} size={110} />
+                                    ) : (
+                                        <div className="w-20 h-20 rounded-2xl bg-amber-50 flex items-center justify-center text-4xl shadow-sm border border-amber-100">
+                                            {i === 0 ? "🏛️" : i === 1 ? "⚗️" : "🏆"}
+                                        </div>
+                                    )}
                                 </div>
-                            </motion.div>
+                                <div className="space-y-4">
+                                    {award.org && (
+                                        <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-[0.4em] block mb-2">{award.org}</span>
+                                    )}
+                                    <h3 className="text-2xl md:text-3xl font-display font-bold text-slate-900 leading-tight tracking-tight group-hover:text-amber-600 transition-colors">
+                                        {award.title}
+                                    </h3>
+                                    <p className="text-slate-500 leading-relaxed text-lg font-medium">{award.description}</p>
+                                </div>
+                            </div>
                         ))}
                     </div>
 
-                    <div className="relative flex flex-col gap-5 lg:mt-8">
-                        {CEREMONY_PHOTOS.map((photo, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.15 }}
-                                className={`relative overflow-hidden rounded-2xl shadow-xl group ${i === 1 ? "ml-8" : ""}`}
-                            >
-                                <img src={photo.src} alt={photo.caption} className="w-full h-72 object-cover object-top group-hover:scale-105 transition-transform duration-700" />
-                                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-900/80 to-transparent p-6">
-                                    <p className="text-xs font-mono text-white/80 uppercase tracking-widest">{photo.caption}</p>
-                                </div>
-                            </motion.div>
-                        ))}
+                    <div className="relative flex flex-col gap-10 lg:mt-10">
+                        <div className="relative overflow-hidden rounded-[3rem] shadow-2xl group border-[12px] border-white ring-1 ring-slate-100">
+                            <img 
+                                src="/photos/award-ceremony-2.jpg" 
+                                alt="Republic Day Award Ceremony" 
+                                className="w-full h-[450px] object-cover object-top group-hover:scale-105 transition-transform duration-1000 grayscale group-hover:grayscale-0" 
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/10 to-transparent p-12 flex flex-col justify-end">
+                                <p className="text-[11px] font-mono font-bold text-amber-400 tracking-[0.4em] uppercase mb-4">State Recognition</p>
+                                <p className="text-2xl font-display font-bold text-white tracking-tight leading-tight">Presented by the Lt. Governor of Puducherry for Creative Excellence.</p>
+                            </div>
+                        </div>
+
+                        <div className="relative overflow-hidden rounded-[2.5rem] shadow-xl group border-8 border-white ml-20 -mt-20 z-10 glass shadow-2xl">
+                            <img 
+                                src="/photos/award-ceremony-1.jpg" 
+                                alt="National Conclave Participation" 
+                                className="w-full h-72 object-cover object-center group-hover:scale-110 transition-transform duration-1000" 
+                            />
+                            <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-700" />
+                        </div>
                     </div>
                 </div>
             </div>

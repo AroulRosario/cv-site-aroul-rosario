@@ -1,7 +1,6 @@
 "use client";
 
 import { cvData } from "@/data/cv";
-import { FadeIn } from "@/components/ui/motion-helpers";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 
 // Degree → visual weight map
@@ -43,14 +42,14 @@ export function Education() {
                                     className={`group relative flex items-center gap-0 overflow-hidden rounded-3xl border border-slate-100 ${meta.color} ${meta.hover} transition-all duration-500`}
                                 >
                                     {/* Left: Logo */}
-                                    <div className="w-[120px] md:w-[160px] shrink-0 flex items-center justify-center py-10 px-6 border-r border-slate-100/50 bg-white/50 group-hover:bg-white transition-colors duration-500">
-                                        <div className="opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110">
-                                            <BrandLogo name={item.org} size={90} />
+                                    <div className="w-[140px] md:w-[200px] shrink-0 flex items-center justify-center py-12 px-8 border-r border-slate-100/50 bg-white group-hover:bg-slate-50 transition-colors duration-500">
+                                        <div className="opacity-95 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105 filter group-hover:drop-shadow-lg">
+                                            <BrandLogo name={item.org} size={110} />
                                         </div>
                                     </div>
 
                                     {/* Timeline dot */}
-                                    <div className="absolute left-[119px] md:left-[159px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border-2 border-indigo-200 group-hover:border-indigo-600 group-hover:bg-indigo-600 transition-all duration-500 z-10" />
+                                    <div className="absolute left-[139px] md:left-[199px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border-2 border-indigo-200 group-hover:border-indigo-600 group-hover:bg-indigo-600 transition-all duration-500 z-10 shadow-sm" />
 
                                     {/* Right: Content */}
                                     <div className="flex-1 px-8 md:px-16 py-10 flex flex-col md:flex-row md:items-center justify-between gap-6">

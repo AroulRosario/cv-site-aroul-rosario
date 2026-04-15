@@ -1,87 +1,90 @@
 "use client";
 
 import { cvData } from "@/data/cv";
-import { motion } from "framer-motion";
 import { Mail, Phone, ExternalLink, MapPin, Send } from "lucide-react";
 
 export function Contact() {
     const contact = cvData.contact;
 
     return (
-        <section id="contact" className="py-32 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/30 to-indigo-50/40 pointer-events-none" />
+        <section id="contact" className="py-32 relative overflow-hidden bg-white">
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/20 to-indigo-50/30 pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-10">
                     <div>
-                        <span className="inline-flex items-center gap-2 text-emerald-600 font-mono text-xs tracking-widest uppercase mb-6 bg-emerald-50 px-4 py-2 rounded-full border border-emerald-100">
-                            <Send className="w-3.5 h-3.5" />
-                            Let&apos;s Connect
+                        <span className="inline-flex items-center gap-2 text-emerald-600 font-mono text-xs font-bold tracking-[0.3em] uppercase mb-8 bg-emerald-50 px-5 py-2.5 rounded-full border border-emerald-100">
+                            <Send className="w-4 h-4" />
+                            Direct Communication
                         </span>
-                        <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-slate-900 tracking-tighter leading-[0.9]">
+                        <h2 className="text-6xl md:text-8xl lg:text-9xl font-display font-bold text-slate-900 tracking-tighter leading-[0.8]">
                             Reach<br />
                             <span className="gradient-text">Out.</span>
                         </h2>
                     </div>
-                    <p className="text-slate-500 text-sm max-w-xs hidden md:block text-right leading-relaxed">
-                        Open to collaborations, speaking invitations, research partnerships, and educational consulting.
+                    <p className="text-slate-500 text-lg max-w-sm hidden md:block text-right leading-relaxed font-medium">
+                        Open to elite collaborations, keynote addresses, research partnerships, and strategic consulting.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
                     <a
                         href={`tel:${contact.phone}`}
-                        className="group bg-gradient-to-br from-blue-50 to-indigo-50/50 border border-blue-100 p-10 flex flex-col gap-8 rounded-2xl hover:shadow-xl hover:shadow-blue-100/40 hover:border-blue-200 transition-all duration-500"
+                        className="group bg-blue-50/30 border border-blue-100 p-12 flex flex-col gap-10 rounded-[2.5rem] hover:shadow-2xl hover:shadow-blue-100/50 hover:border-blue-400 transition-all duration-700 hover:-translate-y-1"
                     >
-                        <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center group-hover:bg-blue-500 transition-all duration-500">
-                            <Phone size={22} className="text-blue-500 group-hover:text-white transition-colors duration-500" />
+                        <div className="w-16 h-16 rounded-2xl bg-blue-100 flex items-center justify-center group-hover:bg-blue-600 transition-all duration-500">
+                            <Phone size={28} className="text-blue-600 group-hover:text-white transition-colors duration-500" />
                         </div>
                         <div>
-                            <p className="text-xs font-mono uppercase tracking-widest text-blue-400 mb-3">Voice</p>
-                            <p className="text-2xl font-display font-bold text-slate-900">{contact.phone}</p>
+                            <p className="text-[11px] font-mono font-bold uppercase tracking-[0.4em] text-blue-400 mb-4 group-hover:text-blue-600 transition-colors">Direct Line</p>
+                            <p className="text-3xl font-display font-bold text-slate-900 tracking-tight">{contact.phone}</p>
                         </div>
                     </a>
 
-                    <div className="group bg-white border border-slate-200 p-10 flex flex-col gap-8 rounded-2xl hover:shadow-xl hover:shadow-indigo-100/40 hover:border-indigo-200 transition-all duration-500">
-                        <div className="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center group-hover:bg-indigo-500 transition-all duration-500">
-                            <Mail size={22} className="text-indigo-500 group-hover:text-white transition-colors duration-500" />
+                    <div className="group bg-white border border-slate-200 p-12 flex flex-col gap-10 rounded-[2.5rem] hover:shadow-2xl hover:shadow-indigo-100/50 hover:border-indigo-400 transition-all duration-700 hover:-translate-y-1">
+                        <div className="w-16 h-16 rounded-2xl bg-indigo-50 flex items-center justify-center group-hover:bg-indigo-600 transition-all duration-500">
+                            <Mail size={28} className="text-indigo-600 group-hover:text-white transition-colors duration-500" />
                         </div>
-                        <div className="space-y-5">
-                            <p className="text-xs font-mono uppercase tracking-widest text-indigo-400">Professional Inquiries</p>
-                            {contact.emails.map((e) => (
-                                <a key={e.email} href={`mailto:${e.email}`} className="block group/link">
-                                    <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest block mb-1">{e.label}</span>
-                                    <span className="text-lg font-display font-medium text-slate-900 group-hover/link:text-indigo-600 transition-colors underline underline-offset-4 decoration-slate-200 group-hover/link:decoration-indigo-400">
-                                        {e.email}
-                                    </span>
-                                </a>
-                            ))}
+                        <div className="space-y-8">
+                            <p className="text-[11px] font-mono font-bold uppercase tracking-[0.4em] text-indigo-400 group-hover:text-indigo-600 transition-colors">Digital Inquiries</p>
+                            <div className="space-y-6">
+                                {contact.emails.map((e) => (
+                                    <a key={e.email} href={`mailto:${e.email}`} className="block group/link">
+                                        <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest block mb-1 group-hover/link:text-slate-600 transition-colors">{e.label}</span>
+                                        <span className="text-xl font-display font-bold text-slate-900 group-hover/link:text-indigo-600 transition-colors underline underline-offset-8 decoration-slate-100 group-hover/link:decoration-indigo-400 leading-tight">
+                                            {e.email}
+                                        </span>
+                                    </a>
+                                ))}
+                            </div>
                         </div>
                     </div>
 
-                    <div className="group bg-gradient-to-br from-violet-50 to-purple-50/50 border border-violet-100 p-10 flex flex-col gap-8 rounded-2xl hover:shadow-xl hover:shadow-violet-100/40 hover:border-violet-200 transition-all duration-500">
-                        <div className="w-12 h-12 rounded-xl bg-violet-100 flex items-center justify-center group-hover:bg-violet-500 transition-all duration-500">
-                            <ExternalLink size={22} className="text-violet-500 group-hover:text-white transition-colors duration-500" />
+                    <div className="group bg-violet-50/30 border border-violet-100 p-12 flex flex-col gap-10 rounded-[2.5rem] hover:shadow-2xl hover:shadow-violet-100/50 hover:border-violet-400 transition-all duration-700 hover:-translate-y-1">
+                        <div className="w-16 h-16 rounded-2xl bg-violet-100 flex items-center justify-center group-hover:bg-violet-600 transition-all duration-500">
+                            <ExternalLink size={28} className="text-violet-600 group-hover:text-white transition-colors duration-500" />
                         </div>
-                        <div className="space-y-4">
-                            <p className="text-xs font-mono uppercase tracking-widest text-violet-400">Digital Footprint</p>
-                            {contact.links.map((l) => (
-                                <a key={l.label} href={l.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 group/link">
-                                    <span className="flex-1 text-sm font-mono text-slate-600 group-hover/link:text-violet-600 transition-colors">{l.label}</span>
-                                    <ExternalLink size={12} className="text-slate-300 group-hover/link:text-violet-500 transition-colors shrink-0" />
-                                </a>
-                            ))}
+                        <div className="space-y-6">
+                            <p className="text-[11px] font-mono font-bold uppercase tracking-[0.4em] text-violet-400 group-hover:text-violet-600 transition-colors">Digital Network</p>
+                            <div className="space-y-5">
+                                {contact.links.map((l) => (
+                                    <a key={l.label} href={l.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 group/link">
+                                        <span className="flex-1 text-sm font-mono font-bold text-slate-500 group-hover/link:text-violet-600 transition-all duration-500 uppercase tracking-widest leading-none">{l.label}</span>
+                                        <ExternalLink size={14} className="text-slate-300 group-hover/link:text-violet-500 transition-colors shrink-0" />
+                                    </a>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div className="mt-6 bg-emerald-50 border border-emerald-100 p-8 flex items-center gap-6 rounded-2xl">
-                    <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center">
-                        <MapPin size={20} className="text-emerald-500" />
+                <div className="bg-slate-50 border border-slate-100 p-10 flex items-center gap-8 rounded-[2rem] hover:bg-slate-100 transition-colors duration-500">
+                    <div className="w-14 h-14 rounded-2xl bg-white border border-slate-200 flex items-center justify-center shadow-sm">
+                        <MapPin size={24} className="text-slate-400" />
                     </div>
                     <div>
-                        <p className="text-xs font-mono uppercase tracking-widest text-emerald-400 mb-1">Based In</p>
-                        <p className="text-lg font-display font-bold text-slate-900">Puducherry + Bengaluru, India</p>
+                        <p className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-slate-400 mb-1">HQ / Consultation Base</p>
+                        <p className="text-xl font-display font-bold text-slate-900 tracking-tight">Puducherry + Bengaluru, India</p>
                     </div>
                 </div>
             </div>

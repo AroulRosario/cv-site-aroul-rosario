@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
+import { cvData } from "@/data/cv";
 
 /**
  * BrandLogo: Renders the real institutional logo from /public/logos/
@@ -58,7 +56,7 @@ export const BrandLogo = ({ name, size = 80 }: { name: string; size?: number }) 
 
     return (
         <div
-            className="group relative flex-shrink-0 flex items-center justify-center rounded-xl bg-white border border-white/10 overflow-hidden shadow-lg hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-shadow duration-500"
+            className="group relative flex-shrink-0 flex items-center justify-center rounded-2xl bg-white border border-slate-100 overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-slate-200 transition-all duration-700 hover:-translate-y-1"
             style={{ width: size, height: size }}
             title={name}
         >
@@ -68,26 +66,26 @@ export const BrandLogo = ({ name, size = 80 }: { name: string; size?: number }) 
                     <img
                         src={logoSrc}
                         alt={name}
-                        className="w-full h-full object-contain filter group-hover:scale-110 transition-transform duration-700 ease-out"
+                        className="w-full h-full object-contain filter group-hover:scale-105 transition-transform duration-700 ease-out"
                         draggable={false}
                     />
                 </div>
             ) : (
                 /* Fallback if no logo: Quantum Signature on dark background */
-                <div className="absolute inset-0 z-10 bg-zinc-950 flex flex-col items-center justify-center gap-1.5">
+                <div className="absolute inset-0 z-10 bg-slate-900 flex flex-col items-center justify-center gap-1.5 p-4">
                     <span
-                        className="font-display font-black text-white/50 tracking-tighter leading-none"
-                        style={{ fontSize: size * 0.28 }}
+                        className="font-display font-black text-white/90 tracking-tighter leading-none"
+                        style={{ fontSize: size * 0.25 }}
                     >
                         {initials}
                     </span>
-                    <div className="grid grid-cols-3 gap-[3px]">
+                    <div className="grid grid-cols-3 gap-[4px]">
                         {bits.map((bit, i) => (
-                            <motion.div
+                            <div
                                 key={i}
-                                animate={{ opacity: bit === '1' ? [0.4, 0.7, 0.4] : 0.05 }}
-                                transition={{ duration: 2, repeat: Infinity, delay: i * 0.12 }}
-                                className={`rounded-full ${bit === '1' ? 'bg-white shadow-[0_0_6px_rgba(255,255,255,0.4)]' : 'bg-white/5'}`}
+                                className={`rounded-full transition-colors duration-500 ${
+                                    bit === '1' ? 'bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.5)]' : 'bg-white/10'
+                                }`}
                                 style={{ width: size * 0.08, height: size * 0.08 }}
                             />
                         ))}
@@ -96,7 +94,7 @@ export const BrandLogo = ({ name, size = 80 }: { name: string; size?: number }) 
             )}
 
             {/* Subtle glow edge inside the frame */}
-            <div className="absolute inset-0 border border-black/5 rounded-xl z-20 pointer-events-none" />
+            <div className="absolute inset-0 border border-black/[0.03] rounded-2xl z-20 pointer-events-none" />
         </div>
     );
 };

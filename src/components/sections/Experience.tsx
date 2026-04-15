@@ -3,11 +3,9 @@
 import { useState } from "react";
 import { cvData } from "@/data/cv";
 import Link from "next/link";
-import { FadeIn } from "@/components/ui/motion-helpers";
-import { DeepDive } from "@/components/ui/DeepDive";
 import { BrandLogo } from "@/components/ui/BrandLogo";
+import { DeepDive } from "@/components/ui/DeepDive";
 import { ArrowUpRight, Briefcase } from "lucide-react";
-import { motion } from "framer-motion";
 
 const STATS = [
     { value: "10K+", label: "Students Impacted", color: "text-blue-600" },
@@ -35,50 +33,35 @@ export function Experience() {
                 {/* Stat bar */}
                 <div className="grid grid-cols-3 gap-6 mb-20 pb-16 border-b border-slate-100">
                     {STATS.map((s, i) => (
-                        <motion.div
-                            key={s.label}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.1 }}
-                            className="text-center"
-                        >
+                        <div key={s.label} className="text-center">
                             <p className={`text-5xl md:text-6xl font-display font-bold ${s.color} tracking-tighter`}>{s.value}</p>
                             <p className="text-xs font-mono text-slate-400 uppercase tracking-widest mt-3">{s.label}</p>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
 
                 {/* Experience Cards */}
                 <div className="space-y-4">
                     {cvData.experience.map((item, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.08 }}
-                        >
-                            <Link href="/experience" className="block">
-                                <div className="group relative flex items-center gap-6 md:gap-10 p-6 md:p-8 bg-white border border-slate-100 rounded-2xl cursor-pointer overflow-hidden hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-100/40 transition-all duration-500">
-                                    <div className="flex-shrink-0">
-                                        <BrandLogo name={item.org} size={72} />
-                                    </div>
-                                    <div className="flex-1 min-w-0">
-                                        <div className="flex items-baseline gap-4 mb-2">
-                                            <h3 className="text-xl md:text-3xl font-display font-bold text-slate-900 tracking-tight leading-tight">
-                                                {item.title}
-                                            </h3>
-                                            <span className="hidden md:block text-sm font-mono text-indigo-400 shrink-0">{item.period}</span>
-                                        </div>
-                                        <p className="text-sm font-mono text-slate-500 uppercase tracking-widest">{item.org}</p>
-                                    </div>
-                                    <div className="text-slate-300 group-hover:text-indigo-500 transition-all duration-500 shrink-0">
-                                        <ArrowUpRight className="w-6 h-6" />
-                                    </div>
+                        <div key={index} onClick={() => setActiveDive(index)}>
+                            <div className="group relative flex items-center gap-6 md:gap-10 p-6 md:p-8 bg-white border border-slate-100 rounded-2xl cursor-pointer overflow-hidden hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-100/40 transition-all duration-300">
+                                <div className="flex-shrink-0">
+                                    <BrandLogo name={item.org} size={72} />
                                 </div>
-                            </Link>
-                        </motion.div>
+                                <div className="flex-1 min-w-0">
+                                    <div className="flex items-baseline gap-4 mb-2">
+                                        <h3 className="text-xl md:text-3xl font-display font-bold text-slate-900 tracking-tight leading-tight">
+                                            {item.title}
+                                        </h3>
+                                        <span className="hidden md:block text-sm font-mono text-indigo-400 shrink-0">{item.period}</span>
+                                    </div>
+                                    <p className="text-sm font-mono text-slate-500 uppercase tracking-widest">{item.org}</p>
+                                </div>
+                                <div className="text-slate-300 group-hover:text-indigo-500 transition-all duration-300 shrink-0">
+                                    <ArrowUpRight className="w-6 h-6" />
+                                </div>
+                            </div>
+                        </div>
                     ))}
                 </div>
             </div>

@@ -5,7 +5,6 @@ import { Education } from "@/components/sections/Education";
 import { Certifications } from "@/components/sections/Certifications";
 import { Patents } from "@/components/sections/Patents";
 import { Publications } from "@/components/sections/Publications";
-import { Spotlight } from "@/components/ui/Spotlight";
 
 export const metadata: Metadata = {
     title: "Academic Background & Research | Dr. Aroul Rosario S",
@@ -16,7 +15,6 @@ export const metadata: Metadata = {
 export default function AcademicsPage() {
     return (
         <main className="min-h-screen bg-[#fbfbfb] text-zinc-950 relative">
-            <Spotlight />
             <Navbar />
             <div className="pt-24 space-y-0">
                 <Education />

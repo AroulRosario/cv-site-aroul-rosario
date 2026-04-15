@@ -61,31 +61,6 @@ export function Publications() {
                             </p>
                         </div>
 
-                        <div className="space-y-6">
-                            {cvData.thesisPublications.map((pub, index) => (
-                                <div key={index} className="group p-8 border border-slate-100 bg-white hover:border-zinc-300 hover:shadow-xl hover:shadow-zinc-200/50 transition-all duration-500 rounded-3xl relative overflow-hidden">
-                                     <div className="absolute top-8 right-8 opacity-30 group-hover:opacity-100 transition-all duration-500">
-                                        <BrandLogo name={pub.org} size={32} />
-                                    </div>
-                                    <p className="text-[10px] font-mono uppercase tracking-widest text-slate-400 mb-4">{pub.org}</p>
-                                    <h3 className="text-lg font-display font-medium text-slate-900 leading-relaxed max-w-[85%]">
-                                        &quot;{pub.title}&quot;
-                                    </h3>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Research Articles */}
-                    <div>
-                        <div className="mb-16 border-b border-slate-100 pb-8">
-                            <h2 className="text-4xl font-display font-medium text-slate-900 tracking-tight mb-4">
-                                Scientific<br />
-                                <span className="text-zinc-300 italic">Articles.</span>
-                            </h2>
-                            <p className="text-xs font-mono tracking-widest uppercase text-slate-400">
-                                09 // Peer-Reviewed Journals
-                            </p>
                         </div>
 
                         <div className="space-y-6">

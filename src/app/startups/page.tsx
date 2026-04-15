@@ -3,7 +3,6 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Startups } from "@/components/sections/Startups";
 import { Initiatives } from "@/components/sections/Initiatives";
-import { Spotlight } from "@/components/ui/Spotlight";
 
 export const metadata: Metadata = {
     title: "Startups & Initiatives | Dr. Aroul Rosario S",
@@ -14,7 +13,6 @@ export const metadata: Metadata = {
 export default function StartupsPage() {
     return (
         <main className="min-h-screen bg-[#fbfbfb] text-zinc-950 relative">
-            <Spotlight />
             <Navbar />
             <div className="pt-20">
                 <Startups />

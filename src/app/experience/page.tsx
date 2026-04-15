@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Experience } from "@/components/sections/Experience";
-import { Spotlight } from "@/components/ui/Spotlight";
 
 export const metadata: Metadata = {
     title: "Professional Experience | Dr. Aroul Rosario S",
@@ -13,7 +12,6 @@ export const metadata: Metadata = {
 export default function ExperiencePage() {
     return (
         <main className="min-h-screen bg-[#fbfbfb] text-zinc-950 relative">
-            <Spotlight />
             <Navbar />
             <div className="pt-20">
                 <Experience />

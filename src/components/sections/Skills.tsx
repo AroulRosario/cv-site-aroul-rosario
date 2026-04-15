@@ -1,8 +1,6 @@
 "use client";
 
 import { cvData } from "@/data/cv";
-import { motion } from "framer-motion";
-import { FadeIn } from "@/components/ui/motion-helpers";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 
 const SKILLS_WITH_LEVELS = {
@@ -42,14 +40,10 @@ function SkillBar({ name, pct, color }: { name: string; pct: number; color: stri
                 <span className="text-sm text-slate-600 group-hover:text-slate-900 transition-colors">{name}</span>
                 <span className="text-xs text-slate-400">{pct}%</span>
             </div>
-            <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                <motion.div
-                    initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.2, ease: "circOut" }}
+            <div className="h-2 bg-slate-100/50 rounded-full overflow-hidden border border-slate-100">
+                <div
                     className={`h-full rounded-full bg-gradient-to-r ${color}`}
-                    style={{ transformOrigin: "left", width: `${pct}%` }}
+                    style={{ width: `${pct}%` }}
                 />
             </div>
         </div>
@@ -60,34 +54,22 @@ export function Skills() {
     return (
         <section id="skills" className="py-32 relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-                <FadeIn>
-                    <span className="text-xs font-mono text-indigo-500 uppercase tracking-widest mb-6 block">05 // Core Competencies</span>
-                    <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-slate-900 tracking-tighter mb-20 leading-[0.9]">
-                        Technical<br />
-                        <span className="gradient-text">Ecosystem.</span>
-                    </h2>
-                </FadeIn>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {CATEGORIES.map((cat, ci) => (
-                        <motion.div
+                        <div
                             key={cat.key}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: ci * 0.1 }}
-                            className={`bg-gradient-to-br ${cat.bg} border ${cat.border} p-10 space-y-8 rounded-2xl hover:shadow-xl transition-all duration-500`}
+                            className={`bg-gradient-to-br ${cat.bg} border ${cat.border} p-12 space-y-10 rounded-[2.5rem] hover:shadow-2xl hover:shadow-slate-100/50 transition-all duration-700 hover:-translate-y-1`}
                         >
-                            <div className="flex items-center gap-3 pb-6 border-b border-slate-200/50">
-                                <span className="text-3xl">{cat.emoji}</span>
-                                <h3 className="text-sm font-mono text-slate-500 uppercase tracking-widest">{cat.label}</h3>
+                            <div className="flex items-center gap-4 pb-8 border-b border-slate-200/50">
+                                <span className="text-4xl group-hover:scale-110 transition-transform duration-500">{cat.emoji}</span>
+                                <h3 className="text-xs font-mono font-bold text-slate-500 uppercase tracking-[0.3em]">{cat.label}</h3>
                             </div>
-                            <div className="space-y-5">
+                            <div className="space-y-6">
                                 {SKILLS_WITH_LEVELS[cat.key].map((s) => (
                                     <SkillBar key={s.name} name={s.name} pct={s.pct} color={cat.color} />
                                 ))}
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>

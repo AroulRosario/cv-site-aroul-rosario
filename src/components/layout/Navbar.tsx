@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
 export function Navbar() {
@@ -16,19 +15,16 @@ export function Navbar() {
 
     const navLinks = [
         { name: "About", href: "/#about" },
-        { name: "Startups", href: "/startups" },
-        { name: "Experience", href: "/experience" },
-        { name: "Academics", href: "/academics" },
-        { name: "Press", href: "/press" },
-        { name: "Contact", href: "/contact" },
+        { name: "Startups", href: "/#startups" },
+        { name: "Experience", href: "/#experience" },
+        { name: "Academics", href: "/#academics" },
+        { name: "Press", href: "/#press" },
+        { name: "Contact", href: "/#contact" },
     ];
 
     return (
         <>
-            <motion.nav
-                initial={{ y: -100 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            <nav
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
                     ? "glass py-3"
                     : "bg-transparent py-5"
@@ -39,12 +35,12 @@ export function Navbar() {
                         Aroul<span className="gradient-text">R.</span>
                     </Link>
 
-                    <div className="hidden lg:flex items-center space-x-8">
+                    <div className="hidden lg:flex items-center space-x-12">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="text-xs font-mono tracking-widest uppercase text-slate-500 hover:text-indigo-600 transition-colors relative"
+                                className="text-[10px] font-mono font-bold tracking-[0.3em] uppercase text-slate-500 hover:text-indigo-600 transition-colors relative"
                             >
                                 {link.name}
                             </Link>
@@ -60,38 +56,31 @@ export function Navbar() {
                         <span className={`block h-[1.5px] bg-slate-900 transition-all duration-300 ${isMobileMenuOpen ? "w-8 -rotate-45 -translate-y-[7px]" : "w-4"}`} />
                     </button>
                 </div>
-            </motion.nav>
+            </nav>
 
-            <AnimatePresence>
-                {isMobileMenuOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)" }}
-                        animate={{ opacity: 1, clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}
-                        exit={{ opacity: 0, clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)" }}
-                        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                        className="fixed inset-0 z-40 bg-white/95 backdrop-blur-2xl pt-32 px-6 lg:hidden flex flex-col"
-                    >
-                        <div className="flex flex-col space-y-6 relative z-10">
-                            {navLinks.map((link, i) => (
-                                <motion.div
-                                    initial={{ y: 20, opacity: 0 }}
-                                    animate={{ y: 0, opacity: 1 }}
-                                    transition={{ delay: i * 0.05 + 0.2 }}
-                                    key={link.name}
-                                >
-                                    <Link
-                                        href={link.href}
-                                        onClick={() => setIsMobileMenuOpen(false)}
-                                        className="text-4xl font-display font-bold text-slate-900 hover:text-indigo-600 transition-colors"
-                                    >
-                                        {link.name}
-                                    </Link>
-                                </motion.div>
-                            ))}
+            {/* Mobile Menu - Static Overlay */}
+            <div
+                className={`fixed inset-0 z-40 bg-white/98 backdrop-blur-2xl px-6 lg:hidden flex flex-col transition-all duration-500 ${
+                    isMobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"
+                }`}
+            >
+                <div className="flex flex-col space-y-8 pt-40">
+                    {navLinks.map((link, i) => (
+                        <div key={link.name}>
+                            <Link
+                                href={link.href}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className="text-4xl md:text-6xl font-display font-black text-slate-900 hover:text-indigo-600 transition-colors tracking-tighter"
+                            >
+                                {link.name}<span className="text-indigo-600">.</span>
+                            </Link>
                         </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                    ))}
+                </div>
+            </div>
+        </>
+    );
+}
         </>
     );
 }

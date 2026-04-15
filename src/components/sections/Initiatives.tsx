@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import { cvData } from "@/data/cv";
-import { motion } from "framer-motion";
-import { FadeIn } from "@/components/ui/motion-helpers";
 import { DeepDive } from "@/components/ui/DeepDive";
 import { Lightbulb } from "lucide-react";
 
@@ -31,35 +29,31 @@ export function Initiatives() {
                     </h2>
                 </div>
 
-                <div className="space-y-5">
+                <div className="space-y-6">
                     {cvData.initiatives.map((item, index) => {
                         const style = CARD_COLORS[index % CARD_COLORS.length];
                         return (
-                            <motion.div
+                            <div
                                 key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.08 }}
                                 onClick={() => setActiveDive(index)}
-                                className={`group relative ${style.bg} border ${style.border} ${style.hover} cursor-pointer overflow-hidden min-h-[200px] flex items-end p-10 md:p-14 rounded-2xl transition-all duration-500 hover:shadow-xl`}
+                                className={`group relative ${style.bg} border ${style.border} ${style.hover} cursor-pointer overflow-hidden min-h-[220px] flex items-end p-10 md:p-16 rounded-[2.5rem] transition-all duration-700 hover:shadow-2xl hover:shadow-indigo-100/40 hover:-translate-y-1`}
                             >
-                                <span className="absolute top-4 right-8 text-[160px] md:text-[200px] font-display font-black text-slate-500/[0.03] leading-none pointer-events-none select-none">
+                                <span className="absolute top-4 right-12 text-[180px] md:text-[240px] font-display font-black text-slate-500/[0.04] leading-none pointer-events-none select-none group-hover:text-indigo-500/[0.06] transition-colors duration-700">
                                     {String(index + 1).padStart(2, "0")}
                                 </span>
-                                <div className="absolute top-8 left-10 flex items-center gap-3">
-                                    <span className={`w-2.5 h-2.5 rounded-full ${style.dot}`} />
-                                    <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest">{item.role}</span>
+                                <div className="absolute top-10 left-12 flex items-center gap-4">
+                                    <span className={`w-3 h-3 rounded-full ${style.dot} shadow-sm group-hover:scale-125 transition-transform duration-500`} />
+                                    <span className="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-[0.3em] group-hover:text-slate-900 transition-colors">{item.role}</span>
                                 </div>
-                                <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between w-full gap-6">
-                                    <h3 className="text-3xl md:text-5xl font-display font-bold text-slate-900 leading-tight tracking-tight">{item.title}</h3>
-                                    <div className="shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
-                                        <div className="text-xs font-mono text-slate-400 uppercase tracking-widest border border-slate-200 px-6 py-3 rounded-full group-hover:bg-slate-900 group-hover:text-white group-hover:border-slate-900 transition-all duration-500">
-                                            Case Study →
+                                <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between w-full gap-8">
+                                    <h3 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-slate-900 leading-[0.85] tracking-tighter group-hover:text-indigo-600 transition-colors">{item.title}</h3>
+                                    <div className="shrink-0 group-hover:translate-x-2 transition-transform duration-500">
+                                        <div className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-[0.3em] border border-slate-200 px-8 py-4 rounded-full group-hover:bg-slate-900 group-hover:text-white group-hover:border-slate-900 transition-all duration-500">
+                                            Case Study &rarr;
                                         </div>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </div>
                         );
                     })}
                 </div>

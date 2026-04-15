@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Play, Trophy, Video } from "lucide-react";
 
 const ENGAGEMENTS = [
@@ -44,37 +43,33 @@ export function Engagements() {
                 {/* Video Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
                     {ENGAGEMENTS.map((ev, i) => (
-                        <motion.div
+                        <div
                             key={i}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.15 }}
                             className="group flex flex-col gap-5"
                         >
-                            <div className="relative aspect-video rounded-2xl overflow-hidden bg-slate-100 shadow-lg group-hover:shadow-2xl group-hover:shadow-indigo-200/40 transition-all duration-700">
+                            <div className="relative aspect-video rounded-3xl overflow-hidden bg-slate-100 shadow-lg group-hover:shadow-2xl group-hover:shadow-indigo-200/40 transition-all duration-700">
                                 <video 
                                     src={ev.url} 
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
                                     autoPlay
                                     muted
                                     loop
                                     playsInline
                                 />
                                 {/* Gradient overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
-                                <div className="absolute bottom-6 left-6 right-6">
-                                    <h3 className="text-xl font-display font-bold text-white mb-1">{ev.title}</h3>
-                                    <p className="text-white/70 text-sm">{ev.description}</p>
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
+                                <div className="absolute bottom-8 left-8 right-8">
+                                    <h3 className="text-2xl font-display font-bold text-white mb-2 tracking-tight">{ev.title}</h3>
+                                    <p className="text-white/70 text-sm font-mono tracking-wide">{ev.description}</p>
                                 </div>
                                 {/* Play indicator */}
-                                <div className="absolute top-6 right-6">
-                                    <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
-                                        <Play className="w-4 h-4 text-white fill-white" />
+                                <div className="absolute top-8 right-8">
+                                    <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform">
+                                        <Play className="w-5 h-5 text-white fill-white" />
                                     </div>
                                 </div>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
 
@@ -86,23 +81,19 @@ export function Engagements() {
                         </div>
                         <h3 className="text-2xl font-display font-bold text-slate-900">Judging at Launchpad 2026 · BITS Pilani</h3>
                     </div>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                         {PHOTOS.map((src, i) => (
-                            <motion.div
+                            <div
                                 key={i}
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                className="relative aspect-[4/5] rounded-2xl overflow-hidden group shadow-md hover:shadow-xl transition-all duration-500"
+                                className="relative aspect-[4/5] rounded-[2rem] overflow-hidden group shadow-lg hover:shadow-2xl transition-all duration-700"
                             >
                                 <img 
                                     src={src} 
                                     alt={`Launchpad 2026 - BITS Pilani - Role: Judge`} 
-                                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                                    className="w-full h-full object-cover transform group-hover:scale-110 grayscale group-hover:grayscale-0 transition-all duration-1000"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-violet-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                            </motion.div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-violet-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            </div>
                         ))}
                     </div>
                 </div>

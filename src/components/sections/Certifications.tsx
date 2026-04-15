@@ -1,8 +1,6 @@
 "use client";
 
 import { cvData } from "@/data/cv";
-import { motion } from "framer-motion";
-import { FadeIn } from "@/components/ui/motion-helpers";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 
 export function Certifications() {
@@ -29,47 +27,32 @@ export function Certifications() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-24 relative">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 relative">
                     {allCerts.map((cert, index) => (
                         <div
                             key={index}
-                            className={`group relative bg-white border border-slate-100 p-8 flex flex-col items-center gap-8 rounded-3xl transition-all duration-500 text-center ${cert.type === 'tech' ? 'hover:border-blue-300 hover:shadow-blue-100/50 hover:bg-blue-50/20' : 'hover:border-violet-300 hover:shadow-violet-100/50 hover:bg-violet-50/20'} hover:shadow-xl`}
+                            className={`group relative bg-white border border-slate-100 p-10 flex flex-col items-center gap-10 rounded-[2.5rem] transition-all duration-500 text-center ${cert.type === 'tech' ? 'hover:border-blue-300 hover:shadow-2xl hover:shadow-blue-100/50 hover:bg-blue-50/10' : 'hover:border-violet-300 hover:shadow-2xl hover:shadow-violet-100/50 hover:bg-violet-50/10'} hover:scale-[1.02]`}
                         >
-                            <div className="opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110">
-                                <BrandLogo name={cert.org} size={110} />
+                            <div className="opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105 filter group-hover:drop-shadow-xl">
+                                <BrandLogo name={cert.org} size={140} />
                             </div>
 
-                            <div className="w-full flex-grow flex flex-col justify-between pt-2">
-                                <p className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest group-hover:text-slate-900 transition-colors mb-4">
+                            <div className="w-full flex-grow flex flex-col justify-between pt-4">
+                                <p className="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-[0.3em] group-hover:text-slate-900 transition-colors mb-6">
                                     {cert.org}
                                 </p>
-                                <p className="text-sm md:text-base font-display font-bold text-slate-900 leading-relaxed group-hover:text-indigo-600 transition-colors line-clamp-3 mb-6">
+                                <h3 className="text-xl md:text-2xl font-display font-bold text-slate-900 leading-tight group-hover:text-indigo-600 transition-colors line-clamp-3 mb-8">
                                     {cert.title}
-                                </p>
+                                </h3>
                             </div>
 
-                            <div>
-                                <span className={`text-[10px] font-mono uppercase tracking-[0.2em] px-4 py-2 rounded-full border transition-all duration-500 ${cert.type === 'tech' ? 'bg-blue-50 text-blue-600 border-blue-100 group-hover:bg-blue-600 group-hover:text-white' : 'bg-violet-50 text-violet-600 border-violet-100 group-hover:bg-violet-600 group-hover:text-white'}`}>
-                                    {cert.type === "tech" ? "Tech" : "Academic"}
+                            <div className="mt-auto">
+                                <span className={`text-[10px] font-mono uppercase tracking-[0.25em] px-6 py-2.5 rounded-full border transition-all duration-500 ${cert.type === 'tech' ? 'bg-blue-50 text-blue-600 border-blue-100 group-hover:bg-blue-600 group-hover:text-white' : 'bg-violet-50 text-violet-600 border-violet-100 group-hover:bg-violet-600 group-hover:text-white'}`}>
+                                    {cert.type === "tech" ? "Technology" : "Academic"}
                                 </span>
                             </div>
                         </div>
                     ))}
-                </div>
-
-                <div className="relative overflow-hidden py-10 border-t border-b border-indigo-100 bg-gradient-to-r from-indigo-50/30 via-violet-50/50 to-indigo-50/30">
-                    <motion.div
-                        className="flex gap-20 whitespace-nowrap items-center"
-                        animate={{ x: ["0%", "-50%"] }}
-                        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-                    >
-                        {[...allCerts, ...allCerts].map((cert, i) => (
-                            <span key={i} className="text-sm font-mono text-indigo-300 uppercase tracking-[0.3em] shrink-0 hover:text-indigo-600 transition-colors cursor-default">
-                                {cert.title}
-                                <span className="mx-10 text-indigo-200">✦</span>
-                            </span>
-                        ))}
-                    </motion.div>
                 </div>
             </div>
         </section>

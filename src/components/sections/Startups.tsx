@@ -1,8 +1,6 @@
 "use client";
 
 import { cvData } from "@/data/cv";
-import { motion } from "framer-motion";
-import { FadeIn } from "@/components/ui/motion-helpers";
 import { ExternalLink, ArrowUpRight, Rocket } from "lucide-react";
 import Link from "next/link";
 
@@ -29,41 +27,35 @@ export function Startups() {
                 </div>
 
                 {/* Startup cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
                     {cvData.startups.map((s, i) => {
                         const style = STARTUP_STYLES[i % STARTUP_STYLES.length];
                         return (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                            >
-                                <Link href="/startups" className="block h-full">
-                                    <div className={`group h-full ${style.bg} border ${style.border} ${style.hover} p-10 md:p-12 flex flex-col justify-between gap-8 rounded-2xl transition-all duration-500 hover:shadow-xl`}>
+                            <div key={i} className="h-full">
+                                <Link href="/startups" className="block h-full group">
+                                    <div className={`h-full ${style.bg} border ${style.border} ${style.hover} p-10 md:p-14 flex flex-col justify-between gap-10 rounded-[2.5rem] transition-all duration-700 hover:shadow-2xl hover:shadow-indigo-100/40 hover:-translate-y-1`}>
                                         <div>
-                                            <div className="flex items-start justify-between mb-6">
-                                                <div className={`w-3 h-3 rounded-full ${style.dot}`} />
+                                            <div className="flex items-start justify-between mb-8">
+                                                <div className={`w-3.5 h-3.5 rounded-full ${style.dot} shadow-[0_0_15px_rgba(0,0,0,0.1)] group-hover:scale-125 transition-transform duration-500`} />
                                                 {s.url && (
-                                                    <div className="text-slate-400 group-hover:text-slate-900 transition-colors duration-500">
-                                                        <ArrowUpRight size={22} />
+                                                    <div className="text-slate-300 group-hover:text-slate-900 transition-colors duration-500">
+                                                        <ArrowUpRight size={26} />
                                                     </div>
                                                 )}
                                             </div>
-                                            <p className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-3">{s.tagline}</p>
-                                            <h3 className="text-2xl md:text-3xl font-display font-bold text-slate-900 tracking-tight leading-tight">{s.name}</h3>
-                                            <p className="mt-4 text-slate-500 leading-relaxed max-w-sm">{s.description}</p>
+                                            <p className="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-[0.3em] mb-4 group-hover:text-slate-600 transition-colors">{s.tagline}</p>
+                                            <h3 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tighter leading-[0.85] group-hover:text-indigo-600 transition-colors">{s.name}</h3>
+                                            <p className="mt-8 text-slate-500 text-lg leading-relaxed max-w-sm group-hover:text-slate-600 transition-colors">{s.description}</p>
                                         </div>
                                         {s.url && (
-                                            <div className="text-xs font-mono text-slate-400 group-hover:text-slate-600 flex items-center gap-2 transition-colors">
-                                                <ExternalLink size={14} />
+                                            <div className="text-[10px] font-mono text-slate-400 group-hover:text-slate-900 flex items-center gap-3 transition-all duration-500 uppercase tracking-widest">
+                                                <ExternalLink size={16} className="opacity-40 group-hover:opacity-100 transition-opacity" />
                                                 {s.url.replace("https://", "")}
                                             </div>
                                         )}
                                     </div>
                                 </Link>
-                            </motion.div>
+                            </div>
                         );
                     })}
                 </div>

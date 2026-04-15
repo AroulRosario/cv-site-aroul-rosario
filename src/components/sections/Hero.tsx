@@ -2,14 +2,12 @@
 
 import { cvData } from "@/data/cv";
 import { ArrowDownRight, Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
-
 export function Hero() {
     return (
         <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-32 pb-20 w-full overflow-hidden">
             {/* Premium ambient elements */}
-            <div className="absolute top-[-15%] right-[-5%] w-[700px] h-[700px] rounded-full bg-gradient-to-br from-indigo-100/60 via-violet-100/40 to-fuchsia-100/20 blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '8s' }} />
-            <div className="absolute bottom-[-15%] left-[-10%] w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-blue-100/40 via-sky-50/30 to-transparent blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '12s' }} />
+            <div className="absolute top-[-15%] right-[-5%] w-[700px] h-[700px] rounded-full bg-gradient-to-br from-indigo-100/60 via-violet-100/40 to-fuchsia-100/20 blur-3xl pointer-events-none" />
+            <div className="absolute bottom-[-15%] left-[-10%] w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-blue-100/40 via-sky-50/30 to-transparent blur-3xl pointer-events-none" />
             <div className="absolute top-[40%] left-[50%] w-[300px] h-[300px] rounded-full bg-gradient-to-br from-amber-100/20 to-transparent blur-3xl pointer-events-none" />
 
             {/* Refined grid lines */}
@@ -21,45 +19,24 @@ export function Hero() {
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-12 items-end">
-                {/* Main Typography */}
-                <div className="md:col-span-8 space-y-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        <span className="inline-flex items-center gap-2.5 text-indigo-600 font-mono text-[11px] tracking-[0.2em] uppercase mb-10 bg-white/80 backdrop-blur-sm px-5 py-2.5 rounded-full border border-indigo-100/80 shadow-sm shadow-indigo-100/30">
+                <div className="md:col-span-8 space-y-10">
+                    <div>
+                        <span className="inline-flex items-center gap-2.5 text-indigo-600 font-mono text-[10px] font-bold tracking-[0.4em] uppercase mb-12 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full border border-indigo-100 shadow-sm shadow-indigo-100/30">
                             <Sparkles className="w-3.5 h-3.5" />
-                            Academic & Professional Profile
+                            Academic & Professional Portfolio
                         </span>
-                    </motion.div>
+                    </div>
 
-                    <motion.h1
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                        className="text-[4rem] md:text-[7rem] lg:text-[9rem] font-display font-bold tracking-[-0.04em] leading-[0.82]"
-                    >
-                        <span className="gradient-text">Dr. Aroul</span>
-                        <br />
-                        <span className="text-slate-900">Rosario.</span>
-                    </motion.h1>
+                    <h1 className="text-[4.5rem] md:text-[8rem] lg:text-[11rem] font-display font-bold tracking-[-0.05em] leading-[0.78] text-slate-900">
+                        <span className="gradient-text block mb-4">Dr. Aroul</span>
+                        Rosario.
+                    </h1>
 
-                    <motion.div
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: 1 }}
-                        transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                        className="h-px bg-gradient-to-r from-indigo-300 via-violet-300 to-transparent max-w-md origin-left mt-8"
-                    />
+                    <div className="h-2 w-32 bg-gradient-to-r from-indigo-500 via-violet-500 to-transparent rounded-full mt-12" />
                 </div>
 
                 {/* Supporting Contact / Title */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    className="md:col-span-4 flex flex-col justify-end md:pb-8 space-y-10"
-                >
+                <div className="md:col-span-4 flex flex-col justify-end md:pb-8 space-y-10">
                     <p className="text-lg md:text-xl text-slate-500 leading-relaxed">
                         <span className="text-slate-900 font-semibold">Educationalist, EdTech Founder & Strategist.</span><br />
                         <span className="text-slate-400 mt-2 block">Transforming how the world learns through science and technology.</span>
@@ -87,7 +64,7 @@ export function Hero() {
                             </div>
                         </a>
                     </div>
-                </motion.div>
+                </div>
             </div>
         </section>
     );

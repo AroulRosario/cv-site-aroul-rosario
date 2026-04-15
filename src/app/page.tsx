@@ -14,12 +14,11 @@ import { Press } from "@/components/sections/Press";
 import { Contact } from "@/components/sections/Contact";
 import { Engagements } from "@/components/sections/Engagements";
 import { Patents } from "@/components/sections/Patents";
-import { Spotlight } from "@/components/ui/Spotlight";
+
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#fafbfc] text-slate-900 relative selection:bg-indigo-100 selection:text-indigo-900">
-      <Spotlight />
       <Navbar />
 
       <Hero />
